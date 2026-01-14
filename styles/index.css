@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  @apply antialiased;
+}
+
+.custom-container {
+  @apply container px-6 md:px-12;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+  @apply tracking-tighter;
+  @apply leading-tight;
+}
+
+h1 {
+  @apply text-6xl;
+}
+h2 {
+  @apply md:text-4xl text-2xl;
+}
+h3 {
+  @apply text-2xl;
+}
+
+.appear {
+  animation: 1s appear;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+}
+
+/* @keyframes ripple {
+  0% {
+    box-shadow: rgba(9, 136, 62, 0.4) 0 0 0 0;
+  }
+  70% {
+    box-shadow: rgba(9, 136, 62, 0) 0 0 0 10px;
+  }
+  100% {
+    box-shadow: rgba(9, 136, 62, 0) 0 0 0 0;
+  }
+}
+
+.ripple {
+  animation: ripple 1.5s infinite;
+} */
+
+.slick-dots {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(50%);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  list-style: none;
+}
+
+.slick-dots li {
+  margin: 0;
+}
+
+.slick-dots li button::before {
+  display: none;
+}
+
+.slick-dots li span {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.slick-dots li.slick-active span {
+  opacity: 1;
+  color: #f99b24;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item button {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  color: white;
+}
+
+.hover-line {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background-color: #f99b24;
+  width: 0;
+  transition: width 0.3s ease-out;
+}
+
+.group:hover .hover-line {
+  width: 100%;
+}
+
+.hover-lines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: #333333;
+  width: 0;
+  transition: width 0.3s ease-out;
+}
+
+.custom-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.custom-dot-container {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  transition: all 0.6s ease-in-out;
+}
+
+.custom-dot-container:hover .custom-dot {
+  background-color: #f99b24 !important;
+  outline: 2px solid #f99b24 !important;
+}
+
+.slick-dots li.slick-active .custom-dot {
+  background-color: #f99b24 !important;
+  outline: 2px solid #f99b24 !important;
+  outline-offset: 5px !important;
+}
+
+.font-outline {
+  font-family: "Poppins", sans-serif;
+  -webkit-text-stroke: 1.5px #000000;
+  color: transparent;
+  transition: -webkit-text-stroke 0.3s ease, color 0.3s ease;
+}
+
+.font-outline-work-process {
+  font-family: "Poppins", sans-serif;
+  -webkit-text-stroke: 1.5px white;
+  color: transparent;
+  transition: -webkit-text-stroke 0.3s ease, color 0.3s ease;
+}
+
+/* .slick-track {
+  overflow: visible !important;
+} */
+
+/* .slick-list {
+  overflow: visible !important;
+} */
+
+/* .slick-slide > div {
+  overflow: visible !important;
+} */
+
+.slick-list {
+  overflow: visible !important;
+}
+/* .slick-slide {
+  padding: 0 8px;
+} */
+
+.slick-slide {
+  overflow: visible !important;
+}
+
+.slick-slide > div {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.service-item:hover .font-outline {
+  -webkit-text-stroke: 1.5px #f99b24;
+}
+.service-item:hover .service-icon {
+  color: #f99b24;
+}
+
+.chat-scroll {
+  height: 240px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #9ca3af; /* gray-400 */
+  border-radius: 3px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb; /* gray-200 */
+}
