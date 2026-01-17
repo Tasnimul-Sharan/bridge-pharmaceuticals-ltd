@@ -2,8 +2,11 @@ import AboutUsSection from "@/components/AboutUsSection";
 import HeroSection from "@/components/HeroSection";
 import Head from "next/head";
 import FAQ from "@/components/FAQ";
-import Navbar from "@/components/Navbar";
 import VisionMission from "@/components/VisionMission";
+import AboutOverview from "@/components/AboutOverview";
+import Leadership from "@/components/Leadership";
+import Philosophy from "@/components/Philosophy";
+// import VisionMission from "@/components/VisionMission";
 export default function AboutPage() {
   const meta = {
     title:
@@ -21,100 +24,88 @@ export default function AboutPage() {
     title: "Frequently Asked Questions",
     faqs: [
       {
-        question: "What is Anondo Baari?",
+        question: "What is Bridge Pharmaceuticals Ltd.?",
         answer:
-          "Anondo Baari is a world-class senior wellness and assisted living centre in Bangladesh, combining modern healthcare with holistic healing practices. It offers a luxurious, peaceful, and health-conscious lifestyle for senior citizens — a true sanctuary for body, mind, and soul.",
+          "Bridge Pharmaceuticals Ltd. is a pioneering Animal Health Pharmaceutical company in Bangladesh, dedicated exclusively to Veterinary and Aquaculture medicines, Nutritional Supplements, and Biosecurity solutions.",
       },
       {
-        question: "Where is Anondo Baari located?",
+        question: "When was Bridge Pharmaceuticals established?",
         answer:
-          "Anondo Baari is located in Ulukhola, within the thriving area of Purbachal New Town—just 20 minutes from Hazrat Shahjalal International Airport. Nestled on the south bank of the River Turag, it spans 25 acres of beautifully landscaped land.",
+          "Bridge Pharmaceuticals Ltd. was established in 2010 with the mission to serve farmers and livestock producers with world-class veterinary medicines at affordable prices.",
       },
       {
-        question: "What is the vision of Anondo Baari?",
+        question: "Who are the founders of Bridge Pharmaceuticals?",
         answer:
-          "To be the most trusted and respected wellness centre for senior citizens in South Asia by offering world-class facilities, holistic healthcare, and compassionate living.",
+          "Bridge Pharmaceuticals was founded by Mr. Safar Ali, a pioneer in Animal Health entrepreneurship and product development, and Mr. Kamrul Hassan, a specialist in veterinary sales and distribution strategy.",
       },
       {
-        question: "What is the mission of Anondo Baari?",
+        question: "Who leads Bridge Pharmaceuticals currently?",
         answer:
-          "To deliver exceptional wellness services and support systems that enable senior residents to live with joy, independence, and dignity.",
+          "The company is led by Chairperson Mrs. Farzana Mozammel and Managing Director Mr. Gazi Md. Mokammel Hoque, who joined in 2023 and brought modern management practices and innovation-driven growth.",
       },
       {
-        question: "How many residents can live at Anondo Baari?",
+        question: "What is the corporate philosophy of Bridge Pharmaceuticals?",
         answer:
-          "Anondo Baari accommodates up to 5,000 residents across 2,500 centrally air-conditioned private suites, each designed for comfort, privacy, and dignity.",
+          "Bridge Pharmaceuticals believes that Animal Health is the foundation of human prosperity. Its guiding principles are Quality, Service, Innovation, Integrity, and Sustainability.",
       },
       {
-        question: "What types of suites are available?",
+        question: "What is the vision of Bridge Pharmaceuticals?",
         answer:
-          "Residents can choose from Standard Suites, Executive Suites, Garden-View Suites, and Assisted Living Units (for those requiring medical support). All suites are fully furnished, wheelchair accessible, and equipped with emergency call systems, housekeeping, and in-room dining services.",
+          "The vision is to be Bangladesh’s most trusted and innovative animal health company, delivering world-class veterinary solutions that enhance animal welfare, ensure food safety, and empower farmers for a prosperous nation.",
       },
       {
-        question: "What healthcare facilities are available?",
+        question: "What is the mission of Bridge Pharmaceuticals?",
         answer:
-          "Anondo Baari provides 24/7 in-house healthcare led by physicians, nurses, physiotherapists, psychologists, and dieticians. Facilities include chronic disease management, physiotherapy and occupational therapy, mental health support, diagnostics, on-site pharmacy, and emergency helicopter evacuation.",
+          "The mission is to advance livestock, poultry, aquaculture, and companion animal sectors by producing high-quality, affordable, and research-driven veterinary medicines, nutritional supplements, probiotics, and biosecurity solutions.",
       },
       {
-        question: "What wellness and fitness programs are offered?",
+        question: "How does Bridge Pharmaceuticals ensure product quality?",
         answer:
-          "Programs include yoga, meditation, tai chi, aerobics, aqua gym, supervised fitness training, massage, hydrotherapy, and nature walks. Certified trainers create personalized plans based on each resident’s health condition and preferences.",
+          "Every product undergoes rigorous quality control and quality assurance processes, ensuring no compromise in safety, purity, or efficacy.",
       },
       {
-        question: "What recreational and social activities are available?",
+        question: "What types of products does Bridge Pharmaceuticals offer?",
         answer:
-          "Residents enjoy a vibrant calendar of activities such as cultural evenings, art and craft workshops, music, dance, gardening, cooking clubs, movie nights, intergenerational programs, and religious sessions. Dedicated recreational therapists ensure residents stay engaged and inspired.",
+          "The company offers a comprehensive portfolio including Therapeutics, Nutritional Supplements, and Aquaculture solutions designed for disease prevention, treatment, growth, and biosecurity.",
       },
       {
-        question: "How is dining and nutrition managed?",
+        question: "What therapeutic products are available?",
         answer:
-          "All meals are freshly prepared and dietitian-approved, with options such as vegetarian, diabetic-friendly, heart-healthy, and high-protein diets. Residents enjoy dining halls, buffets, private in-room dining, and herbal beverages — all designed to promote wellness and enjoyment.",
-      },
-      {
-        question: "What makes Anondo Baari eco-friendly?",
-        answer:
-          "The campus is designed with sustainability in mind, featuring solar-powered lighting, rainwater harvesting, organic vegetable and herb gardens, waste recycling, composting, and eco-friendly transportation within the campus.",
-      },
-      {
-        question: "How is safety and security ensured?",
-        answer:
-          "Safety is a top priority with 24/7 surveillance via 300+ CCTV cameras, RFID-based entry systems, emergency response teams, fire and disaster protocols, wellness tracking wristbands, and smart emergency buttons in all suites.",
-      },
-      {
-        question: "What technology features are available for residents?",
-        answer:
-          "Anondo Baari uses advanced technology such as a Resident Wellness App (for health updates, appointments, and events), telemedicine portals, AI-powered health monitoring, digital noticeboards, and high-speed Wi-Fi in every suite.",
-      },
-      {
-        question: "Are families allowed to visit or stay?",
-        answer:
-          "Yes. Families are encouraged to visit and stay in dedicated guest houses. Online communication tools, scheduled visits, family event invitations, and counseling support ensure families remain connected and involved.",
+          "Therapeutic products include antibiotics, anti-protozoal drugs, anthelmintics, anti-parasitic medicines, and other treatments for disease prevention and control.",
       },
       {
         question:
-          "What learning and contribution opportunities exist for residents?",
+          "What nutritional supplements does Bridge Pharmaceuticals produce?",
         answer:
-          "Residents can join senior-led knowledge sessions, lectures, workshops, university partnership programs, and volunteer projects. They can also publish memoirs and contribute to resident-led journals and seminars.",
+          "Bridge Pharmaceuticals produces multivitamins, probiotics, amino acids, and multiminerals to support optimal growth, immunity, and overall animal health.",
       },
       {
-        question: "Who are the staff members at Anondo Baari?",
+        question: "Does Bridge Pharmaceuticals provide aquaculture solutions?",
         answer:
-          "Anondo Baari’s 1,063-member team includes physicians, nurses, caregivers, therapists, dieticians, IT staff, cultural coordinators, and emergency responders—all trained in eldercare, empathy, and communication.",
+          "Yes. The company offers aquaculture-focused biosecurity products and pond management solutions to improve water quality, fish health, and farm productivity.",
       },
       {
-        question: "How can I apply for residency or admission?",
+        question:
+          "How does Bridge Pharmaceuticals support farmers and veterinarians?",
         answer:
-          "The admission process includes Inquiry & Virtual Tour → Application & Health Evaluation → Personal Interview & Suite Selection → Contract & Onboarding → Welcome & Orientation.",
+          "The company supports farmers and veterinarians through reliable product supply, technical training, field-level assistance, and continuous knowledge sharing.",
       },
       {
-        question: "What types of residency packages are available?",
+        question:
+          "What makes Bridge Pharmaceuticals different from competitors?",
         answer:
-          "Residents can choose from permanent stays, seasonal residencies, or short-term recovery and rehabilitation packages, depending on their needs.",
+          "Bridge Pharmaceuticals combines scientific innovation, ethical business practices, affordable pricing, and farmer-centric services, making it a trusted and reliable home-grown brand.",
       },
       {
-        question: "How can I contact Anondo Baari?",
+        question: "Is Bridge Pharmaceuticals committed to sustainability?",
         answer:
-          "📍 Ulukhola, Purbachal New Town, Dhaka (20 minutes from Airport)\n📍 Correspondence: Printers’ Building, 5 RAJUK Avenue, Dilkusha, Dhaka\n📞 +880 1313775333\n📧 info@anondobari.com\n🌐 https://www.anondobari.com/",
+          "Yes. Sustainability is a core value, reflected in responsible manufacturing, ethical operations, and long-term strategies that benefit animals, farmers, and society.",
+      },
+      {
+        question:
+          "How can customers or partners contact Bridge Pharmaceuticals?",
+        answer:
+          "Customers and partners can contact Bridge Pharmaceuticals through its official office, sales representatives, or authorized distributors across Bangladesh.",
       },
     ],
   };
@@ -145,7 +136,10 @@ export default function AboutPage() {
         }}
       />
       <AboutUsSection />
+      <AboutOverview />
       <VisionMission />
+      <Philosophy />
+      <Leadership />
       <FAQ faqData={faqData} />
     </div>
   );

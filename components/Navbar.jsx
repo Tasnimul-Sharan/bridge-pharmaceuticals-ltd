@@ -69,7 +69,13 @@ export default function Navbar({ hasBackground = false }) {
       gsap.fromTo(
         items,
         { x: "-100%", opacity: 0 },
-        { x: "0%", opacity: 1, duration: 0.6, stagger: 0.1, ease: "power4.out" }
+        {
+          x: "0%",
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "power4.out",
+        },
       );
     } else {
       gsap.to(menu, {
@@ -106,7 +112,7 @@ export default function Navbar({ hasBackground = false }) {
   return (
     <header className="w-full">
       <div
-        className="hidden lg:block w-full text-base py-6 border-gray-200 bg-secondary text-white"
+        className="hidden lg:block w-full text-base py-6 border-gray-200 bg-primary text-white"
         // className={`fixed top-0 py-6 left-0 w-full z-50 transition-all transform duration-500 ${
         //     isTransparent ? "bg-transparent" : ""
         //   } ${textColor}`}
@@ -152,10 +158,10 @@ export default function Navbar({ hasBackground = false }) {
             <Image
               src="/logo/bridge-logo1.jpg"
               alt="Company Logo"
-              width={100}
-              height={100}
+              width={1200}
+              height={1200}
               priority
-              className="h-20 w-auto object-contain"
+              className="h-24 w-auto object-contain"
             />
           </Link>
 

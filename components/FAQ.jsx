@@ -1,13 +1,141 @@
+// "use client";
+
+// import { useRef, useState } from "react";
+// import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+// import { motion } from "framer-motion";
+// import gsap from "gsap";
+
+// export default function FAQ({ faqData }) {
+//   const [activeIndex, setActiveIndex] = useState(null);
+//   const answerRefs = useRef([]);
+
+//   const toggleFAQ = (index) => {
+//     if (activeIndex === index) {
+//       collapse(index);
+//       setActiveIndex(null);
+//     } else {
+//       if (activeIndex !== null) {
+//         collapse(activeIndex, () => {
+//           expand(index);
+//           setActiveIndex(index);
+//         });
+//       } else {
+//         expand(index);
+//         setActiveIndex(index);
+//       }
+//     }
+//   };
+
+//   const expand = (index) => {
+//     const el = answerRefs.current[index];
+//     if (!el) return;
+//     gsap.killTweensOf(el);
+//     el.style.display = "block";
+//     gsap.fromTo(
+//       el,
+//       { height: 0, opacity: 0 },
+//       {
+//         height: el.scrollHeight,
+//         opacity: 1,
+//         duration: 0.45,
+//         ease: "power2.out",
+//         onComplete: () => (el.style.height = "auto"),
+//       },
+//     );
+//   };
+
+//   const collapse = (index, cb) => {
+//     const el = answerRefs.current[index];
+//     if (!el) return;
+//     gsap.killTweensOf(el);
+//     gsap.to(el, {
+//       height: 0,
+//       opacity: 0,
+//       duration: 0.35,
+//       ease: "power2.inOut",
+//       onComplete: () => {
+//         el.style.display = "none";
+//         if (cb) cb();
+//       },
+//     });
+//   };
+
+//   return (
+//     <section className="max-w-4xl mx-auto py-20 px-6">
+//       {/* Section Title */}
+//       <motion.h2
+//         className="text-center text-3xl md:text-4xl font-bold mb-14"
+//         initial={{ opacity: 0, y: 30 }}
+//         whileInView={{ opacity: 1, y: 0 }}
+//         viewport={{ once: true }}
+//       >
+//         {faqData.title}
+//       </motion.h2>
+
+//       <div className="space-y-6">
+//         {faqData.faqs.map((faq, index) => {
+//           const isActive = activeIndex === index;
+//           return (
+//             <motion.div
+//               key={index}
+//               onClick={() => toggleFAQ(index)}
+//               initial={{ opacity: 0, y: 20 }}
+//               whileInView={{ opacity: 1, y: 0 }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 0.4, delay: index * 0.05 }}
+//               className="relative cursor-pointer bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition"
+//             >
+//               {/* Left Accent Bar */}
+//               <span
+//                 className={`absolute left-0 top-0 h-full w-1 rounded-l-xl transition-all duration-300 ${
+//                   isActive ? "bg-primary" : "bg-transparent"
+//                 }`}
+//               />
+
+//               {/* Question Row */}
+//               <div className="flex items-start gap-4">
+//                 <span className="text-primary font-semibold">
+//                   {String(index + 1).padStart(2, "0")}
+//                 </span>
+//                 <div className="flex-1">
+//                   <h3 className="font-semibold text-gray-900 text-lg">
+//                     {faq.question}
+//                   </h3>
+//                 </div>
+//                 <span
+//                   className={`text-xl transition-transform duration-300 ${
+//                     isActive ? "rotate-180 text-primary" : "text-gray-400"
+//                   }`}
+//                 >
+//                   {isActive ? <AiOutlineMinus /> : <AiOutlinePlus />}
+//                 </span>
+//               </div>
+
+//               {/* Answer */}
+//               <div
+//                 ref={(el) => (answerRefs.current[index] = el)}
+//                 className="pl-10 pr-4 pt-3 text-gray-600 text-sm leading-relaxed overflow-hidden"
+//                 style={{ height: 0, opacity: 0, display: "none" }}
+//               >
+//                 {faq.answer}
+//               </div>
+//             </motion.div>
+//           );
+//         })}
+//       </div>
+//     </section>
+//   );
+// }
+
 "use client";
 
 import { useRef, useState } from "react";
-import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
-import { motion, AnimatePresence } from "framer-motion";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 
 export default function FAQ({ faqData }) {
   const [activeIndex, setActiveIndex] = useState(null);
-
   const answerRefs = useRef([]);
 
   const toggleFAQ = (index) => {
@@ -29,122 +157,104 @@ export default function FAQ({ faqData }) {
 
   const expand = (index) => {
     const el = answerRefs.current[index];
-    if (el) {
-      gsap.killTweensOf(el);
-      el.style.display = "block";
-      const height = el.scrollHeight;
-
-      gsap.fromTo(
-        el,
-        { height: 0, opacity: 0 },
-        {
-          height,
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-          onComplete: () => {
-            el.style.height = "auto";
-          },
-        }
-      );
-    }
+    if (!el) return;
+    gsap.killTweensOf(el);
+    el.style.display = "block";
+    gsap.fromTo(
+      el,
+      { height: 0, opacity: 0 },
+      {
+        height: el.scrollHeight,
+        opacity: 1,
+        duration: 0.45,
+        ease: "power2.out",
+        onComplete: () => (el.style.height = "auto"),
+      },
+    );
   };
 
-  const collapse = (index, onComplete) => {
+  const collapse = (index, cb) => {
     const el = answerRefs.current[index];
-    if (el) {
-      gsap.killTweensOf(el);
-      gsap.to(el, {
-        height: 0,
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.inOut",
-        onComplete: () => {
-          el.style.display = "none";
-          if (onComplete) onComplete();
-        },
-      });
-    }
+    if (!el) return;
+    gsap.killTweensOf(el);
+    gsap.to(el, {
+      height: 0,
+      opacity: 0,
+      duration: 0.35,
+      ease: "power2.inOut",
+      onComplete: () => {
+        el.style.display = "none";
+        if (cb) cb();
+      },
+    });
   };
 
   return (
-    <motion.section
-      className="max-w-3xl mx-auto py-16 px-4"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6 }}
-    >
+    <section className="max-w-4xl mx-auto py-20 px-6">
       {/* Section Title */}
       <motion.h2
-        className="text-center text-3xl font-bold mb-10"
+        className="text-center text-3xl md:text-4xl font-bold mb-14"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
       >
         {faqData.title}
       </motion.h2>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         {faqData.faqs.map((faq, index) => {
           const isActive = activeIndex === index;
-
           return (
             <motion.div
               key={index}
+              onClick={() => toggleFAQ(index)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => toggleFAQ(index)}
-              className={`rounded-md cursor-pointer overflow-hidden transition-colors duration-300 ${
-                isActive
-                  ? "bg-primary text-white"
-                  : "bg-gray-100 text-secondary"
-              }`}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              className="relative cursor-pointer bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all transform-gpu duration-500"
             >
+              {/* Left Accent Bar */}
+              <span
+                className={`absolute left-0 top-0 h-full w-1 rounded-l-xl transition-all transform-gpu duration-500 ${
+                  isActive ? "bg-primary" : "bg-transparent"
+                }`}
+              />
+
               {/* Question Row */}
-              <div className="flex items-center justify-between px-4 py-4">
-                <span
-                  className={`font-semibold w-10 ${
-                    isActive ? "text-white" : "text-primary"
-                  }`}
-                >
+              <div className="flex items-start gap-4">
+                <span className="text-primary font-semibold">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="flex-1 font-medium">{faq.question}</span>
-                <span
-                  className={`text-2xl transition-transform duration-500 ${
-                    isActive ? "rotate-180" : "rotate-0 text-primary"
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900 text-lg">
+                    {faq.question}
+                  </h3>
+                </div>
+                {/* <span
+                  className={`text-xl transition-transform duration-300 ${
+                    isActive ? "rotate-180 text-primary" : "text-gray-400"
                   }`}
                 >
+                  {isActive ? <AiOutlineMinus /> : <AiOutlinePlus />}
+                </span> */}
+                <span
+                  className={`flex items-center justify-center w-9 h-9 rounded-full transition-all transform-gpu duration-500
+    ${isActive ? "bg-primary text-white rotate-180 scale-105" : "bg-primary text-white"}
+  `}
+                >
                   {isActive ? (
-                    <AiOutlineMinusCircle />
-                  ) : (
-                    <AiOutlinePlusCircle />
+                    <AiOutlineMinus className="text-lg" />
+                ) : (
+                    <AiOutlinePlus className="text-lg" />
                   )}
                 </span>
               </div>
 
-              {/* Answer with expand/collapse animation */}
-              {/* <AnimatePresence initial={false}>
-                {isActive && (
-                  <motion.div
-                    key="answer"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="px-14 pb-4 text-sm overflow-hidden"
-                  >
-                    {faq.answer}
-                  </motion.div>
-                )}
-              </AnimatePresence> */}
+              {/* Answer */}
               <div
                 ref={(el) => (answerRefs.current[index] = el)}
-                className="px-14 pb-4 text-sm overflow-hidden"
+                className="pl-10 pr-4 pt-3 text-gray-600 text-sm leading-relaxed overflow-hidden"
                 style={{ height: 0, opacity: 0, display: "none" }}
               >
                 {faq.answer}
@@ -153,6 +263,6 @@ export default function FAQ({ faqData }) {
           );
         })}
       </div>
-    </motion.section>
+    </section>
   );
 }
