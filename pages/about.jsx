@@ -6,6 +6,7 @@ import VisionMission from "@/components/VisionMission";
 import AboutOverview from "@/components/AboutOverview";
 import Leadership from "@/components/Leadership";
 import Philosophy from "@/components/Philosophy";
+import ProductPortfolio from "@/components/ProductPortfolio";
 // import VisionMission from "@/components/VisionMission";
 export default function AboutPage() {
   const meta = {
@@ -138,6 +139,7 @@ export default function AboutPage() {
       <AboutUsSection />
       <AboutOverview />
       <VisionMission />
+      <ProductPortfolio />
       <Philosophy />
       <Leadership />
       <FAQ faqData={faqData} />

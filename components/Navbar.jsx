@@ -109,13 +109,37 @@ export default function Navbar({ hasBackground = false }) {
 
   const navbarClasses = isScrolled ? "bg-white shadow-md" : "bg-white";
 
+  const topbarRef = useRef(null);
+
+  useEffect(() => {
+    if (!topbarRef.current) return;
+
+    if (isScrolled) {
+      gsap.to(topbarRef.current, {
+        y: "-100%",
+        duration: 0.3,
+        ease: "power3.inOut",
+      });
+    } else {
+      gsap.to(topbarRef.current, {
+        y: "0%",
+        duration: 0.3,
+        ease: "power3.inOut",
+      });
+    }
+  }, [isScrolled]);
+
   return (
     <header className="w-full">
-      <div
+      {/* <div
         className="hidden lg:block w-full text-base py-6 border-gray-200 bg-primary text-white"
         // className={`fixed top-0 py-6 left-0 w-full z-50 transition-all transform duration-500 ${
         //     isTransparent ? "bg-transparent" : ""
         //   } ${textColor}`}
+      > */}
+      <div
+        // ref={topbarRef}
+        className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-primary text-white py-6"
       >
         <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-4">
           <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
@@ -132,7 +156,7 @@ export default function Navbar({ hasBackground = false }) {
             </p>
           </div>
 
-          <div className="flex gap-4 text-primary">
+          <div className="flex gap-4 text-secondary z-50">
             <Link href="https://facebook.com" target="_blank">
               <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
             </Link>

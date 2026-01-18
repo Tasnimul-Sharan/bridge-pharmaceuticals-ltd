@@ -5,8 +5,7 @@ import { useState } from "react";
 import Button from "./Button";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Image from "next/image";
+import { FaArrowLeft, FaArrowRight, FaBriefcaseMedical } from "react-icons/fa";
 import Link from "next/link";
 
 const containerVariants = {
@@ -24,26 +23,6 @@ const itemVariants = {
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  // const slides = [
-  //   {
-  //     heading: "INNOVATIVE PHARMACEUTICALS",
-  //     subheading:
-  //       "Advancing Healthcare Through Research, Quality, and Innovation",
-  //     image: "/slider/1.jpg",
-  //   },
-  //   {
-  //     heading: "SCIENCE FOR BETTER LIVING",
-  //     subheading:
-  //       "Developing Safe, Effective, and Trusted Medicines for a Healthier Tomorrow",
-  //     image: "/slider/2.jpg",
-  //   },
-  //   {
-  //     heading: "QUALITY YOU CAN TRUST",
-  //     subheading: "Committed to Global Standards in Pharmaceutical Excellence",
-  //     image: "/slider/3.jpg",
-  //   },
-  // ];
 
   const slides = [
     {
@@ -87,7 +66,7 @@ export default function LandingPage() {
     dots: false,
     infinite: true,
     fade: true,
-    speed: 500,
+    speed: 1000,
     arrows: true,
     autoplay: true,
     autoplaySpeed: 5000,
@@ -99,71 +78,6 @@ export default function LandingPage() {
   };
 
   return (
-    // <section className="bg-primary bg-opacity-5 min-h-screen relative group overflow-hidden">
-    //   <Slider {...settings}>
-    //     {slides.map((slide, index) => (
-    //       <div key={index}>
-    //         <div className="flex flex-col lg:flex-row justify-between items-center custom-container mx-auto">
-    //           <motion.div
-    //             key={
-    //               currentSlide === index
-    //                 ? `slide-${index}-${Date.now()}`
-    //                 : `slide-${index}`
-    //             }
-    //             className="max-w-3xl"
-    //             variants={containerVariants}
-    //             initial="hidden"
-    //             animate="visible"
-    //           >
-    //             <motion.p
-    //               variants={itemVariants}
-    //               className="text-primary tracking-widest font-medium mb-2 uppercase"
-    //             >
-    //               {slide.heading}
-    //             </motion.p>
-
-    //             <motion.h1
-    //               variants={itemVariants}
-    //               className="text-3xl md:text-5xl font-bold text-secondary md:mb-12 mb-6 "
-    //             >
-    //               {slide.subheading}
-    //             </motion.h1>
-
-    //             <motion.div variants={itemVariants} className="flex gap-4">
-    //               <Link href="/services">
-    //                 <Button variant="primary" size="md">
-    //                   Explore More
-    //                 </Button>
-    //               </Link>
-    //               <Link href="/book-now">
-    //                 <Button variant="outline" size="md">
-    //                   Book a Visit
-    //                 </Button>
-    //               </Link>
-    //             </motion.div>
-    //           </motion.div>
-
-    //           <motion.div
-    //             key={`img-${currentSlide === index ? Date.now() : index}`}
-    //             className="relative mt-12 lg:mt-0 lg:w-1/2 w-full"
-    //             initial={{ opacity: 0, x: 50 }}
-    //             animate={{ opacity: 1, x: 0 }}
-    //             transition={{ duration: 1 }}
-    //           >
-    //             <Image
-    //               src={slide.image}
-    //               width={1200}
-    //               height={1200}
-    //               alt="Anondo Baari Wellness"
-    //               className="w-full h-full object-cover rounded-md"
-    //             />
-    //           </motion.div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </Slider>
-    // </section>
-
     // <section className="relative overflow-hidden group">
     //   <Slider {...settings}>
     //     {slides.map((slide, index) => (
@@ -275,11 +189,24 @@ export default function LandingPage() {
                   </span>
                 </motion.div> */}
 
-                <motion.div
+                {/* <motion.div
                   variants={itemVariants}
                   className="flex items-center gap-2 mb-4"
                 >
                   <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  <span className="uppercase tracking-[0.3em] text-xs font-medium text-primary">
+                    {slide.subtitle}
+                  </span>
+                </motion.div> */}
+
+                <motion.div
+                  variants={itemVariants}
+                  className="flex items-center gap-3 mb-4"
+                >
+                  <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/20 text-primary">
+                    <FaBriefcaseMedical className="text-sm" />
+                  </span>
+
                   <span className="uppercase tracking-[0.3em] text-xs font-medium text-primary">
                     {slide.subtitle}
                   </span>
