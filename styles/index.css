@@ -168,14 +168,18 @@ h3 {
   font-family: "Poppins", sans-serif;
   -webkit-text-stroke: 1.5px #000000;
   color: transparent;
-  transition: -webkit-text-stroke 0.3s ease, color 0.3s ease;
+  transition:
+    -webkit-text-stroke 0.3s ease,
+    color 0.3s ease;
 }
 
 .font-outline-work-process {
   font-family: "Poppins", sans-serif;
   -webkit-text-stroke: 1.5px white;
   color: transparent;
-  transition: -webkit-text-stroke 0.3s ease, color 0.3s ease;
+  transition:
+    -webkit-text-stroke 0.3s ease,
+    color 0.3s ease;
 }
 
 /* .slick-track {
@@ -190,16 +194,17 @@ h3 {
   overflow: visible !important;
 } */
 
-.slick-list {
+/* .slick-list {
   overflow: visible !important;
-}
+} */
+
 /* .slick-slide {
   padding: 0 8px;
 } */
 
-.slick-slide {
+/* .slick-slide {
   overflow: visible !important;
-}
+} */
 
 .slick-slide > div {
   padding-top: 4rem;

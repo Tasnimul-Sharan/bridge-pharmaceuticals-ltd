@@ -94,30 +94,6 @@ const services = [
     img: "/services/social.jpg",
     slug: "social-gatherings",
   },
-  // {
-  //   title: "Seminars, Learning & Contribution",
-  //   description:
-  //     "Lectures, workshops, and senior-led sessions in partnership with universities. Residents can learn, teach, and publish, nurturing lifelong growth.",
-  //   number: "04",
-  //   img: "/services/seminars.jpg",
-  //   slug: "seminars",
-  // },
-  // {
-  //   title: "Compassionate Staff",
-  //   description:
-  //     "A 1063-member professional team including physicians, nurses, dieticians, trainers, and cultural coordinators — all trained in empathy and eldercare.",
-  //   number: "03",
-  //   img: "/services/staff.jpg",
-  //   slug: "compassionate-staff",
-  // },
-  // {
-  //   title: "Admission & Residency Options",
-  //   description:
-  //     "We offer flexible residency packages – permanent, seasonal, and short-term recovery stays. Begin your journey of healing and harmony with ease.",
-  //   number: "01",
-  //   img: "/services/admission.jpg",
-  //   slug: "admission",
-  // },
 ];
 
 export default function Services() {

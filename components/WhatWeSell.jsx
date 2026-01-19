@@ -1,0 +1,115 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+const products = [
+  {
+    title: "Fish Products",
+    image: "/images/fish.jpg",
+    desc: "High-quality fish health solutions that enhance growth, immunity, and overall aquatic performance through scientifically formulated products.",
+  },
+  {
+    title: "Metabolic & Nutritional Supplements",
+    image: "/images/nutrition.jpg",
+    desc: "Advanced metabolic and nutritional supplements designed to improve feed efficiency, vitality, and long-term health.",
+  },
+  {
+    title: "Anti-parasitics Products",
+    image: "/images/parasite.jpg",
+    desc: "Effective anti-parasitic formulations that protect against internal and external parasites while ensuring safety.",
+  },
+  {
+    title: "Appetizer & Digestive Stimulant Products",
+    image: "/images/digestive.jpg",
+    desc: "Specially developed products to stimulate appetite, improve digestion, and maximize nutrient absorption.",
+  },
+  {
+    title: "Anti-histamines Products",
+    image: "/images/antihistamine.jpg",
+    desc: "Reliable anti-histamine solutions to manage allergic reactions and respiratory discomfort in animals.",
+  },
+  {
+    title: "Anti-Inflammatory Products",
+    image: "/images/inflammatory.jpg",
+    desc: "Clinically trusted anti-inflammatory products that reduce pain, swelling, and inflammation effectively.",
+  },
+  {
+    title: "Anthelmintics Products",
+    image: "/images/deworming.jpg",
+    desc: "Broad-spectrum anthelmintic products for safe and effective control of parasitic worms.",
+  },
+  {
+    title: "Antibiotics Products",
+    image: "/images/antibiotics.jpg",
+    desc: "High-quality antibiotics formulated to combat bacterial infections while maintaining safety standards.",
+  },
+];
+
+export default function WhatWeSell() {
+  return (
+    <section className="bg-gradient-to-b from-slate-50 to-white py-24">
+      <div className="custom-container mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            What We Sell
+          </h2>
+          <p className="text-slate-600 text-lg leading-relaxed">
+            Premium veterinary and aquatic healthcare solutions engineered for
+            performance and sustainability.
+          </p>
+        </motion.div>
+
+        {/* Product Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {products.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.05 }}
+              whileHover={{ y: -6 }}
+              className="group relative bg-white rounded-3xl overflow-hidden
+                         border border-slate-100
+                         shadow-[0_10px_40px_rgba(0,0,0,0.06)]
+                         hover:shadow-[0_25px_70px_rgba(0,0,0,0.12)]
+                         transition-all duration-300"
+            >
+              {/* Image */}
+              <div className="relative h-60 w-full overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                <h3 className="text-xl font-semibold text-slate-900 mb-4 leading-snug">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 text-base leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+
+              {/* Accent glow */}
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-transparent group-hover:ring-sky-400/30 transition" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

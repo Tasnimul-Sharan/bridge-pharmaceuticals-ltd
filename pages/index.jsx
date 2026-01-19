@@ -8,6 +8,7 @@ import LandingPage from "@/components/LandingPage";
 import Navbar from "@/components/Navbar";
 import PharmaStatsSection from "@/components/PharmaStatsSection";
 import ProductsSection from "@/components/ProductsSection";
+import WhatWeSell from "@/components/WhatWeSell";
 export default function Home() {
   const meta = {
     title:
@@ -41,9 +42,10 @@ export default function Home() {
       </Head>
       {/* <Navbar /> */}
       <LandingPage />
-      {/* <AboutUsSection /> */}
+      <AboutUsSection />
       <PharmaStatsSection />
       <ProductsSection />
+      <WhatWeSell />
       {/* <Services /> */}
       {/* <TeamSection /> */}
       <ContactSection />
