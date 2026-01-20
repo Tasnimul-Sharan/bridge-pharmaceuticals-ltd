@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-export default function HeroSection() {
+export default function AboutUsSection() {
   return (
     <section className="relative overflow-hidden bg-white">
       {/* Background accents */}

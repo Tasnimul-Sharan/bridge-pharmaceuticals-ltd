@@ -91,7 +91,7 @@ export default function Navbar() {
   const menuItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Location", path: "/location" },
+    { name: "Products", path: "/products" },
     { name: "Facilities", path: "/facilities" },
     { name: "Services", path: "/services" },
     { name: "Blogs", path: "/blogs" },

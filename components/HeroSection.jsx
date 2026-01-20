@@ -3,7 +3,8 @@ import Link from "next/link";
 
 const HeroSection = ({ hero }) => {
   return (
-    <section className="relative w-full h-96 overflow-hidden flex items-center justify-center">
+    // <section className="relative w-full h-96 overflow-hidden flex items-center justify-center">
+    <section className="relative w-full h-[30rem] pt-40 overflow-hidden flex items-center justify-center">
       <div
         className="absolute inset-0 transition bg-cover bg-center bg-no-repeat transform duration-1000 ease-out"
         style={{
