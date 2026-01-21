@@ -62,7 +62,6 @@ export default function FAQ({ faqData }) {
 
   return (
     <section className="max-w-4xl mx-auto py-20 px-6">
-      {/* Section Title */}
       <motion.h2
         className="text-center text-3xl md:text-4xl font-bold mb-14"
         initial={{ opacity: 0, y: 30 }}
@@ -83,7 +82,7 @@ export default function FAQ({ faqData }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="relative cursor-pointer bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all transform-gpu duration-500"
+              className="relative cursor-pointer bg-white border border-gray-200 rounded-xl hover:bg-Secound_primary/10 p-6 transition-all transform-gpu duration-500 overflow-hidden"
             >
               <span
                 className={`absolute left-0 top-0 h-full w-1 rounded-l-xl transition-all transform-gpu duration-500 ${
@@ -91,7 +90,6 @@ export default function FAQ({ faqData }) {
                 }`}
               />
 
-              {/* Question Row */}
               <div className="flex items-start gap-4">
                 <span className="text-primary font-semibold">
                   {String(index + 1).padStart(2, "0")}

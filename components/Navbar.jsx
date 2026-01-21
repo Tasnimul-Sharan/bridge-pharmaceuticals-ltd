@@ -107,7 +107,7 @@ export default function Navbar() {
 
   const textColor = isTransparent ? "text-white" : "text-secondary";
 
-  const navbarClasses = isScrolled ? "bg-white shadow-md" : "bg-white";
+  const navbarClasses = isScrolled ? "bg-white border" : "bg-white";
 
   const topbarRef = useRef(null);
 
@@ -177,7 +177,6 @@ export default function Navbar() {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 transform-gpu ${navbarClasses}`}
       >
         <div className="custom-container mx-auto h-24 flex items-center justify-between">
-          {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo/bridge-logo1.jpg"
@@ -188,8 +187,6 @@ export default function Navbar() {
               className="h-24 w-auto object-contain"
             />
           </Link>
-
-          {/* Desktop Menu */}
           <ul className="hidden lg:flex gap-8 font-semibold text-secondary">
             {menuItems.map((item, index) => (
               <li key={index} className="relative group">
@@ -199,12 +196,11 @@ export default function Navbar() {
                 >
                   {item.name}
                 </Link>
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-500 group-hover:w-full"></span>
               </li>
             ))}
           </ul>
 
-          {/* CTA */}
           <div className="hidden lg:block">
             <Link href="/contact">
               <button className="bg-primary text-white px-6 py-2 rounded-md font-semibold hover:bg-secondary transition">
