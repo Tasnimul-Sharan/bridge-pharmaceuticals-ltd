@@ -27,7 +27,6 @@ export const productDetailsData = [
     storage: "Store below 30°C. Protect from light and moisture.",
     packaging: "Effervescent tablets.",
   },
-
   {
     slug: "abecelib",
     name: "Abeclib™",

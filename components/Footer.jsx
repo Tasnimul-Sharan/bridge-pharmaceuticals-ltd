@@ -86,12 +86,19 @@ export default function Footer() {
               { name: "Contact", href: "/contact" },
             ].map(({ name, href }, idx) => (
               <li key={idx}>
-                <Link
+                {/* <Link
                   href={href}
                   className="flex items-center gap-2 hover:text-primary transition"
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/70" />
                   {name}
+                </Link> */}
+                <Link
+                  href={href}
+                  className="flex items-start gap-3 hover:text-primary transition"
+                >
+                  <span className="w-2 h-2 mt-2 rounded-full bg-primary/70 shrink-0" />
+                  <span className="leading-relaxed">{name}</span>
                 </Link>
               </li>
             ))}
@@ -112,8 +119,8 @@ export default function Footer() {
 
           <ul className="space-y-5 text-sm text-gray-300">
             <li className="flex items-start gap-3">
-              <FaMapMarkerAlt className="text-primary mt-1" />
-              <span>
+              <FaMapMarkerAlt className="text-primary w-5 shrink-0 mt-1" />
+              <span className="leading-relaxed">
                 Printer’s Building (13th Floor),
                 <br />
                 5 Rajuk Avenue, Motijheel Commercial Area,
@@ -123,12 +130,15 @@ export default function Footer() {
             </li>
 
             <li className="flex items-center gap-3">
-              <FaPhoneAlt className="text-primary" />
+              {/* <FaPhoneAlt className="text-primary" /> */}
+              <FaPhoneAlt className="text-primary w-5 shrink-0" />
+
               <span>+88 02-41050459, 02-41050457</span>
             </li>
 
             <li className="flex items-center gap-3">
-              <FaEnvelope className="text-primary" />
+              {/* <FaEnvelope className="text-primary" /> */}
+              <FaEnvelope className="text-primary w-5 shrink-0" />
               <a
                 href="mailto:hrbplho@gmail.com"
                 className="hover:text-primary transition"
@@ -162,15 +172,15 @@ export default function Footer() {
             </li>
 
             <li className="flex items-start gap-3">
-              <FaUserTie className="text-primary mt-1" />
-              <div>
+              <FaUserTie className="text-primary w-5 shrink-0 mt-1" />
+              <div className="leading-relaxed">
                 <p className="font-medium text-white">Head of Marketing</p>
                 <p className="text-gray-300">Mobile: 01762627623</p>
               </div>
             </li>
 
             <li className="flex items-start gap-3">
-              <FaUserTie className="text-primary mt-1" />
+              <FaUserTie className="text-primary w-5 shrink-0 mt-1" />
               <div>
                 <p className="font-medium text-white">
                   Head of Procurement & Admin
@@ -190,7 +200,7 @@ export default function Footer() {
         <span className="text-primary font-medium">
           Bridge Pharmaceuticals Ltd.
         </span>{" "}
-        — All Rights Reserved.
+        All Rights Reserved.
       </div>
     </footer>
   );
