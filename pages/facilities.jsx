@@ -1,8 +1,6 @@
 "use client";
 import HeroSection from "@/components/HeroSection";
 import Head from "next/head";
-import Navbar from "@/components/Navbar";
-import WhyAnondoBaari from "@/components/WhyAnondoBaari";
 export default function Facilities() {
   const meta = {
     title:
@@ -41,7 +39,6 @@ export default function Facilities() {
           backgroundImage: "/accommodation-bg.jpg",
         }}
       />
-      <WhyAnondoBaari />
     </div>
   );
 }
