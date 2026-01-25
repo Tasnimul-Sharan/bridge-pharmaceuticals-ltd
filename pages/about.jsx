@@ -7,7 +7,7 @@ import AboutOverview from "@/components/AboutOverview";
 import Leadership from "@/components/Leadership";
 import Philosophy from "@/components/Philosophy";
 import ProductPortfolio from "@/components/ProductPortfolio";
-// import VisionMission from "@/components/VisionMission";
+
 export default function AboutPage() {
   const meta = {
     title:
