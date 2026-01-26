@@ -2,7 +2,7 @@ import AdminLayout from "@/components/AdminLayout";
 
 export default function ProductsPage() {
   return (
-    <AdminLayout title="Products">
+    <div title="Products">
       <h1 className="text-2xl font-bold mb-6">
         Products – PHARMACEUTICALS LIMITED
       </h1>
@@ -12,6 +12,14 @@ export default function ProductsPage() {
           Here you can add, edit, update and delete products.
         </p>
       </div>
-    </AdminLayout>
+    </div>
   );
 }
+
+// ProductsPage.getLayout = function getLayout(page) {
+//   return <AdminLayout>{page}</AdminLayout>;
+// };
+
+ProductsPage.getLayout = function getLayout(page) {
+  return <AdminLayout title="Products">{page}</AdminLayout>;
+};

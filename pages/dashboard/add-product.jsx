@@ -69,7 +69,7 @@ import AdminLayout from "@/components/AdminLayout";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 
-export default function AddProductPage() {
+function AddProductPage() {
   const [form, setForm] = useState({
     slug: "",
     name: "",
@@ -93,7 +93,7 @@ export default function AddProductPage() {
   };
 
   return (
-    <AdminLayout>
+    <div>
       <h1 className="text-xl mb-4">Add Product</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 custom">
@@ -129,6 +129,10 @@ export default function AddProductPage() {
 
         <button className="bg-black text-white px-4 py-2">Save</button>
       </form>
-    </AdminLayout>
+    </div>
   );
 }
+
+AddProductPage.getLayout = (page) => <AdminLayout>{page}</AdminLayout>;
+
+export default AddProductPage;

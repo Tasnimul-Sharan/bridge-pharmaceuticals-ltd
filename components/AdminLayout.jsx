@@ -7,15 +7,33 @@ export default function AdminLayout({ children }) {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data }) => {
+  //     if (!data.session) {
+  //       router.push("/login");
+  //     } else {
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, []);
+
   useEffect(() => {
+    let isMounted = true;
+
     supabase.auth.getSession().then(({ data }) => {
+      if (!isMounted) return;
+
       if (!data.session) {
-        router.push("/login");
+        router.replace("/login");
       } else {
         setLoading(false);
       }
     });
-  }, []);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [router]);
 
   if (loading) return <div className="p-10">Loading...</div>;
 
