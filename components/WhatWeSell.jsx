@@ -5,107 +5,119 @@ import { motion } from "framer-motion";
 
 const products = [
   {
-    title: "Fish Products",
+    title: "Fish Health Solutions",
     image: "/images/fish.jpg",
-    desc: "High-quality fish health solutions that enhance growth, immunity, and overall aquatic performance through scientifically formulated products.",
+    desc: "Scientifically formulated aquatic health products that enhance immunity, growth, and overall performance.",
   },
   {
     title: "Metabolic & Nutritional Supplements",
     image: "/images/nutrition.jpg",
-    desc: "Advanced metabolic and nutritional supplements designed to improve feed efficiency, vitality, and long-term health.",
+    desc: "Advanced supplements designed to improve feed efficiency, vitality, and long-term wellness.",
   },
   {
-    title: "Anti-parasitics Products",
+    title: "Anti-Parasitic Formulations",
     image: "/images/parasite.jpg",
-    desc: "Effective anti-parasitic formulations that protect against internal and external parasites while ensuring safety.",
+    desc: "Broad-spectrum protection against internal and external parasites with clinical safety standards.",
   },
   {
-    title: "Appetizer & Digestive Stimulant Products",
+    title: "Digestive & Appetite Enhancers",
     image: "/images/digestive.jpg",
-    desc: "Specially developed products to stimulate appetite, improve digestion, and maximize nutrient absorption.",
+    desc: "Optimized digestive stimulants that maximize nutrient absorption and appetite balance.",
   },
   {
-    title: "Anti-histamines Products",
+    title: "Anti-Histamine Care",
     image: "/images/antihistamine.jpg",
-    desc: "Reliable anti-histamine solutions to manage allergic reactions and respiratory discomfort in animals.",
+    desc: "Reliable solutions to manage allergies and respiratory discomfort effectively.",
   },
   {
-    title: "Anti-Inflammatory Products",
+    title: "Anti-Inflammatory Therapy",
     image: "/images/inflammatory.jpg",
-    desc: "Clinically trusted anti-inflammatory products that reduce pain, swelling, and inflammation effectively.",
+    desc: "Clinically trusted formulations to reduce pain, swelling, and inflammation.",
   },
   {
-    title: "Anthelmintics Products",
+    title: "Anthelmintic Treatments",
     image: "/images/deworming.jpg",
-    desc: "Broad-spectrum anthelmintic products for safe and effective control of parasitic worms.",
+    desc: "Safe and effective control of parasitic worms with veterinary-grade assurance.",
   },
   {
-    title: "Antibiotics Products",
+    title: "Antibiotic Range",
     image: "/images/antibiotics.jpg",
-    desc: "High-quality antibiotics formulated to combat bacterial infections while maintaining safety standards.",
+    desc: "High-quality antibiotics formulated to combat bacterial infections responsibly.",
   },
 ];
 
 export default function WhatWeSell() {
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-white py-24">
+    <section className="relative py-28 bg-gradient-to-b from-white via-sky-50/40 to-white">
       <div className="custom-container mx-auto">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className="text-center max-w-3xl mx-auto mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            What We Sell
+          <span
+            className="inline-block px-4 py-2 border border-sky-200 mb-5 text-sm font-medium tracking-wide
+                           text-Secound_primary bg-sky-100 rounded-full"
+          >
+            Pharmaceutical Grade Products
+          </span>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+            Our Product Portfolio
           </h2>
+
           <p className="text-slate-600 text-lg leading-relaxed">
-            Premium veterinary and aquatic healthcare solutions engineered for
-            performance and sustainability.
+            Precision-engineered veterinary and aquatic healthcare solutions
+            designed for safety, performance, and sustainability.
           </p>
         </motion.div>
 
-        {/* Product Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Grid */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              whileHover={{ y: -6 }}
-              className="group relative bg-white rounded-3xl overflow-hidden
-                         border border-slate-100
-                         shadow-[0_10px_40px_rgba(0,0,0,0.06)]
-                         hover:shadow-[0_25px_70px_rgba(0,0,0,0.12)]
+              whileHover={{ y: -4 }}
+              className="group relative bg-white/80 backdrop-blur
+                         rounded-2xl overflow-hidden
+                         border border-sky-100
+                         shadow-[0_8px_30px_rgba(2,132,199,0.08)]
+                         hover:shadow-[0_15px_45px_rgba(2,132,199,0.18)]
                          transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative h-60 w-full overflow-hidden">
+              <div className="relative h-56 w-full overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                {/* Medical gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-sky-900/30 via-sky-700/10 to-transparent" />
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <h3 className="text-xl font-semibold text-slate-900 mb-4 leading-snug">
+              <div className="p-7">
+                <h3 className="text-lg font-semibold text-slate-900 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 text-base leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {item.desc}
                 </p>
               </div>
 
-              {/* Accent glow */}
-              <div className="absolute inset-0 rounded-3xl ring-1 ring-transparent group-hover:ring-sky-400/30 transition" />
+              {/* Premium border glow */}
+              <div
+                className="absolute inset-0 rounded-2xl ring-1 ring-transparent
+                              group-hover:ring-sky-300/40 transition"
+              />
             </motion.div>
           ))}
         </div>

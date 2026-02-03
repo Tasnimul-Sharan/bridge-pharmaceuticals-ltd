@@ -26,9 +26,9 @@ export default function Footer() {
       <div className="relative custom-container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 py-24">
         {/* -------- Brand -------- */}
         <div>
-          <div className="bg-white/90 backdrop-blur rounded-xl w-40 h-40 flex items-center justify-center mb-6 shadow-lg">
+          <div className="rounded-xl w-40 h-40 flex items-center justify-center mb-6">
             <Image
-              src="/logo/bridge-logo1.jpg"
+              src="/logo/bridge-logo.png"
               alt="Bridge Pharmaceuticals Logo"
               width={1200}
               height={1200}

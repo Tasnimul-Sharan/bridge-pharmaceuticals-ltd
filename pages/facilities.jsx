@@ -35,7 +35,7 @@ export default function Facilities() {
       {/* <Navbar hasBackground={true} /> */}
       <HeroSection
         hero={{
-          title: "Why Anondo Baari?",
+          title: "Our Facilities",
           backgroundImage: "/accommodation-bg.jpg",
         }}
       />
