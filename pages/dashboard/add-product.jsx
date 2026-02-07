@@ -1,70 +1,3 @@
-// import { useState } from "react";
-// import { supabase } from "@/lib/supabase";
-
-// export default function AddProductPage() {
-//   const [form, setForm] = useState({
-//     slug: "",
-//     name: "",
-//     generic: "",
-//     images: "",
-//     description: "",
-//   });
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     const { error } = await supabase.from("products").insert([
-//       {
-//         ...form,
-//         images: form.images.split(","),
-//       },
-//     ]);
-
-//     if (error) alert(error.message);
-//     else alert("Product added!");
-//   };
-
-//   return (
-//     <div className="p-10">
-//       <h1 className="text-xl mb-4">Add Product</h1>
-
-//       <form onSubmit={handleSubmit} className="space-y-4">
-//         <input
-//           className="border p-2 w-full"
-//           placeholder="Slug"
-//           onChange={(e) => setForm({ ...form, slug: e.target.value })}
-//         />
-
-//         <input
-//           className="border p-2 w-full"
-//           placeholder="Name"
-//           onChange={(e) => setForm({ ...form, name: e.target.value })}
-//         />
-
-//         <input
-//           className="border p-2 w-full"
-//           placeholder="Generic"
-//           onChange={(e) => setForm({ ...form, generic: e.target.value })}
-//         />
-
-//         <textarea
-//           className="border p-2 w-full"
-//           placeholder="Images (comma separated)"
-//           onChange={(e) => setForm({ ...form, images: e.target.value })}
-//         />
-
-//         <textarea
-//           className="border p-2 w-full"
-//           placeholder="Description"
-//           onChange={(e) => setForm({ ...form, description: e.target.value })}
-//         />
-
-//         <button className="bg-black text-white px-4 py-2">Save</button>
-//       </form>
-//     </div>
-//   );
-// }
-
 import AdminLayout from "@/components/AdminLayout";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
@@ -72,62 +5,157 @@ import { supabase } from "@/lib/supabase";
 function AddProductPage() {
   const [form, setForm] = useState({
     slug: "",
+    category: "",
+    type: "",
     name: "",
     generic: "",
-    images: "",
+    composition: "",
     description: "",
+    indication: "",
+    contraindication: "",
+    dosage: "",
+    interaction: "",
+    sideeffect: "",
+    precaution: "",
+    withdrawal: "",
+    storage: "",
+    packing: "",
+    images: [],
   });
+
+  const categories = [
+    "Anti-protozoals Products",
+    "Aqua Products",
+    "Metabolic & Nutritional Supplements",
+    "Anti-Parasitics Products",
+    "Appetizer & Digestive Stimulant Products",
+    "Anti-Histamines Products",
+    "Anti-Inflammatory Products",
+    "Anthelmintics Products",
+    "Antibiotics Products",
+  ];
+
+  const types = ["Gel", "Powder", "Oral Liquid", "Bolus", "Injection"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { error } = await supabase.from("products").insert([
-      {
-        ...form,
-        images: form.images.split(","),
-      },
-    ]);
+    const { error } = await supabase.from("products").insert([form]);
 
     if (error) alert(error.message);
-    else alert("Product added!");
+    else alert("Product Added Successfully!");
   };
 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ file: reader.result }),
+      });
+
+      const data = await res.json();
+
+      setForm({
+        ...form,
+        images: [...form.images, data.url],
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  console.log(JSON.stringify(form, null, 2));
+
   return (
-    <div>
+    <div className="max-w-5xl mx-auto">
       <h1 className="text-xl mb-4">Add Product</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4 custom">
-        <input
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <select
+          name="category"
+          onChange={handleChange}
           className="border p-2 w-full"
-          placeholder="Slug"
-          onChange={(e) => setForm({ ...form, slug: e.target.value })}
-        />
+        >
+          <option>Choose Category</option>
+          {categories.map((c) => (
+            <option key={c}>{c}</option>
+          ))}
+        </select>
+
+        <select
+          name="type"
+          onChange={handleChange}
+          className="border p-2 w-full"
+        >
+          <option>Choose Type</option>
+          {types.map((t) => (
+            <option key={t}>{t}</option>
+          ))}
+        </select>
 
         <input
+          name="name"
+          placeholder="Product Name"
+          onChange={handleChange}
           className="border p-2 w-full"
-          placeholder="Name"
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
-
         <input
+          name="generic"
+          placeholder="Generic Name"
+          onChange={handleChange}
           className="border p-2 w-full"
-          placeholder="Generic"
-          onChange={(e) => setForm({ ...form, generic: e.target.value })}
+        />
+        <textarea
+          name="composition"
+          placeholder="Composition"
+          onChange={handleChange}
+          className="border p-2 w-full"
         />
 
         <textarea
-          className="border p-2 w-full"
-          placeholder="Images (comma separated)"
-          onChange={(e) => setForm({ ...form, images: e.target.value })}
-        />
-
-        <textarea
-          className="border p-2 w-full"
+          name="description"
           placeholder="Description"
-          onChange={(e) => setForm({ ...form, description: e.target.value })}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <textarea
+          name="indication"
+          placeholder="Indication"
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <textarea
+          name="contraindication"
+          placeholder="Contra-Indication"
+          onChange={handleChange}
+          className="border p-2 w-full"
+        />
+        <textarea
+          name="dosage"
+          placeholder="Dosage"
+          onChange={handleChange}
+          className="border p-2 w-full"
         />
 
-        <button className="bg-black text-white px-4 py-2">Save</button>
+        <input
+          type="file"
+          onChange={handleImageUpload}
+          className="border p-2 w-full"
+        />
+
+        <button className="bg-black text-white px-4 py-2 rounded">
+          Save Product
+        </button>
       </form>
     </div>
   );
