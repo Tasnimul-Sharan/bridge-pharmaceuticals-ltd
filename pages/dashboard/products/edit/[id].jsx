@@ -346,14 +346,23 @@ function EditProductPage() {
               {/* Remove Button */}
               <button
                 onClick={async () => {
+                  const image = form.images[i];
+
+                  // cloudinary delete
+                  await fetch("/api/delete-image", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      public_id: image.public_id,
+                    }),
+                  });
+
                   const updatedImages = form.images.filter(
                     (_, index) => index !== i,
                   );
 
-                  // preview update
                   setForm({ ...form, images: updatedImages });
 
-                  // supabase update
                   await supabase
                     .from("products")
                     .update({ images: updatedImages })
