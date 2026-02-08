@@ -346,15 +346,22 @@ function EditProductPage() {
               {/* Remove Button */}
               <button
                 onClick={async () => {
-                  const image = form.images[i];
+                  const imageUrl = form.images[i];
 
-                  // cloudinary delete
+                  console.log("image url:", imageUrl);
+
+                  // extract public id
+                  const public_id = imageUrl
+                    .split("/upload/")[1]
+                    .split(".")[0]
+                    .replace(/^v\d+\//, "");
+
+                  console.log("delete public id:", public_id);
+
                   await fetch("/api/delete-image", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                      public_id: image.public_id,
-                    }),
+                    body: JSON.stringify({ public_id }),
                   });
 
                   const updatedImages = form.images.filter(

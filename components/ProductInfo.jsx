@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PrescribingModal from "./PrescribingModal";
+import { generatePrescriptionPdf } from "@/utils/generatePrescriptionPdf";
 
 export default function ProductInfo({ product }) {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ export default function ProductInfo({ product }) {
         </div>
 
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => generatePrescriptionPdf(product)}
           className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded"
         >
           View Prescribing Details

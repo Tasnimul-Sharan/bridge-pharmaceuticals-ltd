@@ -3,6 +3,12 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 export default function AlphabetFilter({ active, setActive }) {
   return (
     <div className="flex flex-wrap gap-2 justify-center mb-12">
+      {/* <button
+        onClick={() => setActive("")}
+        className={!active ? "bg-secondary text-white" : ""}
+      >
+        ALL
+      </button> */}
       {letters.map((l) => (
         <button
           key={l}

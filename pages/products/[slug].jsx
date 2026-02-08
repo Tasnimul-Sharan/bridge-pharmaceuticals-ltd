@@ -3,40 +3,76 @@ import ProductGallery from "@/components/ProductGallery";
 import ProductInfo from "@/components/ProductInfo";
 import ProductDescription from "@/components/ProductDescription";
 import MedicalDisclaimer from "@/components/MedicalDisclaimer";
-import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import HeroSection from "@/components/HeroSection";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { supabase } from "@/lib/supabase";
+
+// export async function getStaticPaths() {
+//   const paths = productDetailsData.map((product) => ({
+//     params: { slug: product.slug },
+//   }));
+
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
 export async function getStaticPaths() {
-  const paths = productDetailsData.map((product) => ({
-    params: { slug: product.slug },
+  const { data, error } = await supabase.from("products").select("slug");
+
+  if (error) {
+    return { paths: [], fallback: "blocking" };
+  }
+
+  const paths = data.map((item) => ({
+    params: { slug: item.slug },
   }));
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking", // important
   };
 }
 
+// export async function getStaticProps({ params }) {
+//   const baseProduct = products.find((p) => p.slug === params.slug);
+
+//   const details = productDetailsData.find((p) => p.slug === params.slug);
+
+//   if (!baseProduct || !details) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+
+//   return {
+//     props: {
+//       product: {
+//         ...baseProduct,
+//         ...details,
+//       },
+//     },
+//   };
+// }
+
 export async function getStaticProps({ params }) {
-  const baseProduct = products.find((p) => p.slug === params.slug);
+  const { data, error } = await supabase
+    .from("products")
+    .select("*")
+    .eq("slug", params.slug)
+    .single();
 
-  const details = productDetailsData.find((p) => p.slug === params.slug);
-
-  if (!baseProduct || !details) {
-    return {
-      notFound: true,
-    };
+  if (error || !data) {
+    return { notFound: true };
   }
 
   return {
     props: {
-      product: {
-        ...baseProduct,
-        ...details,
-      },
+      product: data,
     },
+    revalidate: 60, // 1 minute ISR
   };
 }
 

@@ -35,7 +35,7 @@ export default function ProductsPage() {
       {/* <Navbar hasBackground={true} /> */}
       <HeroSection
         hero={{
-          title: "Products",
+          title: "All Products",
           backgroundImage: "/services/services-bg.jpg",
         }}
       />
