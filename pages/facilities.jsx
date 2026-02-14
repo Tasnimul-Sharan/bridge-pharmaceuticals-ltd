@@ -1,7 +1,9 @@
 "use client";
+import FacilitiesSection from "@/components/FacilitiesSection";
 import HeroSection from "@/components/HeroSection";
+import QualityFacilities from "@/components/QualityFacilities";
 import Head from "next/head";
-export default function Facilities() {
+export default function FacilitiesPage() {
   const meta = {
     title:
       "Facilities | Anondo Baari - Senior Wellness & Assisted Living in Bangladesh",
@@ -39,6 +41,8 @@ export default function Facilities() {
           backgroundImage: "/accommodation-bg.jpg",
         }}
       />
+      <FacilitiesSection />
+      <QualityFacilities />
     </div>
   );
 }

@@ -1,298 +1,336 @@
-import { FaInstagram } from "react-icons/fa";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export const blogDetailsData = {
   meta: {
-    title: "Blogs | Anondo Baari - Senior Care & Wellness",
+    title: "Blogs | Bridge Pharma",
     description:
-      "Explore insightful blogs from Anondo Baari on senior care, wellness, fitness, mental health, community living, and healthy aging in Bangladesh.",
+      "Explore expert insights from Bridge Pharma on pharmaceutical manufacturing, animal health, research, quality assurance, logistics, and digital transformation.",
     keywords:
-      "Anondo Baari blog, senior care Bangladesh, elderly wellness, yoga meditation, nutrition after 60, community living, mental health seniors, art therapy, fitness after 60, healthy aging tips",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/blogs",
-    image: "https://www.anondobari.com/blogs/blogs-og.jpg",
+      "Bridge Pharma blog, pharmaceutical manufacturing, GMP compliance, animal health medicines, pharma research, cold chain logistics, quality assurance pharma, digital pharma transformation",
+    author: "Bridge Pharma Insights",
+    url: "https://www.bridgepharma.com/blogs",
+    image: "https://www.bridgepharma.com/blogs/blogs-og.jpg",
   },
+
   blogDetails: [
     {
-      slug: "healing-power-of-yoga",
+      slug: "gmp-compliance-pharma-manufacturing",
       blogPost: {
-        title: "The Healing Power of Yoga and Meditation for Seniors",
-        image: "/blogs/wellness/wellness-1.jpg",
-        author: "Anondo Baari Team",
-        date: "05 AUGUST, 2025",
+        title: "Ensuring GMP Compliance in Modern Pharmaceutical Manufacturing",
+        image: "/blogs/pharma/pharma-1.jpg",
+        author: "Bridge Pharma Insights",
+        date: "18 AUGUST, 2025",
         description:
-          "Yoga and meditation are more than just exercises; they are practices that bring balance, peace, and health. At Anondo Baari, we encourage seniors to embrace these routines for a happier and healthier lifestyle.",
+          "Good Manufacturing Practices (GMP) ensure consistent product quality, safety, and compliance in pharmaceutical production. Modern facilities integrate automation, validation systems, and strict quality controls to meet global regulatory standards.",
         checklist: [
-          "Gentle yoga improves flexibility and reduces joint pain.",
-          "Meditation helps reduce stress and improve memory.",
-          "Breathing exercises promote calmness and better sleep.",
+          "Validated production environments.",
+          "Strict documentation and batch traceability.",
+          "Regular audits and quality inspections.",
+          "Employee training on GMP standards.",
+          "Automated quality control systems.",
         ],
-        subImages: [
-          "/blogs/wellness/wellness-2.jpg",
-          "/blogs/wellness/wellness-3.jpg",
+        highlights: [
+          "Ensures global regulatory compliance across markets.",
+          "Reduces production risks and contamination chances.",
+          "Improves brand credibility and trust.",
+          "Maintains consistent medicine quality.",
         ],
+        subImages: ["/blogs/pharma/pharma-2.jpg", "/blogs/pharma/pharma-3.jpg"],
         quote:
-          "At any age, inner peace is the greatest form of wealth you can achieve.",
-        postTags: ["Yoga", "Meditation", "Wellness"],
+          "Quality is not inspected into a product — it is built into every process.",
+        postTags: ["GMP", "Manufacturing", "Compliance"],
       },
       socialIcons: [
         {
           icon: FaFacebookF,
           link: (url) =>
             `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
+              url,
             )}`,
         },
         {
           icon: FaXTwitter,
           link: (url, title) =>
             `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
+              url,
             )}&text=${encodeURIComponent(title)}`,
         },
         {
           icon: FaLinkedinIn,
           link: (url, title) =>
             `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
+              url,
             )}&title=${encodeURIComponent(title)}`,
         },
       ],
     },
     {
-      slug: "nutrition-after-60",
+      slug: "advancing-animal-health",
       blogPost: {
-        title: "Nutrition After 60: Building Strength Through Food",
-        image: "/blogs/nutrition/nutrition-1.jpg",
-        author: "Dr. Sharmeen Rahman",
+        title: "Advancing Animal Health Through Quality Veterinary Medicines",
+        image: "/blogs/animal-health/animal-health-1.jpg",
+        author: "Bridge Pharma Insights",
         date: "10 AUGUST, 2025",
         description:
-          "As we age, nutrition becomes a cornerstone of good health. Balanced diets rich in proteins, vitamins, and minerals ensure vitality and energy for senior citizens.",
+          "Veterinary pharmaceuticals play a crucial role in livestock productivity and animal well-being. Advanced formulations and strict safety standards help ensure effective disease prevention and treatment.",
         checklist: [
-          "Protein helps maintain muscle strength.",
-          "Omega-3s support brain and heart health.",
-          "Hydration is key for overall well-being.",
+          "Safe and tested veterinary formulations.",
+          "Improved livestock productivity.",
+          "Preventive healthcare solutions.",
+          "Disease monitoring and vaccination programs.",
+          "Nutritional supplements for animal growth.",
         ],
+
+        highlights: [
+          "Supports sustainable agriculture and farming.",
+          "Enhances animal immunity and lifespan.",
+          "Improves food chain safety.",
+          "Boosts rural economic stability.",
+        ],
+
         subImages: [
-          "/blogs/nutrition/nutrition-2.jpg",
-          "/blogs/nutrition/nutrition-3.jpg",
+          "/blogs/animal-health/animal-health-2.jpg",
+          "/blogs/animal-health/animal-health-3.jpg",
         ],
-        quote: "Food is not just fuel—it’s medicine for body and soul.",
-        postTags: ["Nutrition", "Healthy Aging", "Lifestyle"],
+        quote: "Healthy animals build a stronger agricultural future.",
+        postTags: ["Animal Health", "Veterinary", "Medicine"],
       },
       socialIcons: [
         {
           icon: FaFacebookF,
           link: (url) =>
             `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
+              url,
             )}`,
         },
         {
           icon: FaXTwitter,
           link: (url, title) =>
             `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
+              url,
             )}&text=${encodeURIComponent(title)}`,
         },
         {
           icon: FaLinkedinIn,
           link: (url, title) =>
             `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
+              url,
             )}&title=${encodeURIComponent(title)}`,
         },
       ],
     },
+
     {
-      slug: "community-living-happiness",
+      slug: "innovation-research-pharma",
       blogPost: {
-        title: "Why Community Living Enhances Happiness in Aging",
-        image: "/blogs/community/community-1.jpg",
-        author: "Anondo Baari Team",
-        date: "15 AUGUST, 2025",
+        title: "Innovation & Research: Driving the Future of Pharmaceuticals",
+        image: "/blogs/research/research-1.jpg",
+        author: "Bridge Pharma R&D",
+        date: "02 AUGUST, 2025",
         description:
-          "Living in a supportive community fosters joy, reduces loneliness, and encourages active participation. At Anondo Baari, we create spaces where seniors thrive together.",
+          "Research and innovation are the foundation of pharmaceutical advancement. Continuous clinical studies, technology adoption, and product development enable safer and more effective treatments.",
         checklist: [
-          "Shared activities strengthen social bonds.",
-          "Supportive neighbors reduce feelings of isolation.",
-          "Collective celebrations enhance overall happiness.",
+          "Continuous R&D investment.",
+          "Technology-driven drug development.",
+          "Collaborative research ecosystems.",
+          "Clinical trial advancements.",
+          "Data-driven decision making.",
         ],
+
+        highlights: [
+          "Accelerates discovery of new treatments.",
+          "Improves patient safety and outcomes.",
+          "Encourages global scientific collaboration.",
+          "Enhances pharmaceutical competitiveness.",
+        ],
+
         subImages: [
-          "/blogs/community/community-2.jpg",
-          "/blogs/community/community-3.jpg",
+          "/blogs/research/research-2.jpg",
+          "/blogs/research/research-3.jpg",
         ],
-        quote:
-          "Happiness is multiplied when it is shared with others in a community.",
-        postTags: ["Community", "Happiness", "Wellbeing"],
+        quote: "Innovation today shapes the medicine of tomorrow.",
+        postTags: ["Research", "Innovation", "Pharma"],
       },
       socialIcons: [
         {
           icon: FaFacebookF,
           link: (url) =>
             `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
+              url,
             )}`,
         },
         {
           icon: FaXTwitter,
           link: (url, title) =>
             `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
+              url,
             )}&text=${encodeURIComponent(title)}`,
         },
         {
           icon: FaLinkedinIn,
           link: (url, title) =>
             `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
-            )}&title=${encodeURIComponent(title)}`,
-        },
-      ],
-    },
-    {
-      slug: "mental-health-seniors",
-      blogPost: {
-        title: "Mental Health Awareness for Seniors: Breaking the Silence",
-        image: "/blogs/mentalhealth/mentalhealth-1.jpg",
-        author: "Dr. Tanvir Alam",
-        date: "20 AUGUST, 2025",
-        description:
-          "Mental health is as important as physical health, yet it often goes unnoticed in seniors. At Anondo Baari, we focus on emotional well-being with therapy, counseling, and social interaction.",
-        checklist: [
-          "Regular counseling sessions improve outlook.",
-          "Group activities reduce depression and anxiety.",
-          "Mind games help sharpen memory.",
-        ],
-        subImages: [
-          "/blogs/mentalhealth/mentalhealth-2.jpg",
-          "/blogs/mentalhealth/mentalhealth-3.jpg",
-        ],
-        quote: "There is no health without mental health.",
-        postTags: ["Mental Health", "Awareness", "Support"],
-      },
-      socialIcons: [
-        {
-          icon: FaFacebookF,
-          link: (url) =>
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
-            )}`,
-        },
-        {
-          icon: FaXTwitter,
-          link: (url, title) =>
-            `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
-            )}&text=${encodeURIComponent(title)}`,
-        },
-        {
-          icon: FaLinkedinIn,
-          link: (url, title) =>
-            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
-            )}&title=${encodeURIComponent(title)}`,
-        },
-      ],
-    },
-    {
-      slug: "art-music-therapy",
-      blogPost: {
-        title: "Healing Through Art and Music Therapy",
-        image: "/blogs/artmusic/artmusic-1.jpg",
-        author: "Anondo Baari Cultural Team",
-        date: "25 AUGUST, 2025",
-        description:
-          "Creative expression through art and music plays a vital role in healing. Seniors at Anondo Baari engage in painting, singing, and music sessions that bring joy and peace.",
-        checklist: [
-          "Art improves cognitive functions and motor skills.",
-          "Music reduces stress and uplifts mood.",
-          "Creative therapy boosts confidence and memory.",
-        ],
-        subImages: [
-          "/blogs/artmusic/artmusic-2.jpg",
-          "/blogs/artmusic/artmusic-3.jpg",
-        ],
-        quote:
-          "Art and music speak the language of the soul when words fall short.",
-        postTags: ["Art Therapy", "Music", "Healing"],
-      },
-      socialIcons: [
-        {
-          icon: FaFacebookF,
-          link: (url) =>
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
-            )}`,
-        },
-        {
-          icon: FaXTwitter,
-          link: (url, title) =>
-            `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
-            )}&text=${encodeURIComponent(title)}`,
-        },
-        {
-          icon: FaLinkedinIn,
-          link: (url, title) =>
-            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
-            )}&title=${encodeURIComponent(title)}`,
-        },
-      ],
-    },
-    {
-      slug: "staying-fit-after-60",
-      blogPost: {
-        title: "Staying Fit After 60: Gentle Exercises That Work",
-        image: "/blogs/fitness/fitness-1.jpg",
-        author: "BY ANONDO BAARI",
-        date: "20 AUGUST, 2025",
-        description:
-          "Fitness after 60 doesn’t mean high intensity—it’s about consistency and safety. At Anondo Baari, we provide seniors with gentle but effective exercise routines that enhance flexibility, improve balance, and boost overall energy.",
-        checklist: [
-          "Morning stretches keep joints flexible.",
-          "Light yoga improves posture and breathing.",
-          "Gentle strength training helps maintain mobility.",
-        ],
-        subImages: [
-          "/blogs/fitness/fitness-2.jpg",
-          "/blogs/fitness/fitness-3.jpg",
-        ],
-        quote: "Movement is the best medicine for graceful aging.",
-        postTags: ["Fitness", "Wellness", "Healthy Aging"],
-      },
-      socialIcons: [
-        {
-          icon: FaFacebookF,
-          link: (url) =>
-            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-              url
-            )}`,
-        },
-        {
-          icon: FaXTwitter,
-          link: (url, title) =>
-            `https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              url
-            )}&text=${encodeURIComponent(title)}`,
-        },
-        {
-          icon: FaLinkedinIn,
-          link: (url, title) =>
-            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-              url
+              url,
             )}&title=${encodeURIComponent(title)}`,
         },
         {
           icon: FaInstagram,
-          link: () => `https://www.instagram.com/anondobaari/`,
+          link: () => `https://www.instagram.com/bridgepharma/`,
+        },
+      ],
+    },
+    {
+      slug: "pharma-quality-assurance-protocols",
+      blogPost: {
+        title: "Quality Assurance Protocols in Pharmaceutical Distribution",
+        image: "/blogs/quality/quality-1.jpg",
+        author: "Bridge Quality Team",
+        date: "22 JULY, 2025",
+        description:
+          "Quality assurance in pharmaceutical distribution ensures that medicines reach patients in optimal condition. From storage standards to transportation monitoring, every step must comply with strict regulatory frameworks to protect public health.",
+        checklist: [
+          "Temperature-controlled storage facilities.",
+          "Batch tracking and product traceability.",
+          "Routine compliance audits and documentation.",
+          "Secure packaging and tamper checks.",
+          "Real-time shipment monitoring.",
+        ],
+
+        highlights: [
+          "Prevents medicine degradation during transport.",
+          "Ensures patient safety at delivery stage.",
+          "Maintains legal and regulatory compliance.",
+          "Builds long-term customer confidence.",
+        ],
+
+        subImages: [
+          "/blogs/quality/quality-2.jpg",
+          "/blogs/quality/quality-3.jpg",
+        ],
+        quote:
+          "Distribution quality is the final gatekeeper of patient safety.",
+        postTags: ["Quality Assurance", "Distribution", "Compliance"],
+      },
+      socialIcons: [
+        {
+          icon: FaFacebookF,
+          link: (url) =>
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        },
+        {
+          icon: FaXTwitter,
+          link: (url, title) =>
+            `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+        },
+        {
+          icon: FaLinkedinIn,
+          link: (url, title) =>
+            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+        },
+      ],
+    },
+    {
+      slug: "cold-chain-medicine-safety",
+      blogPost: {
+        title: "Strengthening Cold Chain Logistics for Medicine Safety",
+        image: "/blogs/supply-chain/supply-1.jpg",
+        author: "Bridge Supply Chain",
+        date: "14 JULY, 2025",
+        description:
+          "Cold chain logistics are critical for vaccines and temperature-sensitive medicines. Advanced monitoring systems, insulated transport, and real-time tracking ensure product efficacy from warehouse to patient.",
+        checklist: [
+          "Real-time temperature monitoring systems.",
+          "Validated insulated transportation.",
+          "Emergency response protocols for temperature deviation.",
+          "Cold storage backup power systems.",
+          "Route optimization for faster delivery.",
+        ],
+
+        highlights: [
+          "Protects vaccine potency and effectiveness.",
+          "Minimizes financial losses from spoilage.",
+          "Improves supply chain transparency.",
+          "Strengthens public healthcare reliability.",
+        ],
+
+        subImages: [
+          "/blogs/supply-chain/supply-2.jpg",
+          "/blogs/supply-chain/supply-3.jpg",
+        ],
+        quote:
+          "A broken cold chain can break patient trust — precision matters.",
+        postTags: ["Cold Chain", "Logistics", "Medicine Safety"],
+      },
+      socialIcons: [
+        {
+          icon: FaFacebookF,
+          link: (url) =>
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        },
+        {
+          icon: FaXTwitter,
+          link: (url, title) =>
+            `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+        },
+        {
+          icon: FaLinkedinIn,
+          link: (url, title) =>
+            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+        },
+      ],
+    },
+    {
+      slug: "digital-transformation-pharma-operations",
+      blogPost: {
+        title: "Digital Transformation in Pharmaceutical Operations",
+        image: "/blogs/technology/tech-1.jpg",
+        author: "Bridge Pharma Tech",
+        date: "05 JULY, 2025",
+        description:
+          "Digital transformation is redefining pharmaceutical operations through automation, AI-driven analytics, and smart supply chain systems. These technologies enhance efficiency, reduce human error, and accelerate innovation.",
+        checklist: [
+          "Automated production and packaging systems.",
+          "AI-powered demand forecasting.",
+          "Cloud-based inventory and compliance tracking.",
+          "Digital documentation and reporting.",
+          "Smart analytics for performance monitoring.",
+        ],
+
+        highlights: [
+          "Boosts operational efficiency and speed.",
+          "Reduces manual errors and paperwork.",
+          "Enables real-time decision making.",
+          "Future-proofs pharmaceutical businesses.",
+        ],
+
+        subImages: [
+          "/blogs/technology/tech-2.jpg",
+          "/blogs/technology/tech-3.jpg",
+        ],
+        quote:
+          "Technology is no longer optional — it is the backbone of modern pharma.",
+        postTags: ["Digital Transformation", "Pharma Tech", "Automation"],
+      },
+      socialIcons: [
+        {
+          icon: FaFacebookF,
+          link: (url) =>
+            `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+        },
+        {
+          icon: FaXTwitter,
+          link: (url, title) =>
+            `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
+        },
+        {
+          icon: FaLinkedinIn,
+          link: (url, title) =>
+            `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
+        },
+        {
+          icon: FaInstagram,
+          link: () => `https://www.instagram.com/bridgepharma/`,
         },
       ],
     },

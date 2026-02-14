@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineTag } from "react-icons/ai";
-import { FaQuoteLeft, FaRegCheckCircle, FaReply } from "react-icons/fa";
+import { FaCheckCircle, FaQuoteLeft, FaRegCheckCircle, FaReply } from "react-icons/fa";
 
 export default function BlogDetails({ blogsData }) {
   const { blogPost, socialIcons } = blogsData;
@@ -53,6 +53,13 @@ export default function BlogDetails({ blogsData }) {
           />
         ))}
       </div>
+
+      {blogPost.highlights?.map((point, i) => (
+        <div key={i} className="flex items-start gap-3">
+          <FaCheckCircle className="text-primary mt-1" />
+          <p className="text-gray-700">{point}</p>
+        </div>
+      ))}
 
       <blockquote className="bg-primary/10 text-gray-800 p-6 rounded-lg relative border-l-4 border-primary">
         <FaQuoteLeft className="text-primary text-2xl absolute -top-4 -left-4" />

@@ -30,8 +30,6 @@ const blogs = [
     title: "Innovation & Research: Driving the Future of Pharmaceuticals",
     slug: "innovation-research-pharma",
   },
-
-  // NEW 3 BLOGS
   {
     id: 4,
     img: "/blogs/quality/quality-1.jpg",
