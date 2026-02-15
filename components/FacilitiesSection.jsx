@@ -29,7 +29,6 @@ export default function FacilitiesSection() {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <div className="text-center mb-14">
           <h2 className="text-4xl font-bold mb-4">World-Class Facilities</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -39,7 +38,6 @@ export default function FacilitiesSection() {
           </p>
         </div>
 
-        {/* Facilities Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {facilities.map((item, i) => (
             <motion.div

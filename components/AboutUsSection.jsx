@@ -69,7 +69,7 @@ export default function AboutUsSection() {
         >
           <div className="relative h-[520px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
-              src="/about.jpg"
+              src="/about.JPG"
               alt="Bridge Pharmaceuticals Animal Health"
               fill
               className="object-cover"

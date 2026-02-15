@@ -23,19 +23,45 @@ function AddProductPage() {
     images: [],
   });
 
-  const categories = [
-    "Anti-protozoals Products",
-    "Aqua Products",
-    "Metabolic & Nutritional Supplements",
-    "Anti-Parasitics Products",
-    "Appetizer & Digestive Stimulant Products",
-    "Anti-Histamines Products",
-    "Anti-Inflammatory Products",
-    "Anthelmintics Products",
-    "Antibiotics Products",
-  ];
+  // const categories = [
+  //   "Anti-protozoals Products",
+  //   "Aqua Products",
+  //   "Metabolic & Nutritional Supplements",
+  //   "Anti-Parasitics Products",
+  //   "Appetizer & Digestive Stimulant Products",
+  //   "Anti-Histamines Products",
+  //   "Anti-Inflammatory Products",
+  //   "Anthelmintics Products",
+  //   "Antibiotics Products",
+  // ];
 
-  const types = ["Gel", "Powder", "Oral Liquid", "Bolus", "Injection"];
+  // const types = ["Gel", "Powder", "Oral Liquid", "Bolus", "Injection"];
+
+  const [categories, setCategories] = useState([]);
+  const [types, setTypes] = useState([]);
+
+  useEffect(() => {
+    fetchCategories();
+    fetchTypes();
+  }, []);
+
+  const fetchCategories = async () => {
+    const { data, error } = await supabase
+      .from("categories")
+      .select("*")
+      .order("name", { ascending: true });
+
+    if (!error) setCategories(data);
+  };
+
+  const fetchTypes = async () => {
+    const { data, error } = await supabase
+      .from("types")
+      .select("*")
+      .order("name", { ascending: true });
+
+    if (!error) setTypes(data);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -190,7 +216,7 @@ function AddProductPage() {
           className="border p-2 w-full bg-gray-100"
         />
         {/* Category */}
-        <select
+        {/* <select
           name="category"
           value={form.category}
           onChange={handleChange}
@@ -202,10 +228,24 @@ function AddProductPage() {
               {c}
             </option>
           ))}
+        </select> */}
+
+        <select
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        >
+          <option value="">Choose Category</option>
+          {categories.map((c) => (
+            <option key={c.id} value={c.name}>
+              {c.name}
+            </option>
+          ))}
         </select>
 
         {/* Type */}
-        <select
+        {/* <select
           name="type"
           value={form.type}
           onChange={handleChange}
@@ -215,6 +255,20 @@ function AddProductPage() {
           {types.map((t) => (
             <option key={t} value={t}>
               {t}
+            </option>
+          ))}
+        </select> */}
+
+        <select
+          name="type"
+          value={form.type}
+          onChange={handleChange}
+          className="border p-2 w-full"
+        >
+          <option value="">Choose Type</option>
+          {types.map((t) => (
+            <option key={t.id} value={t.name}>
+              {t.name}
             </option>
           ))}
         </select>
