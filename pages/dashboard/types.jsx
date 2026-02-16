@@ -73,7 +73,7 @@
 
 import AdminLayout from "@/components/AdminLayout";
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import { Pencil, Trash2, Plus } from "lucide-react";
 
 function TypesPage() {
@@ -90,7 +90,7 @@ function TypesPage() {
 
   const fetchTypes = async () => {
     setLoading(true);
-    const { data } = await supabase
+    const { data } = await supabaseServer
       .from("types")
       .select("*")
       .order("id", { ascending: true });
@@ -109,7 +109,7 @@ function TypesPage() {
 
     // UPDATE MODE
     if (editId) {
-      const { error } = await supabase
+      const { error } = await supabaseServer
         .from("types")
         .update({
           name: editName,

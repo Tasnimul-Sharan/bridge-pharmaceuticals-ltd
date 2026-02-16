@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Pencil, Trash2, Plus } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 export default function CategoriesPage() {
   const [name, setName] = useState("");
@@ -20,7 +20,7 @@ export default function CategoriesPage() {
   const fetchCategories = async () => {
     setLoading(true);
 
-    const { data } = await supabase
+    const { data } = await supabaseServer
       .from("categories")
       .select("*")
       .order("id", { ascending: true });
@@ -37,7 +37,7 @@ export default function CategoriesPage() {
       return;
     }
 
-    const { data, error } = await supabase.from("categories").insert([
+    const { data, error } = await supabaseServer.from("categories").insert([
       {
         name,
         slug: generateSlug(name),
@@ -58,7 +58,7 @@ export default function CategoriesPage() {
   const handleDelete = async (id) => {
     if (!confirm("Delete this category?")) return;
 
-    await supabase.from("categories").delete().eq("id", id);
+    await supabaseServer.from("categories").delete().eq("id", id);
     fetchCategories();
   };
 
@@ -70,7 +70,7 @@ export default function CategoriesPage() {
 
     // UPDATE MODE
     if (editId) {
-      const { error } = await supabase
+      const { error } = await supabaseServer
         .from("categories")
         .update({
           name: editName,
@@ -90,7 +90,7 @@ export default function CategoriesPage() {
     }
 
     // ADD MODE
-    const { error } = await supabase.from("categories").insert([
+    const { error } = await supabaseServer.from("categories").insert([
       {
         name,
         slug: generateSlug(name),

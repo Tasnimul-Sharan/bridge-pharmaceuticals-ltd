@@ -1,6 +1,7 @@
 import AdminLayout from "@/components/AdminLayout";
-import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { useEffect, useState } from "react";
+import { supabaseServer } from "@/lib/supabaseServer";
+import StatusModal from "@/components/StatusModal";
 
 function AddProductPage() {
   const [form, setForm] = useState({
@@ -23,55 +24,140 @@ function AddProductPage() {
     images: [],
   });
 
-  const categories = [
-    "Anti-protozoals Products",
-    "Aqua Products",
-    "Metabolic & Nutritional Supplements",
-    "Anti-Parasitics Products",
-    "Appetizer & Digestive Stimulant Products",
-    "Anti-Histamines Products",
-    "Anti-Inflammatory Products",
-    "Anthelmintics Products",
-    "Antibiotics Products",
-  ];
+  const [categories, setCategories] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [modal, setModal] = useState({
+    show: false,
+    type: "success", // success | error
+    message: "",
+  });
 
-  const types = ["Gel", "Powder", "Oral Liquid", "Bolus", "Injection"];
+  useEffect(() => {
+    fetchCategories();
+    fetchTypes();
+  }, []);
+
+  const fetchCategories = async () => {
+    const { data, error } = await supabaseServer
+      .from("categories")
+      .select("*")
+      .order("name", { ascending: true });
+
+    if (!error) setCategories(data);
+  };
+
+  const fetchTypes = async () => {
+    const { data, error } = await supabaseServer
+      .from("types")
+      .select("*")
+      .order("name", { ascending: true });
+
+    if (!error) setTypes(data);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { error } = await supabase.from("products").insert([form]);
+    if (uploading) return;
 
-    if (error) alert(error.message);
-    else alert("Product Added Successfully!");
-  };
+    try {
+      setUploading(true);
 
-  // const handleChange = (e) => {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
-  // };
+      const { data: existingProduct } = await supabaseServer
+        .from("products")
+        .select("id")
+        .eq("name", form.name)
+        .eq("category", form.category)
+        .single();
 
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+      if (existingProduct) {
+        setModal({
+          show: true,
+          type: "error",
+          message: "This product already exists!",
+        });
+        setUploading(false);
+        return;
+      }
 
-    const reader = new FileReader();
+      let imageUrls = [];
 
-    reader.onloadend = async () => {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ file: reader.result }),
+      // 🔥 Upload image FIRST
+      if (selectedFile) {
+        const reader = new FileReader();
+
+        const base64 = await new Promise((resolve, reject) => {
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(selectedFile);
+        });
+
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: base64 }),
+        });
+
+        if (!res.ok) {
+          throw new Error("Image upload failed");
+        }
+
+        const data = await res.json();
+        imageUrls.push(data.url);
+      }
+
+      // 🔥 THEN insert to DB
+      const { error } = await supabaseServer.from("products").insert([
+        {
+          ...form,
+          images: imageUrls,
+        },
+      ]);
+
+      if (error) throw error;
+
+      // ✅ SUCCESS MODAL
+      setModal({
+        show: true,
+        type: "success",
+        message: "Product added successfully!",
       });
 
-      const data = await res.json();
-
+      // ✅ Reset Form
       setForm({
-        ...form,
-        images: [...form.images, data.url],
+        slug: "",
+        category: "",
+        type: "",
+        name: "",
+        generic: "",
+        composition: "",
+        description: "",
+        indication: "",
+        contraindication: "",
+        dosage: "",
+        interaction: "",
+        sideeffect: "",
+        precaution: "",
+        withdrawal: "",
+        storage: "",
+        packing: "",
+        images: [],
       });
-    };
 
-    reader.readAsDataURL(file);
+      setSelectedFile(null);
+    } catch (err) {
+      console.error(err);
+
+      setModal({
+        show: true,
+        type: "error",
+        message: err.message || "Something went wrong!",
+      });
+    } finally {
+      setUploading(false);
+    }
   };
 
   console.log(JSON.stringify(form, null, 2));
@@ -80,9 +166,9 @@ function AddProductPage() {
     return text
       .toLowerCase()
       .trim()
-      .replace(/[^a-z0-9\s-]/g, "") // special char remove
-      .replace(/\s+/g, "-") // space -> dash
-      .replace(/-+/g, "-"); // multiple dash fix
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
   };
 
   const handleChange = (e) => {
@@ -99,89 +185,25 @@ function AddProductPage() {
     }
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    setSelectedFile(file);
+
+    // preview only
+    const previewUrl = URL.createObjectURL(file);
+
+    setForm((prev) => ({
+      ...prev,
+      images: [previewUrl], // শুধু preview
+    }));
+  };
+
   return (
     <div className="max-w-5xl mx-auto">
       <h1 className="text-xl mb-4">Add Product</h1>
-
-      {/* <form onSubmit={handleSubmit} className="space-y-4">
-        <select
-          name="category"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option>Choose Category</option>
-          {categories.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-
-        <select
-          name="type"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option>Choose Type</option>
-          {types.map((t) => (
-            <option key={t}>{t}</option>
-          ))}
-        </select>
-
-        <input
-          name="name"
-          placeholder="Product Name"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <input
-          name="generic"
-          placeholder="Generic Name"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="composition"
-          placeholder="Composition"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-
-        <textarea
-          name="description"
-          placeholder="Description"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="indication"
-          placeholder="Indication"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="contraindication"
-          placeholder="Contra-Indication"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="dosage"
-          placeholder="Dosage"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-
-        <input
-          type="file"
-          onChange={handleImageUpload}
-          className="border p-2 w-full"
-        />
-
-        <button className="bg-black text-white px-4 py-2 rounded">
-          Save Product
-        </button>
-      </form> */}
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* slug */}
         <input
           name="slug"
           value={form.slug}
@@ -189,7 +211,7 @@ function AddProductPage() {
           readOnly
           className="border p-2 w-full bg-gray-100"
         />
-        {/* Category */}
+
         <select
           name="category"
           value={form.category}
@@ -198,13 +220,12 @@ function AddProductPage() {
         >
           <option value="">Choose Category</option>
           {categories.map((c) => (
-            <option key={c} value={c}>
-              {c}
+            <option key={c.id} value={c.name}>
+              {c.name}
             </option>
           ))}
         </select>
 
-        {/* Type */}
         <select
           name="type"
           value={form.type}
@@ -213,13 +234,12 @@ function AddProductPage() {
         >
           <option value="">Choose Type</option>
           {types.map((t) => (
-            <option key={t} value={t}>
-              {t}
+            <option key={t.id} value={t.name}>
+              {t.name}
             </option>
           ))}
         </select>
 
-        {/* Basic Info */}
         <input
           name="name"
           value={form.name}
@@ -276,7 +296,6 @@ function AddProductPage() {
           className="border p-2 w-full"
         />
 
-        {/* Newly Added Fields */}
         <textarea
           name="interaction"
           value={form.interaction}
@@ -325,14 +344,17 @@ function AddProductPage() {
           className="border p-2 w-full"
         />
 
-        {/* Image Upload */}
-        <input
+        {/* <input
           type="file"
           onChange={handleImageUpload}
           className="border p-2 w-full"
+        /> */}
+        <input
+          type="file"
+          onChange={handleFileChange}
+          className="border p-2 w-full"
         />
 
-        {/* Preview Uploaded Images (optional but useful) */}
         {form.images.length > 0 && (
           <div className="flex gap-2 flex-wrap">
             {form.images.map((img, i) => (
@@ -345,11 +367,22 @@ function AddProductPage() {
             ))}
           </div>
         )}
-
-        <button className="bg-black text-white px-4 py-2 rounded">
-          Save Product
+        <button
+          type="submit"
+          disabled={uploading}
+          className={`px-4 py-2 rounded text-white ${
+            uploading ? "bg-gray-400 cursor-not-allowed" : "bg-black"
+          }`}
+        >
+          {uploading ? "Saving..." : "Save Product"}
         </button>
       </form>
+      <StatusModal
+        show={modal.show}
+        type={modal.type}
+        message={modal.message}
+        onClose={() => setModal({ ...modal, show: false })}
+      />
     </div>
   );
 }

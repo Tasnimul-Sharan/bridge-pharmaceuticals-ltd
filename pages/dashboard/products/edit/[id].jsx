@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import AdminLayout from "@/components/AdminLayout";
 
 const Input = ({ label, value, onChange }) => (
@@ -41,7 +41,7 @@ function EditProductPage() {
   useEffect(() => {
     if (!id) return;
 
-    supabase
+    supabaseServer
       .from("products")
       .select("*")
       .eq("id", id)
@@ -61,7 +61,7 @@ function EditProductPage() {
           : form.images,
     };
 
-    const { error } = await supabase
+    const { error } = await supabaseServer
       .from("products")
       .update(payload)
       .eq("id", id);
@@ -107,8 +107,8 @@ function EditProductPage() {
         // preview update
         setForm({ ...form, images: updatedImages });
 
-        // supabase update
-        await supabase
+        // supabaseServer update
+        await supabaseServer
           .from("products")
           .update({ images: updatedImages })
           .eq("id", id);
@@ -370,7 +370,7 @@ function EditProductPage() {
 
                   setForm({ ...form, images: updatedImages });
 
-                  await supabase
+                  await supabaseServer
                     .from("products")
                     .update({ images: updatedImages })
                     .eq("id", id);

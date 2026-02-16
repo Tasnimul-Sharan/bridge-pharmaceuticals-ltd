@@ -1,6 +1,6 @@
 "use client";
 
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function Sidebar() {
   const router = useRouter();
 
   const logout = async () => {
-    await supabase.auth.signOut();
+    await supabaseServer.auth.signOut();
     router.push("/login");
   };
 

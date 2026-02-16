@@ -6,7 +6,7 @@ import MedicalDisclaimer from "@/components/MedicalDisclaimer";
 import { products } from "@/data/products";
 import HeroSection from "@/components/HeroSection";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 // export async function getStaticPaths() {
 //   const paths = productDetailsData.map((product) => ({
@@ -20,7 +20,7 @@ import { supabase } from "@/lib/supabase";
 // }
 
 export async function getStaticPaths() {
-  const { data, error } = await supabase.from("products").select("slug");
+  const { data, error } = await supabaseServer.from("products").select("slug");
 
   if (error) {
     return { paths: [], fallback: "blocking" };
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
 // }
 
 export async function getStaticProps({ params }) {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseServer
     .from("products")
     .select("*")
     .eq("slug", params.slug)

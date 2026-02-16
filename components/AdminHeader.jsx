@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
@@ -9,7 +9,7 @@ export default function AdminHeader() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await supabase.auth.getUser();
+      const { data } = await supabaseServer.auth.getUser();
       setUser(data.user);
     };
 

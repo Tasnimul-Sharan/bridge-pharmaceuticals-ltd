@@ -1,6 +1,6 @@
 import AdminLayout from "@/components/AdminLayout";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabaseServer";
 
 function AddProductPage() {
   const [form, setForm] = useState({
@@ -39,6 +39,8 @@ function AddProductPage() {
 
   const [categories, setCategories] = useState([]);
   const [types, setTypes] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     fetchCategories();
@@ -72,29 +74,115 @@ function AddProductPage() {
     else alert("Product Added Successfully!");
   };
 
-  // const handleChange = (e) => {
-  //   setForm({ ...form, [e.target.name]: e.target.value });
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setUploading(true);
+
+  //     let imageUrls = [];
+
+  //     if (selectedFile) {
+  //       const formData = new FormData();
+  //       formData.append("file", selectedFile);
+
+  //       const res = await fetch("/api/upload", {
+  //         method: "POST",
+  //         body: formData,
+  //       });
+
+  //       const data = await res.json();
+
+  //       if (!res.ok) throw new Error("Upload failed");
+
+  //       imageUrls.push(data.url);
+  //     }
+
+  //     const { error } = await supabase.from("products").insert([
+  //       {
+  //         ...form,
+  //         images: imageUrls,
+  //       },
+  //     ]);
+
+  //     if (error) throw error;
+
+  //     alert("Product Added Successfully!");
+  //   } catch (err) {
+  //     alert(err.message);
+  //   } finally {
+  //     setUploading(false);
+  //   }
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setUploading(true);
+
+  //     let imageUrls = [];
+
+  //     if (selectedFile) {
+  //       const formData = new FormData();
+  //       formData.append("file", selectedFile);
+
+  //       const res = await fetch("/api/upload", {
+  //         method: "POST",
+  //         body: formData,
+  //       });
+
+  //       const data = await res.json();
+
+  //       if (!res.ok) throw new Error("Upload failed");
+
+  //       imageUrls.push(data.url);
+  //     }
+
+  //     const { error } = await supabase.from("products").insert([
+  //       {
+  //         ...form,
+  //         images: imageUrls,
+  //       },
+  //     ]);
+
+  //     if (error) throw error;
+
+  //     alert("Product Added Successfully!");
+  //   } catch (err) {
+  //     alert(err.message);
+  //   } finally {
+  //     setUploading(false);
+  //   }
   // };
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
+    setUploading(true);
+
     const reader = new FileReader();
 
     reader.onloadend = async () => {
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ file: reader.result }),
-      });
+      try {
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ file: reader.result }),
+        });
 
-      const data = await res.json();
+        const data = await res.json();
 
-      setForm({
-        ...form,
-        images: [...form.images, data.url],
-      });
+        setForm((prev) => ({
+          ...prev,
+          images: [...prev.images, data.url],
+        }));
+      } catch (err) {
+        alert("Image upload failed");
+      } finally {
+        setUploading(false);
+      }
     };
 
     reader.readAsDataURL(file);
@@ -106,9 +194,9 @@ function AddProductPage() {
     return text
       .toLowerCase()
       .trim()
-      .replace(/[^a-z0-9\s-]/g, "") // special char remove
-      .replace(/\s+/g, "-") // space -> dash
-      .replace(/-+/g, "-"); // multiple dash fix
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
   };
 
   const handleChange = (e) => {
@@ -128,86 +216,7 @@ function AddProductPage() {
   return (
     <div className="max-w-5xl mx-auto">
       <h1 className="text-xl mb-4">Add Product</h1>
-
-      {/* <form onSubmit={handleSubmit} className="space-y-4">
-        <select
-          name="category"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option>Choose Category</option>
-          {categories.map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
-
-        <select
-          name="type"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option>Choose Type</option>
-          {types.map((t) => (
-            <option key={t}>{t}</option>
-          ))}
-        </select>
-
-        <input
-          name="name"
-          placeholder="Product Name"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <input
-          name="generic"
-          placeholder="Generic Name"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="composition"
-          placeholder="Composition"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-
-        <textarea
-          name="description"
-          placeholder="Description"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="indication"
-          placeholder="Indication"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="contraindication"
-          placeholder="Contra-Indication"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="dosage"
-          placeholder="Dosage"
-          onChange={handleChange}
-          className="border p-2 w-full"
-        />
-
-        <input
-          type="file"
-          onChange={handleImageUpload}
-          className="border p-2 w-full"
-        />
-
-        <button className="bg-black text-white px-4 py-2 rounded">
-          Save Product
-        </button>
-      </form> */}
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* slug */}
         <input
           name="slug"
           value={form.slug}
@@ -215,20 +224,6 @@ function AddProductPage() {
           readOnly
           className="border p-2 w-full bg-gray-100"
         />
-        {/* Category */}
-        {/* <select
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option value="">Choose Category</option>
-          {categories.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select> */}
 
         <select
           name="category"
@@ -244,21 +239,6 @@ function AddProductPage() {
           ))}
         </select>
 
-        {/* Type */}
-        {/* <select
-          name="type"
-          value={form.type}
-          onChange={handleChange}
-          className="border p-2 w-full"
-        >
-          <option value="">Choose Type</option>
-          {types.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select> */}
-
         <select
           name="type"
           value={form.type}
@@ -273,7 +253,6 @@ function AddProductPage() {
           ))}
         </select>
 
-        {/* Basic Info */}
         <input
           name="name"
           value={form.name}
@@ -330,7 +309,6 @@ function AddProductPage() {
           className="border p-2 w-full"
         />
 
-        {/* Newly Added Fields */}
         <textarea
           name="interaction"
           value={form.interaction}
@@ -379,14 +357,12 @@ function AddProductPage() {
           className="border p-2 w-full"
         />
 
-        {/* Image Upload */}
         <input
           type="file"
           onChange={handleImageUpload}
           className="border p-2 w-full"
         />
 
-        {/* Preview Uploaded Images (optional but useful) */}
         {form.images.length > 0 && (
           <div className="flex gap-2 flex-wrap">
             {form.images.map((img, i) => (
@@ -400,8 +376,14 @@ function AddProductPage() {
           </div>
         )}
 
-        <button className="bg-black text-white px-4 py-2 rounded">
-          Save Product
+        <button
+          type="submit"
+          disabled={uploading}
+          className={`px-4 py-2 rounded text-white ${
+            uploading ? "bg-gray-400 cursor-not-allowed" : "bg-black"
+          }`}
+        >
+          {uploading ? "Uploading..." : "Save Product"}
         </button>
       </form>
     </div>

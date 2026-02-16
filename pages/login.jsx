@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "@/lib/supabase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 export default function Login() {
   const router = useRouter();
@@ -16,7 +16,7 @@ export default function Login() {
     setLoading(true);
     setError("");
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabaseServer.auth.signInWithPassword({
       email,
       password,
     });

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/components/AdminLayout";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 const Field = ({ label, value }) => (
   <div className="space-y-1">
@@ -21,7 +21,7 @@ export default function ViewProductPage() {
   useEffect(() => {
     if (!id) return;
 
-    supabase
+    supabaseServer
       .from("products")
       .select("*")
       .eq("id", id)

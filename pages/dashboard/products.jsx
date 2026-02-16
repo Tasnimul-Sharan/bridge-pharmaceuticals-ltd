@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
-import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/router";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 const PAGE_SIZE = 10;
 
@@ -27,7 +27,7 @@ export default function ProductsPage() {
     const from = (page - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE - 1;
 
-    let query = supabase
+    let query = supabaseServer
       .from("products")
       .select("*", { count: "exact" })
       .order("id", { ascending: true })
@@ -52,7 +52,10 @@ export default function ProductsPage() {
   const deleteProduct = async (id) => {
     if (!confirm("Delete this product permanently?")) return;
 
-    const { error } = await supabase.from("products").delete().eq("id", id);
+    const { error } = await supabaseServer
+      .from("products")
+      .delete()
+      .eq("id", id);
 
     if (!error) fetchProducts();
   };

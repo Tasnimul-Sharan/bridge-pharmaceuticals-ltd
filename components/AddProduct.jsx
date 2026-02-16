@@ -1,5 +1,5 @@
 "use client";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import { useState } from "react";
 
 export default function AddProduct() {
@@ -14,7 +14,7 @@ export default function AddProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { error } = await supabase.from("products").insert([
+    const { error } = await supabaseServer.from("products").insert([
       {
         ...form,
         images: form.images.split(","), // 👈 comma separated

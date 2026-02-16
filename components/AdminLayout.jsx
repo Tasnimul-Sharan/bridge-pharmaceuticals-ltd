@@ -49,7 +49,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "@/lib/supabase";
+import { supabaseServer } from "@/lib/supabaseServer";
 import Sidebar from "./Sidebar";
 import AdminHeader from "./AdminHeader";
 
@@ -60,7 +60,7 @@ export default function AdminLayout({ children }) {
   useEffect(() => {
     let isMounted = true;
 
-    supabase.auth.getSession().then(({ data }) => {
+    supabaseServer.auth.getSession().then(({ data }) => {
       if (!isMounted) return;
 
       if (!data.session) {

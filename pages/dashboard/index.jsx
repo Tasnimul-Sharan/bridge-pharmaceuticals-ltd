@@ -1,8 +1,8 @@
 "use client";
 
 import AdminLayout from "@/components/AdminLayout";
+import { supabaseServer } from "@/lib/supabaseServer";
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 import { FaBoxOpen, FaUserShield, FaLayerGroup, FaTags } from "react-icons/fa";
 
 function Dashboard() {
@@ -20,17 +20,17 @@ function Dashboard() {
   const fetchStats = async () => {
     try {
       // Total Products
-      const { count: productsCount } = await supabase
+      const { count: productsCount } = await supabaseServer
         .from("products")
         .select("*", { count: "exact", head: true });
 
       // Total Categories
-      const { count: categoriesCount } = await supabase
+      const { count: categoriesCount } = await supabaseServer
         .from("categories")
         .select("*", { count: "exact", head: true });
 
       // Total Types
-      const { count: typesCount } = await supabase
+      const { count: typesCount } = await supabaseServer
         .from("types")
         .select("*", { count: "exact", head: true });
 
@@ -52,7 +52,9 @@ function Dashboard() {
           <h1 className="text-3xl font-bold text-secondary tracking-wide">
             BRIDGE PHARMACEUTICALS LIMITED
           </h1>
-          <p className="text-sm text-soft_black mt-1">Admin Control Dashboard</p>
+          <p className="text-sm text-soft_black mt-1">
+            Admin Control Dashboard
+          </p>
         </div>
 
         <div className="text-right">
