@@ -94,15 +94,10 @@ export default function Navbar() {
     { name: "Products", path: "/products" },
     { name: "Facilities", path: "/facilities" },
     { name: "Blogs", path: "/blogs" },
-    { name: "Contact", path: "/contact" },
+    { name: "Gallery", path: "/gallery" },
   ];
 
   const isTransparent = !isScrolled;
-  // const textColor = isTransparent
-  //   ? hasBackground
-  //     ? "text-white"
-  //     : "text-secondary"
-  //   : "text-secondary";
 
   const textColor = isTransparent ? "text-white" : "text-secondary";
 
@@ -130,16 +125,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full">
-      {/* <div
-        className="hidden lg:block w-full text-base py-6 border-gray-200 bg-primary text-white"
-        // className={`fixed top-0 py-6 left-0 w-full z-50 transition-all transform duration-500 ${
-        //     isTransparent ? "bg-transparent" : ""
-        //   } ${textColor}`}
-      > */}
-      <div
-        // ref={topbarRef}
-        className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-primary text-white py-6"
-      >
+      <div className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-primary text-white py-6">
         <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-4">
           <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
             <p className="flex items-center gap-2 justify-center font-normal">
@@ -155,7 +141,7 @@ export default function Navbar() {
             </p>
           </div>
 
-          <div className="flex gap-4 text-secondary z-50">
+          <div className="flex gap-4 text-white z-50">
             <Link href="https://facebook.com" target="_blank">
               <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
             </Link>
@@ -186,7 +172,7 @@ export default function Navbar() {
               className="h-24 w-auto object-contain"
             />
           </Link>
-          <ul className="hidden lg:flex gap-8 font-semibold text-secondary">
+          <ul className="hidden lg:flex gap-8 font-semibold text-Secound_primary">
             {menuItems.map((item, index) => (
               <li key={index} className="relative group">
                 <Link
@@ -202,7 +188,7 @@ export default function Navbar() {
 
           <div className="hidden lg:block">
             <Link href="/contact">
-              <button className="bg-primary text-white px-6 py-2 rounded-md font-semibold hover:bg-secondary transition">
+              <button className="bg-primary text-white px-6 py-3 rounded font-semibold hover:bg-secondary transition-all transform duration-500">
                 Contact Us
               </button>
             </Link>

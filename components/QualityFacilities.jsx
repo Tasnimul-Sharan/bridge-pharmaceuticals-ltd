@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function QualityFacilities() {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <div>
           <span className="text-sm font-semibold tracking-widest text-primary uppercase">

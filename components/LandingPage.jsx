@@ -171,33 +171,6 @@ export default function LandingPage() {
                 initial="hidden"
                 animate={currentSlide === index ? "visible" : "hidden"}
               >
-                {/* <motion.span
-                  variants={itemVariants}
-                  className="text-primary uppercase tracking-widest text-sm mb-3"
-                >
-                  #{slide.subtitle}
-                </motion.span> */}
-
-                {/* <motion.div
-                  variants={itemVariants}
-                  className="flex items-center gap-3 mb-4"
-                >
-                  <span className="w-10 h-[2px] bg-primary"></span>
-
-                  <span className="uppercase tracking-[0.25em] text-xs font-semibold text-primary">
-                    {slide.subtitle}
-                  </span>
-                </motion.div> */}
-
-                {/* <motion.div
-                  variants={itemVariants}
-                  className="flex items-center gap-2 mb-4"
-                >
-                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                  <span className="uppercase tracking-[0.3em] text-xs font-medium text-primary">
-                    {slide.subtitle}
-                  </span>
-                </motion.div> */}
 
                 <motion.div
                   variants={itemVariants}

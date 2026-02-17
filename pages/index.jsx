@@ -37,13 +37,11 @@ export default function Home() {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
       </Head>
-      {/* <Navbar /> */}
       <LandingPage />
       <AboutUsSection />
       <PharmaStatsSection />
       <ProductsSection />
       <WhatWeSell />
-      {/* <Services /> */}
       {/* <TeamSection /> */}
       <ContactSection />
       <BlogSection />

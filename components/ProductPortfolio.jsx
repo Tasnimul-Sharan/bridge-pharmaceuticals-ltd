@@ -13,12 +13,9 @@ import { fadeUp } from "@/Hooks/animations";
 export default function ProductPortfolio() {
   return (
     <section className="relative bg-secondary_two/5 py-24 overflow-hidden">
-      {/* Background accents */}
       <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-
       <div className="relative max-w-7xl mx-auto px-6">
-        {/* Section Header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -39,8 +36,6 @@ export default function ProductPortfolio() {
             production.
           </p>
         </motion.div>
-
-        {/* Portfolio Grid */}
         <div className="grid md:grid-cols-3 gap-10">
           {/* Therapeutics */}
           <motion.div
@@ -66,7 +61,6 @@ export default function ProductPortfolio() {
             </ul>
           </motion.div>
 
-          {/* Nutritional Supplements */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -89,7 +83,6 @@ export default function ProductPortfolio() {
             </ul>
           </motion.div>
 
-          {/* Aquaculture */}
           <motion.div
             variants={fadeUp}
             initial="hidden"

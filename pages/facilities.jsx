@@ -1,7 +1,10 @@
 "use client";
 import FacilitiesSection from "@/components/FacilitiesSection";
+import GMPHighlight from "@/components/GMPHighlight";
 import HeroSection from "@/components/HeroSection";
 import QualityFacilities from "@/components/QualityFacilities";
+import RDShowcase from "@/components/RDShowcase";
+import ResearchTimeline from "@/components/ResearchTimeline";
 import Head from "next/head";
 export default function FacilitiesPage() {
   const meta = {
@@ -34,7 +37,6 @@ export default function FacilitiesPage() {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
       </Head>
-      {/* <Navbar hasBackground={true} /> */}
       <HeroSection
         hero={{
           title: "Our Facilities",
@@ -42,7 +44,10 @@ export default function FacilitiesPage() {
         }}
       />
       <FacilitiesSection />
+      <GMPHighlight />
       <QualityFacilities />
+      <ResearchTimeline />
+      <RDShowcase />
     </div>
   );
 }
