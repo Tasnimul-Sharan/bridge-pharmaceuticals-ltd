@@ -1,66 +1,100 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-const products = [
+const categories = ["All", "Therapeutic", "Nutritional", "Aquaculture"];
+
+const productGroups = [
   {
-    title: "Fish Health Solutions",
-    image: "/images/fish.jpg",
-    desc: "Scientifically formulated aquatic health products that enhance immunity, growth, and overall performance.",
+    groupTitle: "Therapeutic Products",
+    products: [
+      {
+        title: "Antibiotic Products",
+        image: "/images/antibiotics.jpg",
+        desc: "High-quality antibiotics formulated to combat bacterial infections responsibly.",
+      },
+      {
+        title: "Anthelmintic Products",
+        image: "/images/deworming.jpg",
+        desc: "Safe and effective control of parasitic worms with veterinary-grade assurance.",
+      },
+      {
+        title: "Anti-Parasitic Formulations",
+        image: "/images/parasite.jpg",
+        desc: "Broad-spectrum protection against internal and external parasites.",
+      },
+      {
+        title: "Anti-Protozoal Formulations",
+        image: "/images/antiprotozoal.jpg",
+        desc: "Effective protozoal infection control solutions for veterinary precision.",
+      },
+      {
+        title: "Anti-Inflammatory Therapy",
+        image: "/images/inflammatory.jpg",
+        desc: "Clinically trusted formulations to reduce pain, swelling, and inflammation.",
+      },
+      {
+        title: "Anti-Histamine Products",
+        image: "/images/antihistamine.jpg",
+        desc: "Reliable solutions to manage allergies and respiratory discomfort.",
+      },
+    ],
   },
   {
-    title: "Metabolic & Nutritional Supplements",
-    image: "/images/nutrition.jpg",
-    desc: "Advanced supplements designed to improve feed efficiency, vitality, and long-term wellness.",
+    groupTitle: "Nutritional & Metabolic Solutions",
+    products: [
+      {
+        title: "Metabolic & Nutritional Supplements",
+        image: "/images/nutrition.jpg",
+        desc: "Advanced supplements designed to improve feed efficiency and vitality.",
+      },
+      {
+        title: "Digestive & Appetite Stimulants",
+        image: "/images/digestive.jpg",
+        desc: "Optimized digestive stimulants that maximize nutrient absorption.",
+      },
+    ],
   },
   {
-    title: "Anti-Parasitic Formulations",
-    image: "/images/parasite.jpg",
-    desc: "Broad-spectrum protection against internal and external parasites with clinical safety standards.",
-  },
-  {
-    title: "Digestive & Appetite Enhancers",
-    image: "/images/digestive.jpg",
-    desc: "Optimized digestive stimulants that maximize nutrient absorption and appetite balance.",
-  },
-  {
-    title: "Anti-Histamine Care",
-    image: "/images/antihistamine.jpg",
-    desc: "Reliable solutions to manage allergies and respiratory discomfort effectively.",
-  },
-  {
-    title: "Anti-Inflammatory Therapy",
-    image: "/images/inflammatory.jpg",
-    desc: "Clinically trusted formulations to reduce pain, swelling, and inflammation.",
-  },
-  {
-    title: "Anthelmintic Treatments",
-    image: "/images/deworming.jpg",
-    desc: "Safe and effective control of parasitic worms with veterinary-grade assurance.",
-  },
-  {
-    title: "Antibiotic Range",
-    image: "/images/antibiotics.jpg",
-    desc: "High-quality antibiotics formulated to combat bacterial infections responsibly.",
+    groupTitle: "Aquaculture Solutions",
+    products: [
+      {
+        title: "Fish Health Solutions",
+        image: "/images/fish.jpg",
+        desc: "Scientifically formulated aquatic health products enhancing immunity and growth.",
+      },
+    ],
   },
 ];
 
 export default function WhatWeSell() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const allProducts = productGroups.flatMap((group) =>
+    group.products.map((product) => ({
+      ...product,
+      category:
+        group.groupTitle === "Therapeutic Products"
+          ? "Therapeutic"
+          : group.groupTitle === "Nutritional & Metabolic Solutions"
+            ? "Nutritional"
+            : "Aquaculture",
+    })),
+  );
+
+  const filteredProducts =
+    activeCategory === "All"
+      ? allProducts
+      : allProducts.filter((item) => item.category === activeCategory);
+
   return (
-    <section className="relative py-28 bg-gradient-to-b from-white via-sky-50/40 to-white">
+    <section className="py-28 bg-white">
       <div className="custom-container mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-24"
-        >
-          <span
-            className="inline-block px-4 py-2 border border-sky-200 mb-5 text-sm font-medium tracking-wide
-                           text-Secound_primary bg-sky-100 rounded-full"
-          >
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <span className="inline-block px-4 py-2 border border-sky-200 text-sm font-medium text-sky-700 bg-sky-100 rounded-full mb-5">
             Pharmaceutical Grade Products
           </span>
 
@@ -68,27 +102,45 @@ export default function WhatWeSell() {
             Our Product Portfolio
           </h2>
 
-          <p className="text-slate-600 text-lg leading-relaxed">
-            Precision-engineered veterinary and aquatic healthcare solutions
-            designed for safety, performance, and sustainability.
+          <p className="text-slate-600 text-lg">
+            Science-driven veterinary and aquaculture healthcare solutions.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              whileHover={{ y: -4 }}
+        {/* Filter Buttons */}
+        <div className="flex justify-center flex-wrap gap-4 mb-16">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all transform duration-500
+                ${
+                  activeCategory === cat
+                    ? "bg-Secound_primary text-white shadow-md"
+                    : "bg-gray-100 text-slate-600 hover:bg-Secound_primary/20"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <motion.div
+          key={activeCategory}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6 md:px-0"
+        >
+          {filteredProducts.map((item) => (
+            <div
+              key={item.title}
               className="group relative bg-white/80 backdrop-blur
-                         rounded-2xl overflow-hidden
-                         border border-sky-100
-                         shadow-[0_8px_30px_rgba(2,132,199,0.08)]
-                         hover:shadow-[0_15px_45px_rgba(2,132,199,0.18)]
-                         transition-all duration-300"
+                 rounded-2xl overflow-hidden
+                 border border-sky-100
+                 shadow-[0_8px_30px_rgba(2,132,199,0.08)]
+                 hover:shadow-[0_15px_45px_rgba(2,132,199,0.18)]
+                 transition-all duration-300"
             >
               {/* Image */}
               <div className="relative h-56 w-full overflow-hidden">
@@ -98,8 +150,6 @@ export default function WhatWeSell() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-
-                {/* Medical gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-sky-900/30 via-sky-700/10 to-transparent" />
               </div>
 
@@ -113,14 +163,10 @@ export default function WhatWeSell() {
                 </p>
               </div>
 
-              {/* Premium border glow */}
-              <div
-                className="absolute inset-0 rounded-2xl ring-1 ring-transparent
-                              group-hover:ring-sky-300/40 transition"
-              />
-            </motion.div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-transparent group-hover:ring-sky-300/40 transition" />
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
