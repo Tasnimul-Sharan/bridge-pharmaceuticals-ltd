@@ -40,7 +40,7 @@ export default function GMPHighlight() {
               key={i}
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
-              className="relative p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-gray-200 shadow-lg hover:shadow-2xl transition-all"
+              className="relative p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-gray-200 hover:shadow-2xl transition-all"
             >
               <div className="flex justify-center mb-6">
                 <div className="w-14 h-14 flex items-center justify-center rounded-full bg-primary/10 text-primary text-xl">

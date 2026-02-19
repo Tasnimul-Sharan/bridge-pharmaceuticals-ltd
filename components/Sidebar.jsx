@@ -11,6 +11,9 @@ import {
   FaSignOutAlt,
   FaTags,
   FaLayerGroup,
+  FaBriefcase,
+  FaClipboardList,
+  FaFileAlt,
 } from "react-icons/fa";
 
 export default function Sidebar() {
@@ -28,6 +31,21 @@ export default function Sidebar() {
       name: "Add Product",
       href: "/dashboard/products/add",
       icon: <FaPlusCircle />,
+    },
+    {
+      name: "Job Posts",
+      href: "/dashboard/job-post",
+      icon: <FaBriefcase />,
+    },
+    {
+      name: "Add Job Post",
+      href: "/dashboard/job-post/add",
+      icon: <FaClipboardList />,
+    },
+    {
+      name: "Job Applications",
+      href: "/dashboard/job-post/applications/[slug]", // [slug] will be replaced dynamically
+      icon: <FaFileAlt />,
     },
     { name: "Categories", href: "/dashboard/categories", icon: <FaTags /> },
     { name: "Types", href: "/dashboard/types", icon: <FaLayerGroup /> },

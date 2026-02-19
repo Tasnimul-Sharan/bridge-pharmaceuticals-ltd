@@ -94,6 +94,7 @@ export default function Navbar() {
     { name: "Products", path: "/products" },
     { name: "Facilities", path: "/facilities" },
     { name: "Blogs", path: "/blogs" },
+    { name: "Career ", path: "/career" },
     { name: "Gallery", path: "/gallery" },
   ];
 
