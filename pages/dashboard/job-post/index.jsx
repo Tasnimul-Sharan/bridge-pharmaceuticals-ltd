@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Eye, Pencil, Trash2, Plus } from "lucide-react";
+import { Eye, Pencil, Trash2, Plus, FileText } from "lucide-react";
 import { useRouter } from "next/router";
 import AdminLayout from "@/components/AdminLayout";
 import { supabaseServer } from "@/lib/supabaseServer";
@@ -169,6 +169,16 @@ export default function JobPostListPage() {
                         className="bg-blue-100 p-2 rounded hover:bg-blue-200"
                       >
                         <Pencil size={16} className="text-blue-600" />
+                      </button>
+                      <button
+                        onClick={() =>
+                          router.push(
+                            `/dashboard/job-post/applications/${job.slug}`,
+                          )
+                        }
+                        className="bg-purple-100 p-2 rounded hover:bg-purple-200"
+                      >
+                        <FileText size={16} className="text-purple-600" />
                       </button>
 
                       <button

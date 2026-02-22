@@ -1,138 +1,8 @@
-// "use client";
-
-// import { useState } from "react";
-// import { useRouter } from "next/router";
-
-// export default function JobApplyForm({ slug }) {
-//   const router = useRouter();
-
-//   const [form, setForm] = useState({
-//     name: "",
-//     email: "",
-//     phone: "",
-//     message: "",
-//   });
-
-//   const [cvFile, setCvFile] = useState(null);
-//   const [loading, setLoading] = useState(false);
-
-//   const toBase64 = (file) =>
-//     new Promise((resolve, reject) => {
-//       const reader = new FileReader();
-//       reader.readAsDataURL(file);
-//       reader.onload = () => resolve(reader.result);
-//       reader.onerror = (error) => reject(error);
-//     });
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (!cvFile) {
-//       alert("Please upload your CV");
-//       return;
-//     }
-
-//     setLoading(true);
-
-//     try {
-//       const base64File = await toBase64(cvFile);
-
-//       const uploadRes = await fetch("/api/upload", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           file: base64File,
-//         }),
-//       });
-
-//       const uploadData = await uploadRes.json();
-
-//       if (!uploadData.url) {
-//         throw new Error("Upload failed");
-//       }
-
-//       const applicationData = {
-//         ...form,
-//         cv_url: uploadData.url,
-//         job_slug: slug,
-//       };
-
-//       console.log("Application:", applicationData);
-
-
-//       alert("Application submitted successfully!");
-//       router.push("/career");
-//     } catch (error) {
-//       alert("Something went wrong");
-//       console.error(error);
-//     }
-
-//     setLoading(false);
-//   };
-
-//   return (
-//     <div className="max-w-xl mx-auto bg-white border p-8">
-//       <h1 className="text-2xl font-bold mb-6">Apply for {slug}</h1>
-
-//       <form onSubmit={handleSubmit} className="space-y-4">
-//         <input
-//           type="text"
-//           placeholder="Full Name"
-//           required
-//           className="w-full border p-3 rounded-lg"
-//           onChange={(e) => setForm({ ...form, name: e.target.value })}
-//         />
-
-//         <input
-//           type="email"
-//           placeholder="Email"
-//           required
-//           className="w-full border p-3 rounded-lg"
-//           onChange={(e) => setForm({ ...form, email: e.target.value })}
-//         />
-
-//         <input
-//           type="text"
-//           placeholder="Phone"
-//           required
-//           className="w-full border p-3 rounded-lg"
-//           onChange={(e) => setForm({ ...form, phone: e.target.value })}
-//         />
-
-//         <textarea
-//           placeholder="Cover Letter"
-//           rows="4"
-//           className="w-full border p-3 rounded-lg"
-//           onChange={(e) => setForm({ ...form, message: e.target.value })}
-//         />
-
-//         <input
-//           type="file"
-//           accept=".pdf,.doc,.docx"
-//           required
-//           onChange={(e) => setCvFile(e.target.files[0])}
-//         />
-
-//         <button
-//           type="submit"
-//           disabled={loading}
-//           className="w-full bg-black text-white py-3 rounded-full"
-//         >
-//           {loading ? "Submitting..." : "Submit Application"}
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { supabaseServer } from "@/lib/supabaseServer";
 
 export default function JobApplyForm({ slug }) {
   const router = useRouter();
@@ -166,35 +36,52 @@ export default function JobApplyForm({ slug }) {
     setLoading(true);
 
     try {
-      const base64File = await toBase64(cvFile);
+      // 🔥 Convert file to base64
+      const base64 = await toBase64(cvFile);
 
-      const uploadRes = await fetch("/api/upload", {
+      const uploadRes = await fetch("/api/uploadCv", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ file: base64File }),
+        body: JSON.stringify({ file: base64 }),
       });
 
       const uploadData = await uploadRes.json();
 
       if (!uploadData.url) {
-        throw new Error("Upload failed");
+        throw new Error("CV upload failed");
       }
 
-      const applicationData = {
-        ...form,
-        cv_url: uploadData.url,
-        job_slug: slug,
-      };
+      // Get job UUID from slug
+      const { data: jobData, error: jobError } = await supabaseServer
+        .from("job_posts")
+        .select("id")
+        .eq("slug", slug)
+        .single();
 
-      console.log("Application:", applicationData);
+      if (jobError || !jobData) {
+        throw new Error("Job not found");
+      }
+
+      // Insert application
+      const { error: insertError } = await supabaseServer
+        .from("job_applications")
+        .insert([
+          {
+            ...form,
+            cv_url: uploadData.url,
+            job_id: jobData.id,
+          },
+        ]);
+
+      if (insertError) throw insertError;
 
       alert("Application submitted successfully!");
       router.push("/career");
     } catch (error) {
-      alert("Something went wrong");
       console.error(error);
+      alert(error.message || "Something went wrong");
     }
 
     setLoading(false);
@@ -202,7 +89,7 @@ export default function JobApplyForm({ slug }) {
 
   return (
     <div className="w-full px-4 py-8">
-      <div className="w-full max-w-2xl mx-auto bg-white border border-gray-200 shadow-lg rounded-2xl p-8">
+      <div className="w-full max-w-2xl mx-auto bg-white border border-gray-200 rounded-2xl p-8">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Apply for {slug}
         </h1>

@@ -42,11 +42,11 @@ export default function Sidebar() {
       href: "/dashboard/job-post/add",
       icon: <FaClipboardList />,
     },
-    {
-      name: "Job Applications",
-      href: "/dashboard/job-post/applications/[slug]", // [slug] will be replaced dynamically
-      icon: <FaFileAlt />,
-    },
+    // {
+    //   name: "Job Applications",
+    //   href: "/dashboard/job-post/applications/[slug]",
+    //   icon: <FaFileAlt />,
+    // },
     { name: "Categories", href: "/dashboard/categories", icon: <FaTags /> },
     { name: "Types", href: "/dashboard/types", icon: <FaLayerGroup /> },
   ];
@@ -94,15 +94,6 @@ export default function Sidebar() {
           );
         })}
       </nav>
-      <div className="px-4 pb-6 mt-auto">
-        <button
-          onClick={logout}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 hover:text-red-500 transition"
-        >
-          <FaSignOutAlt />
-          Logout
-        </button>
-      </div>
     </aside>
   );
 }
