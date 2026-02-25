@@ -26,30 +26,57 @@ export default function LandingPage() {
 
   const slides = [
     {
-      subtitle: "Medical Store Template",
-      title: "Medicia Medical Service and",
+      subtitle: "Since 2010 • Bangladesh",
+      title: "Advancing Animal Health Innovation",
       description:
-        "Medicia as always focused on the best treatments with affordable price through the best medical services.",
-      image: "/slider/1.jpg",
+        "Bridge Pharmaceuticals Ltd. is a science-driven Animal Health company dedicated exclusively to Veterinary, Aquaculture, Nutritional, and Biosecurity solutions — ensuring healthier animals and safer food production.",
+      image: "/slider/bridge-1.jpg",
       align: "left",
     },
     {
-      subtitle: "Healthcare Innovation",
-      title: "Science for Better Living",
+      subtitle: "Quality • Research • Leadership",
+      title: "Trusted Partner of Farmers & Veterinarians",
       description:
-        "Developing safe, effective, and trusted medicines for a healthier tomorrow.",
-      image: "/slider/2.jpg",
+        "With a diversified portfolio of therapeutic and nutritional solutions, we empower livestock, poultry, and aquaculture sectors through innovation, affordability, and uncompromising quality standards.",
+      image: "/slider/bridge-2.jpg",
       align: "center",
     },
     {
-      subtitle: "Trusted Quality",
-      title: "Global Pharmaceutical Excellence",
+      subtitle: "Sustainable Growth • National Impact",
+      title: "Building a Healthier Future Together",
       description:
-        "Committed to international standards and continuous innovation.",
-      image: "/slider/3.jpg",
+        "Committed to excellence, integrity, and sustainability, Bridge Pharmaceuticals contributes to animal welfare, food safety, and long-term agricultural prosperity across Bangladesh.",
+      image: "/slider/bridge-3.jpg",
       align: "right",
     },
   ];
+
+  // const slides = [
+  //   {
+  //     subtitle: "Comprehensive Veterinary Solutions",
+  //     title: "Your One-Stop Animal Health Partner",
+  //     description:
+  //       "Bridge Pharmaceuticals Ltd. offers a complete range of high-quality veterinary medicines, vaccines, and nutritional supplements designed to enhance livestock productivity and animal welfare.",
+  //     image: "/slider/bridge-1.jpg",
+  //     align: "left",
+  //   },
+  //   {
+  //     subtitle: "Scientific Excellence & Innovation",
+  //     title: "Advancing Veterinary Science",
+  //     description:
+  //       "Our dedicated research and development team is committed to creating cutting-edge formulations and treatments, ensuring the best possible care for poultry, livestock, and aquaculture.",
+  //     image: "/slider/bridge-2.jpg",
+  //     align: "center",
+  //   },
+  //   {
+  //     subtitle: "Nationwide Distribution Network",
+  //     title: "Reaching Every Farm in Bangladesh",
+  //     description:
+  //       "With a robust supply chain and expert technical support, we ensure that farmers and veterinarians have immediate access to the essential animal health products they need.",
+  //     image: "/slider/bridge-3.jpg",
+  //     align: "right",
+  //   },
+  // ];
 
   const getAlignmentClasses = (align) => {
     switch (align) {
@@ -171,7 +198,6 @@ export default function LandingPage() {
                 initial="hidden"
                 animate={currentSlide === index ? "visible" : "hidden"}
               >
-
                 <motion.div
                   variants={itemVariants}
                   className="flex items-center gap-3 mb-4"

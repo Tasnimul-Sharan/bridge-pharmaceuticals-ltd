@@ -9,14 +9,14 @@ import Head from "next/head";
 export default function FacilitiesPage() {
   const meta = {
     title:
-      "Facilities | Anondo Baari - Senior Wellness & Assisted Living in Bangladesh",
+      "Facilities | Bridge Pharmaceuticals Ltd. Manufacturing & R&D Facilities in Bangladesh",
     description:
-      "Discover world-class accommodation at Anondo Baari in Purbachal, Dhaka. Choose from premium suites, assisted living residences, and recovery stays designed for comfort, safety, and community living.",
+      "Explore the state-of-the-art GMP-aligned manufacturing facility, Quality Control laboratories, Research & Development center, and nationwide distribution infrastructure of Bridge Pharmaceuticals Ltd., a leading Animal Health pharmaceutical manufacturer in Bangladesh.",
     keywords:
-      "Anondo Baari accommodation, senior living Bangladesh, assisted living suites, elderly care Dhaka, retirement home accommodation, Purbachal senior wellness, recovery stays Bangladesh, premium senior suites",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/accommodation",
-    image: "https://www.anondobari.com/accommodation/accommodation-og.jpg",
+      "Bridge Pharmaceuticals facilities, veterinary pharmaceutical manufacturing Bangladesh, GMP pharmaceutical factory Bangladesh, animal health R&D lab, quality control laboratory Bangladesh, pharmaceutical production facility Dhaka, veterinary medicine manufacturer Bangladesh",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/facilities",
+    image: "https://bridgepharmabd.com/facilities/facilities-og.jpg",
   };
 
   return (
@@ -32,15 +32,17 @@ export default function FacilitiesPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
       <HeroSection
         hero={{
           title: "Our Facilities",
-          backgroundImage: "/accommodation-bg.jpg",
+          backgroundImage: "/facilities-bg.jpg",
         }}
       />
       <FacilitiesSection />

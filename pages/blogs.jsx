@@ -5,14 +5,14 @@ import Head from "next/head";
 export default function BlogsPage() {
   const meta = {
     title:
-      "Blogs | Anondo Baari - Wellness, Senior Living & Lifestyle Insights",
+      "Blogs | Bridge Pharmaceuticals Ltd. Animal Health Insights & Industry Trends in Bangladesh",
     description:
-      "Read blogs and articles from Anondo Baari on senior wellness, assisted living, holistic healthcare, nutrition, yoga, community lifestyle, and elderly care in Bangladesh.",
+      "Explore expert insights from Bridge Pharmaceuticals Ltd. on Animal Health, GMP compliance, Veterinary medicines, Pharmaceutical quality assurance, Cold chain logistics, R&D innovation, and modern pharmaceutical manufacturing in Bangladesh.",
     keywords:
-      "Anondo Baari blogs, senior wellness articles, elderly care Bangladesh, assisted living Dhaka, wellness lifestyle blogs, yoga meditation tips, nutrition for seniors, retirement home insights, holistic healthcare Bangladesh",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/blogs",
-    image: "https://www.anondobari.com/blogs/blog-og.jpg",
+      "Bridge Pharmaceuticals blog, animal health insights Bangladesh, veterinary pharmaceutical articles, GMP compliance Bangladesh, pharmaceutical manufacturing blog, aquaculture medicine research, cold chain logistics pharma, veterinary R&D Bangladesh",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/blogs",
+    image: "https://bridgepharmabd.com/blogs/blog-og.jpg",
   };
 
   return (
@@ -28,12 +28,13 @@ export default function BlogsPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
-      {/* <Navbar hasBackground={true} /> */}
       <HeroSection
         hero={{
           title: "Blogs",

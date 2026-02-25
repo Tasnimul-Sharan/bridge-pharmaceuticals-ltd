@@ -129,7 +129,7 @@ function TypesPage() {
     }
 
     // ADD MODE
-    const { error } = await supabase.from("types").insert([
+    const { error } = await supabaseServer.from("types").insert([
       {
         name,
         slug: generateSlug(name),

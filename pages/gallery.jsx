@@ -1,18 +1,17 @@
 import HeroSection from "@/components/HeroSection";
 import Head from "next/head";
-import Navbar from "@/components/Navbar";
 import GalleryPageSection from "@/components/GalleryPageSection";
 export default function GalleryPage() {
   const meta = {
     title:
-      "Gallery | Anondo Baari - Senior Living & Wellness Center in Bangladesh",
+      "Gallery | Bridge Pharmaceuticals Ltd. Manufacturing & R&D Facilities",
     description:
-      "Explore the Anondo Baari Gallery showcasing our senior wellness center, assisted living suites, landscaped gardens, wellness activities, dining experiences, and community life at Purbachal, Dhaka.",
+      "Explore the gallery of Bridge Pharmaceuticals Ltd. showcasing our GMP-aligned manufacturing facility, quality control laboratories, research & development center, production systems, and nationwide distribution infrastructure in Bangladesh.",
     keywords:
-      "Anondo Baari gallery, senior living Bangladesh, assisted living images, wellness center photos, elderly care Dhaka, retirement home Bangladesh, community lifestyle, wellness activities, Purbachal senior care",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/gallery",
-    image: "https://www.anondobari.com/gallery/gallery-og.jpg",
+      "Bridge Pharmaceuticals gallery, veterinary pharmaceutical factory Bangladesh, GMP manufacturing facility images, animal health R&D lab photos, pharmaceutical production Bangladesh, veterinary company infrastructure Bangladesh",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/gallery",
+    image: "https://bridgepharmabd.com/gallery/gallery-og.jpg",
   };
 
   return (
@@ -28,12 +27,13 @@ export default function GalleryPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
-      <Navbar hasBackground={true} />
       <HeroSection
         hero={{
           title: "Gallery",

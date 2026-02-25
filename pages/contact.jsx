@@ -2,19 +2,18 @@
 import HeroSection from "@/components/HeroSection";
 import Head from "next/head";
 import EventMap from "@/components/EventMap";
-import Navbar from "@/components/Navbar";
 import ContactPageSection from "@/components/ContactPageSection";
 export default function ContactPage() {
   const meta = {
     title:
-      "Contact | Anondo Baari - Senior Wellness & Assisted Living in Bangladesh",
+      "Contact | Bridge Pharmaceuticals Ltd. Animal Health Company in Bangladesh",
     description:
-      "Get in touch with Anondo Baari for inquiries, admissions, or visits. Located in Purbachal, Dhaka, our senior wellness and assisted living center offers world-class care, wellness programs, and community living.",
+      "Contact Bridge Pharmaceuticals Ltd., a leading Animal Health pharmaceutical manufacturer in Bangladesh. Reach our head office in Motijheel, Dhaka, factory in Demra, or connect with our nationwide distribution centers for veterinary and aquaculture solutions.",
     keywords:
-      "Anondo Baari contact, senior living Bangladesh, assisted living Dhaka, wellness center contact, elderly care Bangladesh, retirement home inquiry, Purbachal senior care, Anondo Baari phone, Anondo Baari email",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/contact",
-    image: "https://www.anondobari.com/contact/contact-og.jpg",
+      "Bridge Pharmaceuticals contact, animal health company Bangladesh, veterinary pharmaceutical contact Dhaka, aquaculture medicine supplier Bangladesh, pharma manufacturer Motijheel, Demra pharmaceutical factory, livestock medicine distributor Bangladesh",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/contact",
+    image: "https://bridgepharmabd.com/contact/contact-og.jpg",
   };
 
   return (
@@ -30,12 +29,14 @@ export default function ContactPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
-      {/* <Navbar hasBackground={true} /> */}
+
       <HeroSection
         hero={{
           title: "Contact",

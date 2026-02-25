@@ -3,15 +3,14 @@ import Head from "next/head";
 import ProductsPageSection from "@/components/ProductsPageSection";
 export default function ProductsPage() {
   const meta = {
-    title:
-      "Services | Anondo Baari - Senior Wellness & Assisted Living in Bangladesh",
+    title: "Veterinary & Animal Health Products | Bridge Pharmaceuticals Ltd.",
     description:
-      "Discover Anondo Baari’s world-class services for senior citizens in Purbachal, Dhaka. We offer assisted living, 24/7 healthcare, therapeutic care, yoga, meditation, nutrition counseling, and vibrant community activities for a dignified life.",
+      "Explore the complete range of Veterinary and Animal Health products from Bridge Pharmaceuticals Ltd., including Antibiotics, Anthelmintics, Anti-protozoals, Anti-inflammatory medicines, Nutritional Supplements, Aqua products, and more — manufactured in Bangladesh under GMP-aligned facilities.",
     keywords:
-      "Anondo Baari services, senior wellness Bangladesh, assisted living Dhaka, elderly care, therapeutic services, wellness programs, yoga meditation, nutrition counseling, retirement home Bangladesh",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/services",
-    image: "https://www.anondobari.com/services/services-og.jpg",
+      "Bridge Pharmaceuticals products, veterinary medicines Bangladesh, animal health products Bangladesh, livestock medicine manufacturer, poultry medicine supplier, aquaculture products Bangladesh, veterinary antibiotics Bangladesh, animal nutritional supplements manufacturer",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/products",
+    image: "https://bridgepharmabd.com/products/products-og.jpg",
   };
 
   return (
@@ -27,12 +26,13 @@ export default function ProductsPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
-      {/* <Navbar hasBackground={true} /> */}
       <HeroSection
         hero={{
           title: "All Products",

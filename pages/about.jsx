@@ -11,14 +11,14 @@ import ProductPortfolio from "@/components/ProductPortfolio";
 export default function AboutPage() {
   const meta = {
     title:
-      "About Us | Anondo Baari - Senior Wellness & Assisted Living in Bangladesh",
+      "About | Bridge Pharmaceuticals Ltd. Leading Animal Health Company in Bangladesh",
     description:
-      "Learn about Anondo Baari, a senior citizen wellness and living center in Purbachal, Dhaka. Discover our vision, mission, world-class facilities, wellness programs, medical support, and commitment to dignity, independence, and joy for the elderly.",
+      "Bridge Pharmaceuticals Ltd., established in 2010, is a leading Animal Health pharmaceutical manufacturer in Bangladesh specializing in Veterinary, Aquaculture, Nutritional Supplements, and Biosecurity solutions. Serving livestock, poultry, and fish farmers nationwide.",
     keywords:
-      "About Anondo Baari, senior wellness Bangladesh, assisted living Dhaka, elderly care Bangladesh, retirement home, wellness center for seniors, holistic healthcare, senior living community, Purbachal senior care",
-    author: "Anondo Baari",
-    url: "https://www.anondobari.com/about",
-    image: "https://www.anondobari.com/about/about-og.jpg",
+      "Bridge Pharmaceuticals Ltd, animal health Bangladesh, veterinary medicine manufacturer Bangladesh, aquaculture pharmaceutical company, livestock medicine Bangladesh, poultry medicine company, biosecurity products Bangladesh, veterinary supplements Bangladesh",
+    author: "Bridge Pharmaceuticals Ltd.",
+    url: "https://bridgepharmabd.com/about",
+    image: "https://bridgepharmabd.com/og-about.jpg",
   };
 
   const faqData = {
@@ -124,10 +124,12 @@ export default function AboutPage() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={meta.url} />
         <meta property="og:image" content={meta.image} />
+        <meta property="og:site_name" content="Bridge Pharmaceuticals Ltd." />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
+        <link rel="canonical" href={meta.url} />
       </Head>
       <HeroSection
         hero={{

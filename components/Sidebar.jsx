@@ -55,23 +55,24 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 min-h-screen bg-soft_black text-white flex flex-col border-r border-white/10">
-      <div className="px-6 py-6 border-b border-white/10 flex items-center gap-3">
+      <Link
+        href="/"
+        className="px-6 py-6 border-b border-white/10 flex items-center gap-3 hover:bg-white/5 transition"
+      >
         <Image
-          src="/logo/BRIDGE-LOGO.jpg"
+          src="/logo/bridge-logo.png"
           alt="Bridge Logo"
-          width={80}
-          height={80}
-          className="w-14 h-14 rounded-full object-cover"
+          width={2000}
+          height={2000}
+          className="w-16 h-16 rounded-full object-cover"
         />
         <div>
           <h2 className="text-lg font-bold">
             Bridge <span className="text-primary">Pharma</span>
           </h2>
-          {/* <h2 className="text-lg font-bold">Admin Panel</h2> */}
-          {/* <p className="text-xs text-white/50">Management Console</p> */}
           <p className="text-xs text-white/50">Admin Panel</p>
         </div>
-      </div>
+      </Link>
 
       <nav className="flex-1 px-4 py-6 space-y-1">
         {menu.map((item) => {
