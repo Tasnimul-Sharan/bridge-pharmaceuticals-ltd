@@ -146,32 +146,32 @@ export default function ContactSection() {
                        p-10 rounded-2xl shadow-[0_10px_40px_rgba(2,132,199,0.08)]"
           >
             <h2 className="text-2xl font-semibold mb-8 text-slate-900">
-              Send a Message
+              Connect With Us
             </h2>
 
             <form className="space-y-5">
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full border border-slate-200 rounded-xl px-5 py-3
-                           focus:ring-2 focus:ring-sky-400 outline-none"
+                className="w-full border border-slate-200 rounded-xl px-6 py-3
+                            outline-none"
               />
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full border border-slate-200 rounded-xl px-5 py-3
-                           focus:ring-2 focus:ring-sky-400 outline-none"
+                className="w-full border border-slate-200 rounded-xl px-6 py-3
+                            outline-none"
               />
               <textarea
                 rows={5}
                 placeholder="Your Message"
-                className="w-full border border-slate-200 rounded-xl px-5 py-3
-                           focus:ring-2 focus:ring-sky-400 outline-none"
+                className="w-full border border-slate-200 rounded-xl px-6 py-3
+                            outline-none"
               />
 
               <button
                 type="submit"
-                className="bg-sky-600 text-white px-8 py-3 rounded-xl
+                className="bg-sky-600 text-white px-8 py-3 rounded-lg
                            font-medium hover:bg-sky-700 transition"
               >
                 Send Message

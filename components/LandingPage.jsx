@@ -185,7 +185,7 @@ export default function LandingPage() {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/60" />
+            <div className="absolute inset-0 bg-black/50" />
 
             {/* Content */}
             <div className="relative z-10 h-full flex items-center custom-container mx-auto">

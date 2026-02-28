@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaTimeline } from "react-icons/fa6";
+import SectionBadge from "./SectionBadge";
+import { FaBusinessTime } from "react-icons/fa";
 
 export default function AboutUsSection() {
   return (
@@ -18,9 +21,9 @@ export default function AboutUsSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-block mb-4 text-sm font-semibold tracking-widest uppercase text-primary">
+          <SectionBadge icon={FaBusinessTime} className="mb-3">
             Since 2010
-          </span>
+          </SectionBadge>
 
           {/* <h1 className="text-3xl md:text-5xl font-bold leading-tight text-secondary mb-6">
             Leading Bangladesh’s <br />
