@@ -8,7 +8,8 @@ const HeroSection = ({ hero }) => {
       <div
         className="absolute inset-0 transition bg-cover bg-center bg-no-repeat transform duration-1000 ease-out"
         style={{
-          backgroundImage: `url('${hero.backgroundImage}')`,
+          // backgroundImage: `url('${hero.backgroundImage}')`,
+          backgroundImage: `url('/hero-bg.jpg')`,
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>

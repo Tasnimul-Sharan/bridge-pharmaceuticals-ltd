@@ -14,13 +14,13 @@ export default function ProductDescription({ product }) {
   ];
 
   return (
-    <div className="mt-12 bg-white border rounded-md p-8 text-sm space-y-6">
+    <div className="mt-12 bg-white border rounded-md p-8 text-base space-y-6">
       {sections.map(
         ([title, content]) =>
           content && (
             <section key={title}>
               <h3 className="font-semibold mb-2 text-secondary">{title}</h3>
-              <pre className="whitespace-pre-wrap text-gray-700 text-base leading-relaxed">
+              <pre className="whitespace-pre-wrap font-sans text-gray-700 text-base leading-relaxed">
                 {content}
               </pre>
             </section>

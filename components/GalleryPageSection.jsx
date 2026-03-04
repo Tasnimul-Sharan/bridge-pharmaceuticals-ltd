@@ -19,57 +19,28 @@ import "yet-another-react-lightbox/plugins/thumbnails.css";
 export default function GalleryPageSection() {
   const router = useRouter();
   const gallery = [
-    {
-      img: "/gallery/gallery17.jpg",
-    },
-    {
-      img: "/gallery/gallery18.jpg",
-    },
-    {
-      img: "/gallery/gallery19.jpg",
-    },
-    {
-      img: "/gallery/gallery20.jpg",
-    },
-    {
-      img: "/gallery/gallery21.jpg",
-    },
-    {
-      img: "/gallery/gallery22.jpg",
-    },
-    {
-      img: "/gallery/gallery1.jpg",
-    },
-    {
-      img: "/gallery/gallery2.jpg",
-    },
-    {
-      img: "/gallery/gallery3.jpg",
-    },
-    {
-      img: "/gallery/gallery9.jpg",
-    },
-    {
-      img: "/gallery/gallery10.jpg",
-    },
-    {
-      img: "/gallery/gallery11.jpg",
-    },
-    {
-      img: "/gallery/gallery12.jpg",
-    },
-    {
-      img: "/gallery/gallery13.jpg",
-    },
-    {
-      img: "/gallery/gallery14.jpg",
-    },
-    {
-      img: "/gallery/gallery15.jpg",
-    },
-    {
-      img: "/gallery/gallery16.jpg",
-    },
+    { img: "/gallery/gallery1.jpg", date: "01 Jan 2026" },
+    { img: "/gallery/gallery2.jpg", date: "03 Jan 2026" },
+    { img: "/gallery/gallery3.jpg", date: "05 Jan 2026" },
+    { img: "/gallery/gallery4.jpg", date: "07 Jan 2026" },
+    { img: "/gallery/gallery5.jpg", date: "09 Jan 2026" },
+    { img: "/gallery/gallery6.jpg", date: "11 Jan 2026" },
+    { img: "/gallery/gallery7.jpg", date: "13 Jan 2026" },
+    { img: "/gallery/gallery8.jpg", date: "15 Jan 2026" },
+    { img: "/gallery/gallery9.jpg", date: "17 Jan 2026" },
+    { img: "/gallery/gallery10.jpg", date: "19 Jan 2026" },
+    { img: "/gallery/gallery11.jpg", date: "21 Jan 2026" },
+    { img: "/gallery/gallery12.jpg", date: "23 Jan 2026" },
+    { img: "/gallery/gallery13.jpg", date: "25 Jan 2026" },
+    { img: "/gallery/gallery14.jpg", date: "27 Jan 2026" },
+    { img: "/gallery/gallery15.jpg", date: "29 Jan 2026" },
+    { img: "/gallery/gallery16.jpg", date: "31 Jan 2026" },
+    { img: "/gallery/gallery17.jpg", date: "02 Feb 2026" },
+    { img: "/gallery/gallery18.jpg", date: "04 Feb 2026" },
+    { img: "/gallery/gallery19.jpg", date: "06 Feb 2026" },
+    { img: "/gallery/gallery20.jpg", date: "08 Feb 2026" },
+    // { img: "/gallery/gallery21.jpg", date: "10 Feb 2026" },
+    // { img: "/gallery/gallery22.jpg", date: "12 Feb 2026" },
   ];
 
   const subtitle = "Our Works";
@@ -96,22 +67,13 @@ export default function GalleryPageSection() {
     },
   };
 
-  // const item = {
-  //   hidden: { opacity: 0, y: 50, scale: 0.9 },
-  //   show: {
-  //     opacity: 1,
-  //     y: 0,
-  //     scale: 1,
-  //     transition: { duration: 0.7, ease: "easeOut" },
-  //   },
-  // };
-
   const item = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
     },
   };
 
@@ -119,32 +81,24 @@ export default function GalleryPageSection() {
     <div className="custom-container mx-auto py-16">
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6"
-        // variants={container}
-        // initial="hidden"
-        // whileInView="show"
-        // viewport={{ once: true, amount: 0.2 }}
+        variants={container}
+        initial="hidden"
+        animate="show"
       >
         {gallery.map((itemData, idx) => (
           <motion.div
             key={idx}
             variants={item}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
             className="relative overflow-hidden rounded-md group cursor-pointer"
             // onClick={() => router.push(`/gallery/${itemData.slug}`)}
             onClick={() => handleImageClick(idx)}
           >
             <Image
               src={itemData.img}
-              alt="Gallery Image"
+              alt={itemData.title}
               width={1200}
               height={1200}
-              priority={idx < 4}
-              placeholder="blur"
-              blurDataURL="/placeholder.jpg"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-full object-cover transition-all transform duration-1000 ease-in group-hover:scale-125"
             />
 
             {/* Hover Overlay */}
@@ -165,13 +119,14 @@ export default function GalleryPageSection() {
         <Lightbox
           open={isOpen}
           close={() => setIsOpen(false)}
-          slides={gallery.map((g) => ({ src: g.img, description: g.title }))}
           index={currentIndex}
+          slides={gallery.map((g) => ({
+            src: g.img,
+            title: `Date: ${g.date}`,
+          }))}
           plugins={[Thumbnails, Captions, Zoom, Fullscreen, Slideshow]}
-          thumbnails={{ position: "bottom" }}
-          captions={{ position: "below" }}
-          zoom={{ maxZoomPixelRatio: 3, scrollToZoom: true }}
-          slideshow={{ autoplay: false }}
+          captions={{ titleTextAlign: "center" }}
+          thumbnails={{ position: "bottom", width: 100, height: 70 }}
         />
       )}
     </div>

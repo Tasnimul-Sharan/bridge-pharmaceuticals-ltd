@@ -87,7 +87,7 @@ export default function ProductDetailsPage({ product }) {
         }}
       />
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="custom-container mx-auto py-10">
         <Breadcrumbs product={product} />
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">

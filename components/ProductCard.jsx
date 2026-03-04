@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
     <div className="bg-white rounded-lg border border-gray-200 hover:shadow-xl hover:shadow-secondary/50 transition-all duration-500 p-8">
       <div className="relative h-48 mb-6">
         <Image
-          src={product.image}
+          src={product.images?.[0]}
           alt={product.name}
           fill
           className="object-contain"

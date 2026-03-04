@@ -1,208 +1,95 @@
-// import jsPDF from "jspdf";
-
-// export const generatePrescriptionPdf = (product) => {
-//   const doc = new jsPDF();
-
-//   let y = 20; // starting vertical position
-
-//   const addField = (label, value) => {
-//     if (!value) return;
-//     doc.setFontSize(14);
-//     doc.text(`${label}:`, 20, y);
-//     y += 6;
-//     doc.setFontSize(12);
-//     doc.text(value, 25, y, { maxWidth: 160 });
-//     y += 12;
-//     if (y > 280) {
-//       doc.addPage();
-//       y = 20;
-//     }
-//   };
-
-//   // Add all fields
-//   addField("Category", product.category);
-//   addField("Type", product.type);
-//   addField("Name", product.name);
-//   addField("Generic", product.generic);
-//   addField("Composition", product.composition);
-//   addField("Description", product.description);
-//   addField("Indication", product.indication);
-//   addField("Contraindication", product.contraindication);
-//   addField("Dosage", product.dosage);
-//   addField("Drug Interaction", product.interaction);
-//   addField("Side Effects", product.sideeffect);
-//   addField("Precautions", product.precaution);
-//   addField("Withdrawal Period", product.withdrawal);
-//   addField("Storage Condition", product.storage);
-//   addField("Packing", product.packing);
-
-//   doc.save(`${product.slug || "product"}-prescription.pdf`);
-// };
-
-// import jsPDF from "jspdf";
-
-// export const generatePrescriptionPdf = (product) => {
-//   const doc = new jsPDF("p", "mm", "a4");
-
-//   let y = 25;
-
-//   /* ---------- Header ---------- */
-//   doc.setFillColor(22, 163, 165); // teal
-//   doc.rect(0, 0, 210, 18, "F");
-
-//   doc.setTextColor(255);
-//   doc.setFontSize(16);
-//   doc.setFont("helvetica", "bold");
-//   doc.text("PRODUCT PRESCRIPTION", 105, 12, { align: "center" });
-
-//   doc.setTextColor(0);
-
-//   /* ---------- Helpers ---------- */
-//   const addDivider = () => {
-//     doc.setDrawColor(220);
-//     doc.line(20, y, 190, y);
-//     y += 6;
-//   };
-
-//   const addField = (label, value) => {
-//     if (!value) return;
-
-//     if (y > 270) {
-//       doc.addPage();
-//       y = 25;
-//     }
-
-//     doc.setFontSize(11);
-//     doc.setFont("helvetica", "bold");
-//     doc.text(label, 20, y);
-
-//     y += 5;
-
-//     doc.setFont("helvetica", "normal");
-//     doc.setFontSize(11);
-//     doc.text(value, 25, y, { maxWidth: 160 });
-
-//     y += 10;
-//   };
-
-//   /* ---------- Product Info ---------- */
-//   doc.setFontSize(14);
-//   doc.setFont("helvetica", "bold");
-//   doc.text(product.name || "Product Name", 20, y);
-//   y += 8;
-
-//   doc.setFontSize(11);
-//   doc.setFont("helvetica", "italic");
-//   doc.text(product.generic || "", 20, y);
-//   y += 8;
-
-//   addDivider();
-
-//   /* ---------- Sections ---------- */
-//   addField("Category", product.category);
-//   addField("Type", product.type);
-//   addField("Composition", product.composition);
-//   addField("Description", product.description);
-
-//   addDivider();
-
-//   addField("Indication", product.indication);
-//   addField("Contraindication", product.contraindication);
-//   addField("Dosage & Administration", product.dosage);
-//   addField("Drug Interaction", product.interaction);
-//   addField("Side Effects", product.sideeffect);
-//   addField("Precautions", product.precaution);
-
-//   addDivider();
-
-//   addField("Withdrawal Period", product.withdrawal);
-//   addField("Storage Condition", product.storage);
-//   addField("Packing", product.packing);
-
-//   /* ---------- Footer ---------- */
-//   doc.setFontSize(9);
-//   doc.setTextColor(120);
-//   doc.text("Generated automatically • For professional use only", 105, 290, {
-//     align: "center",
-//   });
-
-//   doc.save(`${product.slug || "product"}-prescription.pdf`);
-// };
-
-
 import jsPDF from "jspdf";
 
 export const generatePrescriptionPdf = (product) => {
   const doc = new jsPDF("p", "mm", "a4");
 
-  let y = 28;
+  let y = 25;
+  const pageWidth = 210;
+  const margin = 20;
+  const contentWidth = 170;
 
-  /* ---------- Utilities ---------- */
-  const pageCheck = (space = 18) => {
-    if (y + space > 275) {
+  /* ---------- Page Control ---------- */
+  const pageCheck = (space = 20) => {
+    if (y + space > 270) {
       doc.addPage();
-      y = 28;
-      drawAccent();
+      y = 25;
+      drawHeaderBand(false);
     }
   };
 
-  const drawAccent = () => {
-    doc.setDrawColor(180, 150, 90); // muted gold
-    doc.setLineWidth(0.8);
-    doc.line(20, 18, 190, 18);
-  };
+  /* ---------- Header Band ---------- */
+  const drawHeaderBand = (firstPage = true) => {
+    doc.setFillColor(18, 45, 85); // deep corporate navy
+    doc.rect(0, 0, pageWidth, 35, "F");
 
-  const section = (title) => {
-    pageCheck(20);
+    doc.setTextColor(255);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(13);
-    doc.text(title.toUpperCase(), 20, y);
-    y += 4;
-
-    doc.setDrawColor(220);
-    doc.setLineWidth(0.3);
-    doc.line(20, y, 190, y);
-    y += 10;
-  };
-
-  const field = (label, value) => {
-    if (!value) return;
-    pageCheck(22);
-
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(10);
-    doc.text(label, 20, y);
+    doc.setFontSize(18);
+    doc.text(product.name || "Product Name", margin, 18);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
-    doc.text(value, 20, y + 6, { maxWidth: 170 });
+    doc.text(product.generic || "", margin, 26);
 
-    y += 16;
+    doc.setTextColor(0);
+
+    if (!firstPage) y = 45;
+    else y = 50;
   };
 
-  /* ---------- Header ---------- */
-  drawAccent();
+  /* ---------- Section Title ---------- */
+  const section = (title) => {
+    pageCheck(20);
 
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(20);
-  doc.text(product.name || "Product Name", 20, y);
-  y += 8;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(13);
+    doc.setTextColor(18, 45, 85);
+    doc.text(title.toUpperCase(), margin, y);
 
-  doc.setFont("helvetica", "italic");
-  doc.setFontSize(12);
-  doc.setTextColor(90);
-  doc.text(product.generic || "", 20, y);
-  y += 14;
+    y += 4;
 
-  doc.setTextColor(0);
+    doc.setDrawColor(200);
+    doc.setLineWidth(0.4);
+    doc.line(margin, y, pageWidth - margin, y);
 
-  /* ---------- Content ---------- */
+    y += 10;
+    doc.setTextColor(0);
+  };
+
+  /* ---------- Field ---------- */
+  const field = (label, value) => {
+    if (!value) return;
+
+    pageCheck(30);
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text(label, margin, y);
+    y += 6;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+
+    const lines = doc.splitTextToSize(value, contentWidth);
+
+    doc.text(lines, margin, y);
+    const lineHeight = 5.5;
+    y += lines.length * lineHeight + 8;
+
+    // y += lines.length * 6 + 6; // dynamic height based on lines
+  };
+
+  /* ---------- Start Document ---------- */
+  drawHeaderBand(true);
+
+  /* ---------- Overview Section ---------- */
   section("Product Overview");
   field("Category", product.category);
   field("Product Type", product.type);
   field("Composition", product.composition);
   field("Description", product.description);
 
+  /* ---------- Clinical Section ---------- */
   section("Clinical Information");
   field("Indication", product.indication);
   field("Contraindication", product.contraindication);
@@ -211,6 +98,7 @@ export const generatePrescriptionPdf = (product) => {
   field("Side Effects", product.sideeffect);
   field("Precautions", product.precaution);
 
+  /* ---------- Storage Section ---------- */
   section("Handling & Storage");
   field("Withdrawal Period", product.withdrawal);
   field("Storage Condition", product.storage);
@@ -219,12 +107,14 @@ export const generatePrescriptionPdf = (product) => {
   /* ---------- Footer ---------- */
   doc.setFontSize(9);
   doc.setTextColor(120);
+  doc.line(margin, 282, pageWidth - margin, 282);
+
   doc.text(
-    "Confidential pharmaceutical information • Generated digitally",
-    105,
-    290,
+    "Bridge Pharmaceuticals Ltd. • Confidential Medical Document",
+    pageWidth / 2,
+    288,
     { align: "center" },
   );
 
-  doc.save(`${product.slug || "product"}-premium.pdf`);
+  doc.save(`${product.slug || "product"}-professional.pdf`);
 };
