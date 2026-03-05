@@ -28,10 +28,10 @@ export default function RDShowcase() {
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative h-[420px] rounded-3xl overflow-hidden shadow-2xl"
+            className="relative h-[420px] rounded-3xl overflow-hidden"
           >
             <Image
-              src="/images/rd-lab1.jpg"
+              src="/rnd/rd-lab1.jpg"
               alt="Product Development Laboratory"
               fill
               className="object-cover"
@@ -80,10 +80,10 @@ export default function RDShowcase() {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative h-[420px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2"
+            className="relative h-[420px] rounded-3xl overflow-hidden order-1 lg:order-2"
           >
             <Image
-              src="/images/rd-lab2.jpg"
+              src="/rnd/rd-lab2.jpg"
               alt="Analytical Laboratory"
               fill
               className="object-cover"

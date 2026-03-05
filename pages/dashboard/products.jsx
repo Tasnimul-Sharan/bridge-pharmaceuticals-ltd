@@ -5,6 +5,7 @@ import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 import { useRouter } from "next/router";
 import { supabaseServer } from "@/lib/supabaseServer";
+import Link from "next/link";
 
 const PAGE_SIZE = 10;
 
@@ -66,9 +67,13 @@ export default function ProductsPage() {
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">All Products</h1>
 
-        <button className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition">
-          <Plus size={18} /> Add Product
-        </button>
+        <Link
+          href="/dashboard/products/add"
+          className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-secondary transition"
+        >
+          <Plus size={18} />
+          Add Product
+        </Link>
       </div>
 
       {/* Search */}

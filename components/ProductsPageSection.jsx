@@ -76,19 +76,6 @@ export default function ProductsPageSection() {
       <div className="container mx-auto px-4">
         <ProductSearch value={search} onChange={setSearch} />
 
-        {/* Category Dropdown */}
-        {/* <div className="text-center mb-6">
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="border px-4 py-2 rounded"
-          >
-            <option value="">All Category</option>
-            {categories.map((c) => (
-              <option key={c}>{c}</option>
-            ))}
-          </select>
-        </div> */}
         <CategoryDropdown
           value={category}
           onChange={setCategory}
@@ -111,21 +98,6 @@ export default function ProductsPageSection() {
             ))}
           </div>
         )}
-
-        {/* Pagination */}
-        {/* <div className="flex justify-center gap-2 mt-10 flex-wrap">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setPage(i + 1)}
-              className={`px-4 py-2 border rounded ${
-                page === i + 1 ? "bg-secondary text-white" : "bg-white"
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div> */}
 
         <Pagination
           currentPage={page}

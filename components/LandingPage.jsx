@@ -93,7 +93,7 @@ export default function LandingPage() {
     dots: false,
     infinite: true,
     fade: true,
-    speed: 1000,
+    speed: 0,
     arrows: true,
     autoplay: true,
     autoplaySpeed: 5000,

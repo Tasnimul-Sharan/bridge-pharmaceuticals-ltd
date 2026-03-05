@@ -132,12 +132,57 @@ export default function ContactSection() {
       <section className="max-w-7xl mx-auto px-6 pb-24">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Map */}
-          <div className="rounded-2xl overflow-hidden border border-sky-100">
-            <iframe
-              src="https://www.google.com/maps?q=Printers%20Building%20Dhaka&output=embed"
-              className="w-full h-full min-h-[460px] border-0"
-              loading="lazy"
-            />
+          <div
+            className="bg-white/90 backdrop-blur border border-sky-100
+             p-10 rounded-2xl shadow-[0_10px_40px_rgba(2,132,199,0.08)]"
+          >
+            <h2 className="text-2xl font-semibold mb-8 text-slate-900">
+              Contact Channels
+            </h2>
+
+            <div className="space-y-6">
+              {/* Phone */}
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
+                  <FaPhoneAlt />
+                </div>
+                <div>
+                  <p className="font-medium text-slate-900">Customer Support</p>
+                  <p className="text-sm text-slate-600">+88 02-41050459</p>
+                  <p className="text-sm text-slate-500">
+                    Sunday – Thursday, 9:00 AM – 6:00 PM
+                  </p>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
+                  <FaEnvelope />
+                </div>
+                <div>
+                  <p className="font-medium text-slate-900">Business Inquiry</p>
+                  <p className="text-sm text-slate-600">hrbplho@gmail.com</p>
+                  <p className="text-sm text-slate-500">
+                    Response within 24 hours
+                  </p>
+                </div>
+              </div>
+
+              {/* Corporate Office */}
+              <div className="flex items-start gap-4">
+                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
+                  <FaBuilding />
+                </div>
+                <div>
+                  <p className="font-medium text-slate-900">Corporate Office</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Printer’s Building (13th Floor), Rajuk Avenue, Motijheel
+                    C/A, Dhaka-1000
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Contact Form */}
