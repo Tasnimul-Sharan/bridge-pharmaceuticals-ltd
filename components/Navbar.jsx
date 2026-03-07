@@ -126,9 +126,13 @@ export default function Navbar() {
     }
   }, [isScrolled]);
 
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+  }, [isMenuOpen]);
+
   return (
     <header className="w-full">
-      <div className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-primary text-white py-6">
+      <div className="hidden lg:block fixed top-0 left-0 w-full z-40 bg-primary text-white py-6">
         <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-4">
           <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
             {/* Address */}
@@ -159,7 +163,7 @@ export default function Navbar() {
             </p>
           </div>
 
-          <div className="flex gap-4 text-white z-50">
+          <div className="flex gap-4 text-white z-40">
             <Link href="https://facebook.com" target="_blank">
               <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
             </Link>
@@ -179,7 +183,7 @@ export default function Navbar() {
         ref={navRef}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 transform-gpu ${navbarClasses}`}
       >
-        <div className="custom-container mx-auto h-24 flex items-center justify-between">
+        <div className="custom-container mx-auto h-24 flex items-center justify-between z-40">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo/bridge-logo1.jpg"
@@ -213,13 +217,49 @@ export default function Navbar() {
           </div>
 
           <button
-            className="lg:hidden text-3xl text-primary"
+            className="lg:hidden text-3xl text-primary z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
           </button>
         </div>
       </nav>
+      <div
+        ref={menuRef}
+        className="fixed top-0 left-0 w-0 h-0 opacity-0 bg-primary text-white z-30 overflow-hidden flex flex-col justify-center items-center lg:hidden"
+      >
+        <ul className="flex flex-col gap-8 text-2xl font-semibold text-center">
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <Link
+                href={item.path}
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-secondary transition-colors"
+              >
+                {item.name}
+              </Link>
+            </li>
+          ))}
+
+          <li>
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="inline-block mt-4 bg-white text-primary px-6 py-3 rounded-lg font-semibold"
+            >
+              Contact Us
+            </Link>
+          </li>
+        </ul>
+
+        {/* Social Icons */}
+        <div className="flex gap-6 mt-12 text-xl">
+          <FaFacebookF />
+          <FaXTwitter />
+          <FaLinkedinIn />
+          <FaInstagram />
+        </div>
+      </div>
     </header>
   );
 }
