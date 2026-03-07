@@ -8,7 +8,7 @@ import { useState } from "react";
 const blogs = [
   {
     id: 1,
-    img: "/blogs/pharma/pharma-1.jpg",
+    img: "/blogs/pharma-1.jpg",
     date: "18 AUGUST, 2025",
     author: "BRIDGE PHARMA INSIGHTS",
     title: "Ensuring GMP Compliance in Modern Pharmaceutical Manufacturing",
@@ -16,7 +16,7 @@ const blogs = [
   },
   {
     id: 2,
-    img: "/blogs/animal-health/animal-health-1.jpg",
+    img: "/blogs/animal-health-1.jpg",
     date: "10 AUGUST, 2025",
     author: "BRIDGE PHARMA INSIGHTS",
     title: "Advancing Animal Health Through Quality Veterinary Medicines",
@@ -24,7 +24,7 @@ const blogs = [
   },
   {
     id: 3,
-    img: "/blogs/research/research-1.jpg",
+    img: "/blogs/research-1.jpg",
     date: "02 AUGUST, 2025",
     author: "BRIDGE PHARMA R&D",
     title: "Innovation & Research: Driving the Future of Pharmaceuticals",
@@ -32,7 +32,7 @@ const blogs = [
   },
   {
     id: 4,
-    img: "/blogs/quality/quality-1.jpg",
+    img: "/blogs/quality-1.jpg",
     date: "22 JULY, 2025",
     author: "BRIDGE QUALITY TEAM",
     title: "Quality Assurance Protocols in Pharmaceutical Distribution",
@@ -40,7 +40,7 @@ const blogs = [
   },
   {
     id: 5,
-    img: "/blogs/supply-chain/supply-1.jpg",
+    img: "/blogs/supply-chain-1.jpg",
     date: "14 JULY, 2025",
     author: "BRIDGE SUPPLY CHAIN",
     title: "Strengthening Cold Chain Logistics for Medicine Safety",
@@ -48,7 +48,7 @@ const blogs = [
   },
   {
     id: 6,
-    img: "/blogs/technology/tech-1.jpg",
+    img: "/blogs/tech-1.jpg",
     date: "05 JULY, 2025",
     author: "BRIDGE PHARMA TECH",
     title: "Digital Transformation in Pharmaceutical Operations",

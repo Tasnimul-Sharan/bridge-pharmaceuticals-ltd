@@ -9,6 +9,8 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
+  FaClock,
+  FaPhoneAlt,
 } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
@@ -129,31 +131,46 @@ export default function Navbar() {
       <div className="hidden lg:block fixed top-0 left-0 w-full z-50 bg-primary text-white py-6">
         <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-4">
           <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
-            <p className="flex items-center gap-2 justify-center font-normal">
-              <FaMapMarkerAlt className="text-primary shrink-0" />
+            {/* Address */}
+            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
+              <FaMapMarkerAlt className="text-white shrink-0" />
               <span>
                 Printers Building, 12-14th Floor, 5 Rajuk Avenue, Motijheel,
                 Dhaka
               </span>
             </p>
-            <p className="flex items-center gap-2 justify-center font-normal">
-              <FaEnvelope className="text-primary shrink-0" />
+
+            {/* Email */}
+            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
+              <FaEnvelope className="text-white shrink-0" />
               <span>hrbplho@gmail.com</span>
+            </p>
+
+            {/* Phone */}
+            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
+              <FaPhoneAlt className="text-white shrink-0" />
+              <span>+880 1762627623</span>
+            </p>
+
+            {/* Office Time */}
+            <p className="flex items-center gap-2 justify-center font-normal">
+              <FaClock className="text-white shrink-0" />
+              <span>Sat – Thu · 10 AM – 6 PM</span>
             </p>
           </div>
 
           <div className="flex gap-4 text-white z-50">
             <Link href="https://facebook.com" target="_blank">
-              <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
+              <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
             </Link>
             <Link href="https://twitter.com" target="_blank">
-              <FaXTwitter className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
+              <FaXTwitter className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
             </Link>
             <Link href="https://linkedin.com" target="_blank">
-              <FaLinkedinIn className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
+              <FaLinkedinIn className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
             </Link>
             <Link href="https://instagram.com" target="_blank">
-              <FaInstagram className="hover:text-secondary cursor-pointer w-5 h-5 transition-all transform duration-500" />
+              <FaInstagram className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
             </Link>
           </div>
         </div>

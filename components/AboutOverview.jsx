@@ -174,55 +174,13 @@ export default function AboutOverview() {
             <p>
               A new era of growth began in <strong>2023</strong> under the
               leadership of Chairperson <strong>Mrs. Farzana Mozammel</strong>{" "}
-              and Managing Director <strong>Mr. Gazi Md. Mokammel Hoque</strong>
+              {/* and Managing Director <strong>Mr. Gazi Md. Mokammel Hoque</strong> */}
               . Their dynamic vision strengthened quality systems, expanded
               product portfolios, and positioned Bridge Pharmaceuticals as a
               forward-looking leader in Animal Healthcare innovation.
             </p>
           </div>
         </motion.div>
-
-        {/* Right Card */}
-        {/* <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative bg-white/80 backdrop-blur-xl rounded-3xl border border-gray-200 shadow-current p-10"
-        >
-          <h3 className="text-xl font-semibold mb-8 flex items-center gap-3">
-            <span className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-              <FaUserTie />
-            </span>
-            Founded By
-          </h3>
-
-          <ul className="space-y-6">
-            <li className="flex gap-4">
-              <span className="w-2 h-2 mt-2 rounded-full bg-primary" />
-              <p className="text-gray-700 leading-relaxed">
-                <strong className="text-gray-900">Mr. Safar Ali</strong>
-                <br />
-                <span className="text-sm text-gray-500">
-                  Pioneer in Animal Health entrepreneurship and product
-                  development
-                </span>
-              </p>
-            </li>
-
-            <li className="flex gap-4">
-              <span className="w-2 h-2 mt-2 rounded-full bg-primary" />
-              <p className="text-gray-700 leading-relaxed">
-                <strong className="text-gray-900">Mr. Kamrul Hassan</strong>
-                <br />
-                <span className="text-sm text-gray-500">
-                  Specialist in Veterinary sales and nationwide distribution
-                  strategy
-                </span>
-              </p>
-            </li>
-          </ul>
-        </motion.div> */}
       </div>
     </section>
   );

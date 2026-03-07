@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaPrescriptionBottleAlt } from "react-icons/fa";
+import SectionBadge from "./SectionBadge";
 
 const categories = ["All", "Therapeutic", "Nutritional", "Aquaculture"];
 
@@ -12,32 +14,32 @@ const productGroups = [
     products: [
       {
         title: "Antibiotic Products",
-        image: "/images/antibiotics.jpg",
+        image: "/portfolio/antibiotics.jpg",
         desc: "High-quality antibiotics formulated to combat bacterial infections responsibly.",
       },
       {
         title: "Anthelmintic Products",
-        image: "/images/deworming.jpg",
+        image: "/portfolio/deworming.jpg",
         desc: "Safe and effective control of parasitic worms with veterinary-grade assurance.",
       },
       {
         title: "Anti-Parasitic Formulations",
-        image: "/images/parasite.jpg",
+        image: "/portfolio/parasite.jpg",
         desc: "Broad-spectrum protection against internal and external parasites.",
       },
       {
         title: "Anti-Protozoal Formulations",
-        image: "/images/antiprotozoal.jpg",
+        image: "/portfolio/antiprotozoal.jpg",
         desc: "Effective protozoal infection control solutions for veterinary precision.",
       },
       {
         title: "Anti-Inflammatory Therapy",
-        image: "/images/inflammatory.jpg",
+        image: "/portfolio/inflammatory.jpg",
         desc: "Clinically trusted formulations to reduce pain, swelling, and inflammation.",
       },
       {
         title: "Anti-Histamine Products",
-        image: "/images/antihistamine.jpg",
+        image: "/portfolio/antihistamine.jpg",
         desc: "Reliable solutions to manage allergies and respiratory discomfort.",
       },
     ],
@@ -47,12 +49,12 @@ const productGroups = [
     products: [
       {
         title: "Metabolic & Nutritional Supplements",
-        image: "/images/nutrition.jpg",
+        image: "/portfolio/nutrition.jpg",
         desc: "Advanced supplements designed to improve feed efficiency and vitality.",
       },
       {
         title: "Digestive & Appetite Stimulants",
-        image: "/images/digestive.jpg",
+        image: "/portfolio/digestive.jpeg",
         desc: "Optimized digestive stimulants that maximize nutrient absorption.",
       },
     ],
@@ -62,7 +64,7 @@ const productGroups = [
     products: [
       {
         title: "Fish Health Solutions",
-        image: "/images/fish.jpg",
+        image: "/portfolio/fish.jpg",
         desc: "Scientifically formulated aquatic health products enhancing immunity and growth.",
       },
     ],
@@ -94,9 +96,11 @@ export default function WhatWeSell() {
       <div className="custom-container mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-block px-4 py-2 border border-sky-200 text-sm font-medium text-sky-700 bg-sky-100 rounded-full mb-5">
-            Pharmaceutical Grade Products
-          </span>
+          <div className="flex justify-center mb-4">
+            <SectionBadge icon={FaPrescriptionBottleAlt}>
+              Pharmaceutical Grade Products
+            </SectionBadge>
+          </div>
 
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
             Our Product Portfolio

@@ -6,20 +6,71 @@ import {
   FaBuilding,
   FaIndustry,
   FaUserTie,
+  FaComments,
+  FaBriefcase,
 } from "react-icons/fa";
+import SectionBadge from "./SectionBadge";
+import { useState } from "react";
 
 export default function ContactSection() {
+  const [result, setResult] = useState({
+    message: "",
+    type: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(event.target);
+    formData.append("access_key", "084d004e-4d18-416e-aec2-91ba5ddf1954");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult({
+          message: "Message sent successfully. Our team will contact you soon.",
+          type: "success",
+        });
+
+        event.target.reset();
+      } else {
+        setResult({
+          message: "Something went wrong. Please try again.",
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setResult({
+        message: "Network error. Please try later.",
+        type: "error",
+      });
+    }
+
+    setLoading(false);
+
+    setTimeout(() => {
+      setResult({ message: "", type: "" });
+    }, 4000);
+  };
+
   return (
     <main className="bg-gradient-to-b from-white via-sky-50/40 to-white">
       {/* ================= Header ================= */}
       <section>
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
-          <span
-            className="inline-block px-4 py-2 mb-5 text-sm font-medium tracking-wide
-                           text-sky-700 bg-sky-100 rounded-full border border-sky-200"
-          >
-            Corporate Communication
-          </span>
+          <div className="flex justify-center mb-4">
+            <SectionBadge icon={FaBriefcase} className="mb-0">
+              Corporate Communication
+            </SectionBadge>
+          </div>
 
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900">
             Contact Our Offices
@@ -132,57 +183,16 @@ export default function ContactSection() {
       <section className="max-w-7xl mx-auto px-6 pb-24">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Map */}
-          <div
-            className="bg-white/90 backdrop-blur border border-sky-100
-             p-10 rounded-2xl shadow-[0_10px_40px_rgba(2,132,199,0.08)]"
-          >
-            <h2 className="text-2xl font-semibold mb-8 text-slate-900">
-              Contact Channels
-            </h2>
-
-            <div className="space-y-6">
-              {/* Phone */}
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
-                  <FaPhoneAlt />
-                </div>
-                <div>
-                  <p className="font-medium text-slate-900">Customer Support</p>
-                  <p className="text-sm text-slate-600">+88 02-41050459</p>
-                  <p className="text-sm text-slate-500">
-                    Sunday – Thursday, 9:00 AM – 6:00 PM
-                  </p>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
-                  <FaEnvelope />
-                </div>
-                <div>
-                  <p className="font-medium text-slate-900">Business Inquiry</p>
-                  <p className="text-sm text-slate-600">hrbplho@gmail.com</p>
-                  <p className="text-sm text-slate-500">
-                    Response within 24 hours
-                  </p>
-                </div>
-              </div>
-
-              {/* Corporate Office */}
-              <div className="flex items-start gap-4">
-                <div className="w-11 h-11 flex items-center justify-center bg-sky-100 text-sky-600 rounded-xl">
-                  <FaBuilding />
-                </div>
-                <div>
-                  <p className="font-medium text-slate-900">Corporate Office</p>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    Printer’s Building (13th Floor), Rajuk Avenue, Motijheel
-                    C/A, Dhaka-1000
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-[600px]">
+            <iframe
+              src="https://www.google.com/maps?q=Printer's%20Building%20Motijheel%20Dhaka&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
 
           {/* Contact Form */}
@@ -194,33 +204,64 @@ export default function ContactSection() {
               Connect With Us
             </h2>
 
-            <form className="space-y-5">
+            <form onSubmit={onSubmit} className="space-y-5">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
-                className="w-full border border-slate-200 rounded-xl px-6 py-3
-                            outline-none"
+                required
+                className="w-full border border-slate-200 rounded-lg px-6 py-3 outline-none"
               />
+
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
-                className="w-full border border-slate-200 rounded-xl px-6 py-3
-                            outline-none"
+                required
+                className="w-full border border-slate-200 rounded-lg px-6 py-3 outline-none"
               />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone Number"
+                className="w-full border border-slate-200 rounded-lg px-6 py-3 outline-none"
+              />
+
               <textarea
                 rows={5}
+                name="message"
                 placeholder="Your Message"
-                className="w-full border border-slate-200 rounded-xl px-6 py-3
-                            outline-none"
+                required
+                className="w-full border border-slate-200 rounded-lg px-6 py-3 outline-none"
               />
 
               <button
                 type="submit"
-                className="bg-sky-600 text-white px-8 py-3 rounded-lg
-                           font-medium hover:bg-sky-700 transition"
+                disabled={loading}
+                className="bg-sky-600 text-white px-8 py-3 rounded-lg font-medium 
+  hover:bg-sky-700 transition w-full flex items-center justify-center gap-2"
               >
-                Send Message
+                {loading && (
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                )}
+
+                {loading ? "Sending..." : "Send Message"}
               </button>
+
+              {/* Result Message */}
+              {result.message && (
+                <div
+                  className={`mt-4 text-sm text-center px-4 py-3 rounded-lg
+      ${
+        result.type === "success"
+          ? "bg-green-50 text-green-700 border border-green-200"
+          : "bg-red-50 text-red-700 border border-red-200"
+      }`}
+                >
+                  {result.message}
+                </div>
+              )}
             </form>
           </div>
         </div>

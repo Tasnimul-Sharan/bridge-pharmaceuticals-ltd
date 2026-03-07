@@ -105,70 +105,6 @@ export default function LandingPage() {
   };
 
   return (
-    // <section className="relative overflow-hidden group">
-    //   <Slider {...settings}>
-    //     {slides.map((slide, index) => (
-    //       <div key={index} className="h-screen relative">
-    //         {/* Background image */}
-    //         <div
-    //           className="absolute inset-0 bg-cover bg-center"
-    //           style={{ backgroundImage: `url(${slide.image})` }}
-    //         />
-    //         <div className="absolute inset-0 bg-black/50" />
-
-    //         <div className="relative h-full flex items-center custom-container mx-auto">
-    //           <motion.div
-    //             key={
-    //               currentSlide === index
-    //                 ? `slide-${index}-${Date.now()}`
-    //                 : index
-    //             }
-    //             className={`max-w-3xl flex flex-col ${getAlignmentClasses(
-    //               slide.align,
-    //             )}`}
-    //             variants={containerVariants}
-    //             initial="hidden"
-    //             animate="visible"
-    //           >
-    //             {/* Subtitle */}
-    //             <motion.span
-    //               variants={itemVariants}
-    //               className="text-primary uppercase tracking-widest text-sm mb-3"
-    //             >
-    //               #{slide.subtitle}
-    //             </motion.span>
-
-    //             {/* Title */}
-    //             <motion.h1
-    //               variants={itemVariants}
-    //               className="text-4xl md:text-5xl font-bold text-secondary_two mb-6"
-    //             >
-    //               {slide.title}
-    //             </motion.h1>
-
-    //             {/* Description */}
-    //             <motion.p
-    //               variants={itemVariants}
-    //               className="text-white mb-10 max-w-xl"
-    //             >
-    //               {slide.description}
-    //             </motion.p>
-
-    //             {/* Buttons */}
-    //             <motion.div variants={itemVariants} className="flex gap-4">
-    //               <Link href="/shop">
-    //                 <Button variant="primary">Shop Now</Button>
-    //               </Link>
-    //               <Link href="/about">
-    //                 <Button variant="outline">Learn More</Button>
-    //               </Link>
-    //             </motion.div>
-    //           </motion.div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </Slider>
-    // </section>
 
     <section className="relative w-full h-screen overflow-hidden group">
       <Slider {...settings}>
@@ -229,8 +165,8 @@ export default function LandingPage() {
                 </motion.p>
 
                 <motion.div variants={itemVariants} className="flex gap-4">
-                  <Link href="/shop">
-                    <Button variant="primary">Shop Now</Button>
+                  <Link href="/contact">
+                    <Button variant="primary">Get In Touch</Button>
                   </Link>
                   <Link href="/about">
                     <Button variant="outline">Learn More</Button>

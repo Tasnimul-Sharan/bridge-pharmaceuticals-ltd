@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 
 export const blogDetailsData = {
   meta: {
-    title: "Blogs | Bridge Pharma",
+    title: "Blogs | Bridge Pharmaceuticals Ltd.",
     description:
       "Explore expert insights from Bridge Pharma on pharmaceutical manufacturing, animal health, research, quality assurance, logistics, and digital transformation.",
     keywords:
@@ -18,7 +18,7 @@ export const blogDetailsData = {
       slug: "gmp-compliance-pharma-manufacturing",
       blogPost: {
         title: "Ensuring GMP Compliance in Modern Pharmaceutical Manufacturing",
-        image: "/blogs/pharma/pharma-1.jpg",
+        image: "/blogs/pharma-1.jpg",
         author: "Bridge Pharma Insights",
         date: "18 AUGUST, 2025",
         description:
@@ -36,7 +36,7 @@ export const blogDetailsData = {
           "Improves brand credibility and trust.",
           "Maintains consistent medicine quality.",
         ],
-        subImages: ["/blogs/pharma/pharma-2.jpg", "/blogs/pharma/pharma-3.jpg"],
+        subImages: ["/blogs/pharma-2.jpg", "/blogs/pharma-3.jpg"],
         quote:
           "Quality is not inspected into a product — it is built into every process.",
         postTags: ["GMP", "Manufacturing", "Compliance"],
@@ -69,7 +69,7 @@ export const blogDetailsData = {
       slug: "advancing-animal-health",
       blogPost: {
         title: "Advancing Animal Health Through Quality Veterinary Medicines",
-        image: "/blogs/animal-health/animal-health-1.jpg",
+        image: "/blogs/animal-health-1.jpg",
         author: "Bridge Pharma Insights",
         date: "10 AUGUST, 2025",
         description:
@@ -90,8 +90,8 @@ export const blogDetailsData = {
         ],
 
         subImages: [
-          "/blogs/animal-health/animal-health-2.jpg",
-          "/blogs/animal-health/animal-health-3.jpg",
+          "/blogs/animal-health-2.jpg",
+          "/blogs/animal-health-3.jpg",
         ],
         quote: "Healthy animals build a stronger agricultural future.",
         postTags: ["Animal Health", "Veterinary", "Medicine"],
@@ -125,7 +125,7 @@ export const blogDetailsData = {
       slug: "innovation-research-pharma",
       blogPost: {
         title: "Innovation & Research: Driving the Future of Pharmaceuticals",
-        image: "/blogs/research/research-1.jpg",
+        image: "/blogs/research-1.jpg",
         author: "Bridge Pharma R&D",
         date: "02 AUGUST, 2025",
         description:
@@ -146,8 +146,8 @@ export const blogDetailsData = {
         ],
 
         subImages: [
-          "/blogs/research/research-2.jpg",
-          "/blogs/research/research-3.jpg",
+          "/blogs/research-2.jpg",
+          "/blogs/research-3.jpg",
         ],
         quote: "Innovation today shapes the medicine of tomorrow.",
         postTags: ["Research", "Innovation", "Pharma"],
@@ -184,7 +184,7 @@ export const blogDetailsData = {
       slug: "pharma-quality-assurance-protocols",
       blogPost: {
         title: "Quality Assurance Protocols in Pharmaceutical Distribution",
-        image: "/blogs/quality/quality-1.jpg",
+        image: "/blogs/quality-1.jpg",
         author: "Bridge Quality Team",
         date: "22 JULY, 2025",
         description:
@@ -205,8 +205,8 @@ export const blogDetailsData = {
         ],
 
         subImages: [
-          "/blogs/quality/quality-2.jpg",
-          "/blogs/quality/quality-3.jpg",
+          "/blogs/quality-2.jpg",
+          "/blogs/quality-3.jpg",
         ],
         quote:
           "Distribution quality is the final gatekeeper of patient safety.",
@@ -234,7 +234,7 @@ export const blogDetailsData = {
       slug: "cold-chain-medicine-safety",
       blogPost: {
         title: "Strengthening Cold Chain Logistics for Medicine Safety",
-        image: "/blogs/supply-chain/supply-1.jpg",
+        image: "/blogs/supply-chain-1.jpg",
         author: "Bridge Supply Chain",
         date: "14 JULY, 2025",
         description:
@@ -255,8 +255,8 @@ export const blogDetailsData = {
         ],
 
         subImages: [
-          "/blogs/supply-chain/supply-2.jpg",
-          "/blogs/supply-chain/supply-3.jpg",
+          "/blogs/supply-chain-2.jpg",
+          "/blogs/supply-chain-3.jpg",
         ],
         quote:
           "A broken cold chain can break patient trust — precision matters.",
@@ -284,7 +284,7 @@ export const blogDetailsData = {
       slug: "digital-transformation-pharma-operations",
       blogPost: {
         title: "Digital Transformation in Pharmaceutical Operations",
-        image: "/blogs/technology/tech-1.jpg",
+        image: "/blogs/tech-1.jpg",
         author: "Bridge Pharma Tech",
         date: "05 JULY, 2025",
         description:
@@ -305,8 +305,8 @@ export const blogDetailsData = {
         ],
 
         subImages: [
-          "/blogs/technology/tech-2.jpg",
-          "/blogs/technology/tech-3.jpg",
+          "/blogs/tech-2.jpg",
+          "/blogs/tech-3.jpg",
         ],
         quote:
           "Technology is no longer optional — it is the backbone of modern pharma.",

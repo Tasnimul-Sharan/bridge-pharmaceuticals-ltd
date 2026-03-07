@@ -1,14 +1,15 @@
 "use client";
 import Image from "next/image";
-import { FaArrowRight, FaRegUser } from "react-icons/fa";
+import { FaArrowRight, FaBookOpen, FaRegUser } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Button from "./Button";
+import SectionBadge from "./SectionBadge";
 
 const blogs = [
   {
     id: 1,
-    img: "/blogs/pharma/pharma-1.jpg",
+    img: "/blogs/pharma-1.jpg",
     date: "18 AUGUST, 2025",
     author: "BRIDGE PHARMA INSIGHTS",
     title: "Ensuring GMP Compliance in Modern Pharmaceutical Manufacturing",
@@ -16,7 +17,7 @@ const blogs = [
   },
   {
     id: 2,
-    img: "/blogs/animal-health/animal-health-1.jpg",
+    img: "/blogs/animal-health-1.jpg",
     date: "10 AUGUST, 2025",
     author: "BRIDGE PHARMA INSIGHTS",
     title: "Advancing Animal Health Through Quality Veterinary Medicines",
@@ -24,7 +25,7 @@ const blogs = [
   },
   {
     id: 3,
-    img: "/blogs/research/research-1.jpg",
+    img: "/blogs/research-1.jpg",
     date: "02 AUGUST, 2025",
     author: "BRIDGE PHARMA R&D",
     title: "Innovation & Research: Driving the Future of Pharmaceuticals",
@@ -48,9 +49,14 @@ export default function BlogSection() {
         {/* ================= Header ================= */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <p className="uppercase text-primary tracking-[0.2em] text-xs font-semibold">
-              Knowledge Center
-            </p>
+            <p className="uppercase text-primary tracking-[0.2em] text-xs font-semibold"></p>
+
+            <div className="mb-4">
+              <SectionBadge icon={FaBookOpen} className="mb-0">
+                Knowledge Center
+              </SectionBadge>
+            </div>
+
             <h2 className="md:text-4xl text-3xl font-bold text-gray-900 mt-3 leading-tight">
               Insights from Bridge Pharmaceuticals
             </h2>
