@@ -39,8 +39,10 @@ export default function GalleryPageSection() {
     { img: "/gallery/gallery18.jpg", date: "04 Feb 2026" },
     { img: "/gallery/gallery19.jpg", date: "06 Feb 2026" },
     { img: "/gallery/gallery20.jpg", date: "08 Feb 2026" },
-    // { img: "/gallery/gallery21.jpg", date: "10 Feb 2026" },
-    // { img: "/gallery/gallery22.jpg", date: "12 Feb 2026" },
+    { img: "/gallery/gallery21.jpg", date: "10 Feb 2026" },
+    { img: "/gallery/gallery22.jpg", date: "12 Feb 2026" },
+    { img: "/gallery/gallery23.jpg", date: "14 Feb 2026" },
+    { img: "/gallery/gallery24.jpg", date: "16 Feb 2026" },
   ];
 
   const subtitle = "Our Works";

@@ -68,7 +68,7 @@ const cardVariants = {
 export default function BlogPageSection() {
   return (
     <section className="py-24 bg-gray-50 relative">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto md:px-0 px-6">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
           initial="hidden"
@@ -82,7 +82,7 @@ export default function BlogPageSection() {
               className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500"
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative md:h-96 h-64 overflow-hidden">
                 <motion.div
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
@@ -92,7 +92,7 @@ export default function BlogPageSection() {
                     src={blog.img}
                     alt={blog.title}
                     fill
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </motion.div>
               </div>
