@@ -34,18 +34,32 @@ export default function BlogDetailsDataPage() {
     );
   }
 
+  const baseUrl = "https://www.bridgepharmabd.com";
+
   const meta = {
-    title: `${blog.blogPost.title} | Anondo Baari Blog`,
+    title: `${blog.blogPost.title} | Bridge Pharmaceuticals Ltd.`,
+
     description:
       blog.blogPost.description ||
-      `Read "${blog.blogPost.title}" – an insightful article from Anondo Baari on senior care, wellness, healthy aging, and holistic living.`,
+      `Read "${blog.blogPost.title}" – expert insights from Bridge Pharmaceuticals Ltd. on pharmaceutical manufacturing, research, quality assurance, logistics, and digital transformation.`,
+
     keywords: `${blog.blogPost.postTags.join(
-      ", "
-    )}, Anondo Baari blog, senior wellness Bangladesh, healthy aging tips, elderly care, wellness lifestyle`,
-    author: blog.blogPost.author || "Anondo Baari",
-    url: `https://www.anondobari.com/blog/${blog.slug}`,
-    image:
-      blog.blogPost.image || "https://www.anondobari.com/blogs/blogs-og.jpg",
+      ", ",
+    )}, Bridge Pharma blog, pharmaceutical manufacturing, GMP compliance, pharma research, quality assurance pharma, cold chain logistics, pharma digital transformation`,
+
+    author: blog.blogPost.author || "Bridge Pharma Insights",
+
+    url: `${baseUrl}/blogs/${blog.slug}`,
+
+    image: blog.blogPost.image
+      ? `${baseUrl}${blog.blogPost.image}`
+      : `${baseUrl}/blogs/blogs-og.jpg`,
+
+    siteName: "Bridge Pharmaceuticals Ltd.",
+
+    type: "article",
+
+    twitterCard: "summary_large_image",
   };
 
   return (

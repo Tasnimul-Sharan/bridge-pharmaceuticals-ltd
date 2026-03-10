@@ -3,7 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineTag } from "react-icons/ai";
-import { FaCheckCircle, FaQuoteLeft, FaRegCheckCircle, FaReply } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaQuoteLeft,
+  FaRegCheckCircle,
+  FaReply,
+} from "react-icons/fa";
 
 export default function BlogDetails({ blogsData }) {
   const { blogPost, socialIcons } = blogsData;
@@ -70,7 +75,7 @@ export default function BlogDetails({ blogsData }) {
           <AiOutlineTag className="text-primary text-xl" />
           {blogPost.postTags.map((tag, i) => (
             <p
-              // key={i}
+              key={i}
               // href="#"
               className="bg-primary/80 text-white px-3 py-1 rounded-md text-sm transition transform duration-500"
             >
@@ -86,7 +91,7 @@ export default function BlogDetails({ blogsData }) {
               return (
                 <a
                   key={index}
-                  href={link(currentUrl, blogsData.blogPost.title)} // ✅ ekhane title pathachhi
+                  href={link(currentUrl, blogsData.blogPost.title)}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Share Link"
