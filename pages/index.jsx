@@ -6,6 +6,8 @@ import LandingPage from "@/components/LandingPage";
 import PharmaStatsSection from "@/components/PharmaStatsSection";
 import ProductsSection from "@/components/ProductsSection";
 import WhatWeSell from "@/components/WhatWeSell";
+import RNDSection from "@/components/RNDSection";
+import Testimonials from "@/components/Testimonials";
 export default function Home() {
   const meta = {
     title:
@@ -59,8 +61,9 @@ export default function Home() {
       <AboutUsSection />
       <PharmaStatsSection />
       <ProductsSection />
+      <RNDSection />
       <WhatWeSell />
-      {/* <TeamSection /> */}
+      <Testimonials />
       <ContactSection />
       <BlogSection />
     </div>

@@ -70,9 +70,9 @@ export default function AboutUsSection() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="relative"
         >
-          <div className="relative h-[520px] rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
             <Image
-              src="/about.JPG"
+              src="/about.jpg"
               alt="Bridge Pharmaceuticals Animal Health"
               fill
               className="object-cover"

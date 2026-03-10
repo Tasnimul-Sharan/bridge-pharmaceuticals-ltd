@@ -133,7 +133,7 @@ export default function Navbar() {
   return (
     <header className="w-full">
       <div className="hidden lg:block fixed top-0 left-0 w-full z-40 bg-primary text-white py-6">
-        <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 px-4">
+        <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
             {/* Address */}
             <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">

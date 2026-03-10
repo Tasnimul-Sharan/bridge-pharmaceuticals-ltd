@@ -16,6 +16,25 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
+  const socialLinks = [
+    {
+      icon: FaFacebookF,
+      url: "https://www.facebook.com/bridgepharmaltd/",
+    },
+    {
+      icon: FaXTwitter,
+      url: "https://twitter.com/",
+    },
+    {
+      icon: FaLinkedinIn,
+      url: "https://linkedin.com/",
+    },
+    {
+      icon: FaInstagram,
+      url: "https://instagram.com/",
+    },
+  ];
+
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-secondary to-secondary/95 text-white">
       {/* Soft background glow */}
@@ -46,20 +65,23 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-3">
-            {[FaFacebookF, FaXTwitter, FaLinkedinIn, FaInstagram].map(
-              (Icon, idx) => (
+            {socialLinks.map((item, idx) => {
+              const Icon = item.icon;
+              return (
                 <a
                   key={idx}
-                  href="#"
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full
-                             bg-white/10 border border-white/20
-                             hover:bg-primary hover:border-primary
-                             transition-all duration-300"
+                   bg-white/10 border border-white/20
+                   hover:bg-primary hover:border-primary
+                   transition-all duration-300"
                 >
                   <Icon />
                 </a>
-              ),
-            )}
+              );
+            })}
           </div>
         </div>
 
