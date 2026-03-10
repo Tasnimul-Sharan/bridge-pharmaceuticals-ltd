@@ -133,52 +133,48 @@ export default function Navbar() {
   return (
     <header className="w-full">
       <div className="hidden lg:block fixed top-0 left-0 w-full z-40 bg-primary text-white py-6">
-        <div className="custom-container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex flex-col sm:flex-row sm:gap-6 gap-2 text-center sm:text-left">
-            {/* Address */}
-            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
-              <FaMapMarkerAlt className="text-white shrink-0" />
-              <span>
-                Printers Building, 12-14th Floor, 5 Rajuk Avenue, Motijheel,
-                Dhaka
-              </span>
+        <div className="custom-container mx-auto flex items-center justify-between">
+          {/* Left Info */}
+          <div className="flex flex-1 items-center gap-6 text-base">
+            <p className="flex items-center gap-2 border-r border-white/30 pr-4">
+              <FaMapMarkerAlt className="shrink-0" />
+              <span>Printers Building, Rajuk Avenue, Motijheel</span>
             </p>
 
-            {/* Email */}
-            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
-              <FaEnvelope className="text-white shrink-0" />
+            <p className="flex items-center gap-2 border-r border-white/30 pr-4">
+              <FaEnvelope className="shrink-0" />
               <span>hrbplho@gmail.com</span>
             </p>
 
-            {/* Phone */}
-            <p className="flex items-center gap-2 justify-center font-normal border-r border-white/30 pr-4">
-              <FaPhoneAlt className="text-white shrink-0" />
+            <p className="flex items-center gap-2 border-r border-white/30 pr-4">
+              <FaPhoneAlt className="shrink-0" />
               <span>+880 1762627623</span>
             </p>
 
-            {/* Office Time */}
-            <p className="flex items-center gap-2 justify-center font-normal">
-              <FaClock className="text-white shrink-0" />
+            <p className="flex items-center gap-2">
+              <FaClock className="shrink-0" />
               <span>Sat – Thu · 10 AM – 6 PM</span>
             </p>
           </div>
 
-          <div className="flex gap-4 text-white z-40">
+          {/* Social */}
+          <div className="flex items-center gap-4 ml-6">
             <Link href="https://facebook.com" target="_blank">
-              <FaFacebookF className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
+              <FaFacebookF className="hover:text-secondary w-5 h-5 transition duration-300" />
             </Link>
             <Link href="https://twitter.com" target="_blank">
-              <FaXTwitter className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
+              <FaXTwitter className="hover:text-secondary w-5 h-5 transition duration-300" />
             </Link>
             <Link href="https://linkedin.com" target="_blank">
-              <FaLinkedinIn className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
+              <FaLinkedinIn className="hover:text-secondary w-5 h-5 transition duration-300" />
             </Link>
             <Link href="https://instagram.com" target="_blank">
-              <FaInstagram className="hover:text-secondary cursor-pointer w-5 h-5 transition-all duration-500" />
+              <FaInstagram className="hover:text-secondary w-5 h-5 transition duration-300" />
             </Link>
           </div>
         </div>
       </div>
+
       <nav
         ref={navRef}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 transform-gpu ${navbarClasses}`}

@@ -37,7 +37,6 @@ export default function RNDSection() {
   return (
     <section className="py-28 bg-gradient-to-b from-white to-primary/10">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-20">
           <div className="flex justify-center">
             <SectionBadge icon={FaBriefcaseMedical}>
@@ -57,7 +56,6 @@ export default function RNDSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,8 +80,7 @@ export default function RNDSection() {
               Explore Our R&D Facilities
             </Link>
           </motion.div>
-
-          {/* Feature Cards */}
+          
           <div className="grid sm:grid-cols-2 gap-6">
             {features.map((item, i) => (
               <motion.div

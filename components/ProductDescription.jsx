@@ -1,7 +1,7 @@
 export default function ProductDescription({ product }) {
   const sections = [
-    ["Description", product.description],
     ["Composition", product.composition],
+    ["Description", product.description],
     ["Indication", product.indication],
     ["Dosage & Administration", product.dosage],
     ["Contraindication", product.contraindication],

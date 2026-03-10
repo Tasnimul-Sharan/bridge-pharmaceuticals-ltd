@@ -57,10 +57,34 @@ export const generatePrescriptionPdf = (product) => {
   };
 
   /* ---------- Field ---------- */
+  // const field = (label, value) => {
+  //   if (!value) return;
+
+  //   pageCheck(35);
+
+  //   doc.setFont("helvetica", "bold");
+  //   doc.setFontSize(10);
+  //   doc.text(label, margin, y);
+  //   y += 6;
+
+  //   doc.setFont("helvetica", "normal");
+  //   doc.setFontSize(11);
+
+  //   const lineHeight = 5.5;
+
+  //   doc.text(value, margin, y, {
+  //     maxWidth: contentWidth,
+  //     lineHeightFactor: 1.5,
+  //   });
+
+  //   const textLines = doc.splitTextToSize(value, contentWidth);
+  //   y += textLines.length * lineHeight + 8;
+  // };
+
   const field = (label, value) => {
     if (!value) return;
 
-    pageCheck(30);
+    pageCheck(35);
 
     doc.setFont("helvetica", "bold");
     doc.setFontSize(10);
@@ -70,17 +94,20 @@ export const generatePrescriptionPdf = (product) => {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
 
+    const startY = y;
+
+    doc.text(value, margin, startY, {
+      maxWidth: contentWidth,
+      lineHeightFactor: 1.6,
+    });
+
     const lines = doc.splitTextToSize(value, contentWidth);
-
-    doc.text(lines, margin, y);
-    const lineHeight = 5.5;
-    y += lines.length * lineHeight + 8;
-
-    // y += lines.length * 6 + 6; // dynamic height based on lines
+    y += lines.length * 6 + 8;
   };
 
   /* ---------- Start Document ---------- */
   drawHeaderBand(true);
+  doc.setCharSpace(0);
 
   /* ---------- Overview Section ---------- */
   section("Product Overview");
@@ -97,10 +124,10 @@ export const generatePrescriptionPdf = (product) => {
   field("Drug Interaction", product.interaction);
   field("Side Effects", product.sideeffect);
   field("Precautions", product.precaution);
+  field("Withdrawal Period", product.withdrawal);
 
   /* ---------- Storage Section ---------- */
-  section("Handling & Storage");
-  field("Withdrawal Period", product.withdrawal);
+  section("Storage & Packaging");
   field("Storage Condition", product.storage);
   field("Packing", product.packing);
 
