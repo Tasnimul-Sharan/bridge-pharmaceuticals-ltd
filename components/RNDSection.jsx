@@ -75,17 +75,17 @@ export default function RNDSection() {
 
             <Link
               href="/facilities"
-              className="inline-block mt-8 px-7 py-3 bg-primary text-white rounded-lg hover:bg-secondary transition"
+              className="inline-block mt-8 px-6 py-3 bg-primary text-white rounded-md hover:bg-secondary transition-all transform duration-500"
             >
               Explore Our R&D Facilities
             </Link>
           </motion.div>
-          
+
           <div className="grid sm:grid-cols-2 gap-6">
             {features.map((item, i) => (
               <motion.div
                 key={i}
-                className="p-6 rounded-2xl bg-white border border-border_color shadow-sm hover:shadow-lg transition group"
+                className="p-6 rounded-2xl bg-white border border-border_color shadow-sm hover:shadow-xl hover:shadow-primary/50 transition-all transform duration-500 group"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
@@ -95,11 +95,11 @@ export default function RNDSection() {
                   {item.icon}
                 </div>
 
-                <h4 className="font-semibold text-secondary mb-2">
+                <h4 className="font-semibold text-soft_black mb-2">
                   {item.title}
                 </h4>
 
-                <p className="text-sm text-secondary_two leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
