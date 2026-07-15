@@ -148,7 +148,7 @@ function TypesPage() {
   const handleDelete = async (id) => {
     if (!confirm("Delete this type?")) return;
 
-    await supabase.from("types").delete().eq("id", id);
+    await supabaseServer.from("types").delete().eq("id", id);
     fetchTypes();
   };
 
